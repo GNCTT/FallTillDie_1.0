@@ -21,6 +21,7 @@ public class GameView extends SurfaceView implements Runnable{
     private int screenY;
 
     private Player player;
+    private int typeBackground;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -31,6 +32,7 @@ public class GameView extends SurfaceView implements Runnable{
 
         background = new Background(screenX, screenY, getResources());
         player = new Player(0, 0);
+        typeBackground = 0;
     }
 
 
@@ -46,6 +48,13 @@ public class GameView extends SurfaceView implements Runnable{
 
     private void update() {
         player.update();
+        if (player.changeImageByScore()) {
+            background.changeBackground(screenX, screenY, getResources(), typeBackground);
+            typeBackground += 1;
+            if (typeBackground >= 2) {
+                typeBackground = 0;
+            }
+        }
     }
 
     private void draw() {

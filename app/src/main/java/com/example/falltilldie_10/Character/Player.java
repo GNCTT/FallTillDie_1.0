@@ -25,11 +25,18 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-        y += 2;
+        y += 5;
         if (y > 1000) {
             y = 0;
             x += 10;
         }
+    }
+
+    public boolean changeImageByScore() {
+        if (y == 500) {
+            return true;
+        }
+        return false;
     }
 
     @Override
