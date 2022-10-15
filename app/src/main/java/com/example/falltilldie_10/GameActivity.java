@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -14,7 +15,11 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
-        gameView = new GameView(this, point.x, point.y);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int heightPixels = displayMetrics.heightPixels;
+        int widthPixels = displayMetrics.widthPixels;
+        gameView = new GameView(this, point.x, point.y, heightPixels, widthPixels);
         setContentView(gameView);
     }
 

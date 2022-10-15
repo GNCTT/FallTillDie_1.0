@@ -3,19 +3,28 @@ package com.example.falltilldie_10.Character;
 import static com.example.falltilldie_10.GameView.canvas;
 import static com.example.falltilldie_10.GameView.paint;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.widget.ImageView;
 
 import com.example.falltilldie_10.Entity;
+import com.example.falltilldie_10.GameView;
+import com.example.falltilldie_10.Sprite.Sprite;
 
 public class Player extends Entity {
 
-    private final static int WIDTH_SIZE = 50;
-    private final static int HEIGHT_SIZE = 50;
+    private int dir;
+    private int animate;
+    private int delta_x;
+    private int delta_y;
 
     public Player(int x, int y) {
         super(x, y);
-        width = WIDTH_SIZE;
-        height = HEIGHT_SIZE;
+        ImageEntity = Sprite.ImagePigIdlLeft;
+        width = ImageEntity.getWidth();
+        height = ImageEntity.getHeight();
+        dir = 1;
+        animate = 0;
     }
 
     @Override
@@ -25,10 +34,29 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-        y += 5;
-        if (y > 1000) {
-            y = 0;
-            x += 10;
+        //animate
+        changeAnimate();
+        //move
+        if (GameView.left) {
+            delta_x = -5;
+            dir = -1;
+        }
+
+        if (GameView.right) {
+            delta_x = 5;
+            dir = 1;
+        }
+        if (GameView.right == false && GameView.left == false) {
+            delta_x = 0;
+        }
+        chooseSprite();
+        x += delta_x;
+    }
+
+    private void changeAnimate() {
+        animate++;
+        if (animate > 7500) {
+            animate = 0;
         }
     }
 
@@ -39,8 +67,25 @@ public class Player extends Entity {
         return false;
     }
 
+    private void chooseSprite() {
+        if (dir == 1) {
+            if (delta_x == 0) {
+                ImageEntity = Sprite.ImagePigIdlRight;
+            } else {
+                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 20);
+            }
+        }
+        else {
+            if (delta_x == 0) {
+                ImageEntity = Sprite.ImagePigIdlLeft;
+            } else {
+                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 20);
+            }
+        }
+    }
+
     @Override
     public void draw() {
-        canvas.drawRect(new Rect(x, y, x + width,y - height), paint);
+        canvas.drawBitmap(ImageEntity, x, y, paint);
     }
 }
