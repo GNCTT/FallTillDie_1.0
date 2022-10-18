@@ -22,8 +22,10 @@ public class GameView extends SurfaceView implements Runnable{
     public static Canvas canvas;
     public static Paint paint;
     public static boolean isPlaying;
-    private int screenX;
+    public static int screenX;
     private int screenY;
+    private static int widthScreen;
+    private int heightScreen;
     public static float screenRatioX, screenRatioY;
 
     public static Resources res;
@@ -39,6 +41,8 @@ public class GameView extends SurfaceView implements Runnable{
         screenRatioY = heightScreen / screenY;
         this.screenX = screenX;
         this.screenY = screenY;
+        this.widthScreen = widthScreen;
+        this.heightScreen = heightScreen;
         canvas = new Canvas();
         paint = new Paint();
         res = getResources();
@@ -89,6 +93,14 @@ public class GameView extends SurfaceView implements Runnable{
         isPlaying = true;
         thread = new Thread(this);
         thread.start();
+    }
+
+    public static int getWidthScreen() {
+        return widthScreen;
+    }
+
+    public int getHeightScreen() {
+        return heightScreen;
     }
 
     @Override

@@ -5,6 +5,7 @@ import static com.example.falltilldie_10.GameView.paint;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.falltilldie_10.Entity;
@@ -14,6 +15,7 @@ import com.example.falltilldie_10.Sprite.Sprite;
 public class Player extends Entity {
 
     private int dir;
+    private boolean falling;
     private int animate;
     private int delta_x;
     private int delta_y;
@@ -49,9 +51,27 @@ public class Player extends Entity {
         if (GameView.right == false && GameView.left == false) {
             delta_x = 0;
         }
+        Log.i("hello", GameView.screenX + " ");
+        delta_y = 2;
+        move(delta_x, delta_y);
         chooseSprite();
-        x += delta_x;
     }
+
+    private boolean canMove(int delta_x, int delta_y) {
+        return true;
+    }
+
+    private void move(int delta_x, int delta_y) {
+        if (x + delta_x < 0 || x + delta_x + width > GameView.getWidthScreen()) {
+            delta_x = 0;
+        }
+        if (y + delta_y > 400) {
+            delta_y = 0;
+        }
+        x += delta_x;
+        y += delta_y;
+    }
+
 
     private void changeAnimate() {
         animate++;
@@ -82,10 +102,19 @@ public class Player extends Entity {
                 ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 20);
             }
         }
+        if (falling) {
+            if (dir == -1) {
+                ImageEntity = Sprite.ImagePigFallLeft;
+            } else {
+                ImageEntity = Sprite.ImagePigFallRight;
+            }
+        }
+
     }
 
     @Override
     public void draw() {
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         canvas.drawBitmap(ImageEntity, x, y, paint);
     }
 }
