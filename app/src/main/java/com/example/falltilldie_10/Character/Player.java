@@ -51,7 +51,6 @@ public class Player extends Entity {
         if (GameView.right == false && GameView.left == false) {
             delta_x = 0;
         }
-        Log.i("hello", GameView.screenX + " ");
         delta_y = 2;
         move(delta_x, delta_y);
         chooseSprite();
@@ -114,7 +113,7 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         canvas.drawBitmap(ImageEntity, x, y, paint);
     }
 }

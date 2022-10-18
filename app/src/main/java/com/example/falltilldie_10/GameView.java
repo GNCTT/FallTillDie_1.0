@@ -25,7 +25,7 @@ public class GameView extends SurfaceView implements Runnable{
     public static int screenX;
     private int screenY;
     private static int widthScreen;
-    private int heightScreen;
+    private static int heightScreen;
     public static float screenRatioX, screenRatioY;
 
     public static Resources res;
@@ -99,7 +99,7 @@ public class GameView extends SurfaceView implements Runnable{
         return widthScreen;
     }
 
-    public int getHeightScreen() {
+    public static int getHeightScreen() {
         return heightScreen;
     }
 

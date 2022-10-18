@@ -11,10 +11,14 @@ import java.util.ArrayList;
 
 public class Sprite {
     public final static Bitmap ImagePigDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.idll);
+    public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
+    private final static int DEFAULT_WIDTH_FAN_SIZE = ImageFan.getWidth();
+    private final static int DEFAULT_HEIGHT_FAN_SIZE = ImageFan.getHeight();
+
     private final static int Default_Width_Size = ImagePigDefault.getWidth();
     private final static int Default_Height_Size = ImagePigDefault.getHeight();
-    private final static int Default_Scale_X = 4;
-    private final static int Default_Scale_Y = 3;
+    private final static int Default_Scale_X = 32;
+    private final static int Default_Scale_Y = 21;
 
     public final static Bitmap ImagePigIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
     public final static Bitmap ImagePigIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idlr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
@@ -41,6 +45,13 @@ public class Sprite {
 
     public final static Bitmap ImagePigFallLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.falll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
     public final static Bitmap ImagePigFallRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.fallr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+
+    public final static Bitmap ImageFanOn1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 2);
+    public final static Bitmap ImageFanOn2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller2), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 2);
+    public final static Bitmap ImageFanOn3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller3), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 2);
+    public final static Bitmap ImageFanOn4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller4), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 2);
+
+    public final static ArrayList<Bitmap> ImageFanOn = createListImage(ImageFanOn1, ImageFanOn2, ImageFanOn3, ImageFanOn4, ImageFanOn1, ImageFanOn2);
     public Sprite() {
     }
 
