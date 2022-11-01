@@ -10,7 +10,11 @@ import android.widget.ImageView;
 
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
+import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.Sprite.Sprite;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class Player extends Entity {
 
@@ -19,13 +23,21 @@ public class Player extends Entity {
     private int animate;
     private int delta_x;
     private int delta_y;
+    public static final int DEFAULT_SPEED = 8;
+    public static final int DEFAULT_FALL_SPEED = 8;
+    private int speedFall;
 
     public Player(int x, int y) {
         super(x, y);
         ImageEntity = Sprite.ImagePigIdlLeft;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
+        center_x = x + width / 2;
+        center_y = y - height / 2;
         dir = 1;
+        falling = true;
+        speed = DEFAULT_SPEED;
+        speedFall = 1;
         animate = 0;
     }
 
@@ -40,18 +52,19 @@ public class Player extends Entity {
         changeAnimate();
         //move
         if (GameView.left) {
-            delta_x = -5;
+            delta_x = -speed;
             dir = -1;
         }
 
         if (GameView.right) {
-            delta_x = 5;
+            delta_x = speed;
             dir = 1;
         }
         if (GameView.right == false && GameView.left == false) {
             delta_x = 0;
         }
-        delta_y = 2;
+        delta_y = DEFAULT_FALL_SPEED * speedFall;
+        falling = true;
         move(delta_x, delta_y);
         chooseSprite();
     }
@@ -64,11 +77,45 @@ public class Player extends Entity {
         if (x + delta_x < 0 || x + delta_x + width > GameView.getWidthScreen()) {
             delta_x = 0;
         }
-        if (y + delta_y > 400) {
-            delta_y = 0;
+//        if (y + delta_y > 400) {
+//            delta_y = 0;
+//        }
+
+        ArrayList<Entity> listEntity = new ArrayList<>();
+        // cos the them nhieu entity sau nay
+        Entity [] listEntity2 = MapView.blocks;
+        //
+        for (int i = 0; i < listEntity2.length; i++) {
+            listEntity.add(listEntity2[i]);
+        }
+        y += delta_y;
+        ArrayList<Entity>  collide_list = checkListCollision(this, listEntity);
+
+        if (collide_list.size() > 0) {
+            falling = false;
+            Entity otherEntity = collide_list.get(0);
+            if (delta_y > 0) {
+                y = otherEntity.getTop() - height;
+            } else {
+                if (delta_y < 0) {
+                    y = otherEntity.getBottom();
+                }
+            }
         }
         x += delta_x;
-        y += delta_y;
+        collide_list = checkListCollision(this, listEntity);
+        if (collide_list.size() > 0) {
+            falling = false;
+            Entity otherEntity = collide_list.get(0);
+            if (delta_x > 0) {
+                x = otherEntity.getLeft() - width;
+            } else {
+                if (delta_x < 0) {
+                    x = otherEntity.getRight();
+                }
+            }
+        }
+
     }
 
 
@@ -91,24 +138,44 @@ public class Player extends Entity {
             if (delta_x == 0) {
                 ImageEntity = Sprite.ImagePigIdlRight;
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 20);
+                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
             }
         }
         else {
             if (delta_x == 0) {
                 ImageEntity = Sprite.ImagePigIdlLeft;
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 20);
+                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
             }
         }
         if (falling) {
-            if (dir == -1) {
-                ImageEntity = Sprite.ImagePigFallLeft;
-            } else {
+            if (dir == 1) {
                 ImageEntity = Sprite.ImagePigFallRight;
+            } else {
+                ImageEntity = Sprite.ImagePigFallLeft;
             }
         }
 
+    }
+
+    public boolean checkCollision(Entity e1, Entity e2) {
+        boolean check1 = e1.getRight() <= e2.getLeft() || e1.getLeft() >= e2.getRight();
+        boolean check2 = e1.getBottom() <= e2.getTop() || e1.getTop() >= e2.getBottom();
+        if (check1 || check2) {
+            return false;
+        }
+        return true;
+    }
+
+    public ArrayList<Entity> checkListCollision(Entity e1, ArrayList<Entity> listEntity) {
+        ArrayList<Entity> collideList = new ArrayList<>();
+        for (int i = 0; i < listEntity.size(); i++) {
+            Entity entity = listEntity.get(i);
+            if (checkCollision(e1, entity)) {
+                collideList.add(entity);
+            }
+        }
+        return collideList;
     }
 
     @Override

@@ -14,7 +14,9 @@ public abstract class Entity {
     //rong dai
     protected int width;
     protected int height;
-
+    protected int center_x;
+    protected int center_y;
+    protected int speed;
     protected Bitmap ImageEntity;
 
     protected boolean remove;
@@ -28,8 +30,42 @@ public abstract class Entity {
         beDestroy = false;
     }
 
+
     public abstract boolean collide(Entity other);
 
     public abstract void update();
     public abstract void draw();
+
+    public int getCenter_x() {
+        return center_x;
+    }
+
+    public int getCenter_y() {
+        return center_y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getRight() {
+        return x + width;
+    }
+
+    public int getLeft() {
+        return x;
+    }
+
+    public int getTop() {
+        return y;
+    }
+
+    public int getBottom() {
+        return y + height;
+    }
+
 }

@@ -11,18 +11,19 @@ public class MapView {
     private int screenX;
     private int screenY;
     private Player player;
-    private Block[] blocks;
-    private final static int NUM_BLOCK = 4;
+    public static Block[] blocks;
+    private final static int NUM_BLOCK = 6;
     public MapView(int screenX, int screenY) {
         this.screenX = screenX;
         this.screenY = screenY;
         background = new Background(screenX, screenY, GameView.res);
         typeBackground = 0;
+        //new player
         player = new Player(0, 250);
         blocks = new Block[NUM_BLOCK];
-        //can tao ngau nhien bang ham
+        //can tao ngau nhien bang ham.
         for (int i = 0; i < NUM_BLOCK; i++) {
-            blocks[i] = new Block(i * 200, i * -400, 1);
+            blocks[i] = new Block(i * 100, i * -400, 1);
         }
     }
 

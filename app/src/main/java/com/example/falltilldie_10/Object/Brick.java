@@ -11,11 +11,10 @@ import com.example.falltilldie_10.Sprite.Sprite;
 
 public class Brick extends Entity {
 
-    private int speed;
     private int animate;
     public Brick(int x, int y) {
         super(x, y);
-        speed = FALL_SPEED_BRICK * 1;
+        speed = FALL_SPEED_BRICK * 3 / 2;
         ImageEntity = Sprite.ImageFanOn1;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
@@ -55,7 +54,7 @@ public class Brick extends Entity {
 
     @Override
     public void draw() {
-//       canvas.drawRect(new Rect(x, y, x + width, y - height), paint);
-       canvas.drawBitmap(ImageEntity, x + width, y - height, paint);
+//       canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+       canvas.drawBitmap(ImageEntity, x, y, paint);
     }
 }
