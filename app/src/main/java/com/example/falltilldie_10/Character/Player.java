@@ -191,7 +191,7 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         canvas.drawBitmap(ImageEntity, x, y, paint);
     }
 }
