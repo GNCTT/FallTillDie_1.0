@@ -9,7 +9,7 @@ public abstract class Entity {
     protected int y;
     protected final static int DEFAULT_BRICK_WIDTH = Sprite.ImageFanOn1.getWidth();
     protected final static int DEFAULT_BRICK_HEIGHT = Sprite.ImageFanOn1.getHeight();
-    protected final static int FALL_SPEED_BRICK = 5;
+    protected final static int FALL_SPEED_BRICK = 7;
 
     //rong dai
     protected int width;

@@ -74,20 +74,20 @@ public class Player extends Entity {
     }
 
     private void move(int delta_x, int delta_y) {
+
+        // check bien co the them tin hieu gamover o day
         if (x + delta_x < 0 || x + delta_x + width > GameView.getWidthScreen()) {
             delta_x = 0;
         }
-//        if (y + delta_y > 400) {
-//            delta_y = 0;
-//        }
 
         ArrayList<Entity> listEntity = new ArrayList<>();
-        // cos the them nhieu entity sau nay
+        // cos the them nhieu entity sau nay.
         Entity [] listEntity2 = MapView.blocks;
         //
         for (int i = 0; i < listEntity2.length; i++) {
             listEntity.add(listEntity2[i]);
         }
+        // va cham y.
         y += delta_y;
         ArrayList<Entity>  collide_list = checkListCollision(this, listEntity);
 
@@ -102,6 +102,8 @@ public class Player extends Entity {
                 }
             }
         }
+
+        //va cham x
         x += delta_x;
         collide_list = checkListCollision(this, listEntity);
         if (collide_list.size() > 0) {
@@ -115,6 +117,7 @@ public class Player extends Entity {
                 }
             }
         }
+
 
     }
 

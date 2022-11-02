@@ -14,7 +14,7 @@ public class Brick extends Entity {
     private int animate;
     public Brick(int x, int y) {
         super(x, y);
-        speed = FALL_SPEED_BRICK * 3 / 2;
+        speed = FALL_SPEED_BRICK * 1;
         ImageEntity = Sprite.ImageFanOn1;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();

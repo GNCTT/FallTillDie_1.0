@@ -21,7 +21,7 @@ public class Block extends Entity {
         height = DEFAULT_BRICK_HEIGHT;
         center_x = x + width / 2;
         center_y = y - height / 2;
-        speed = FALL_SPEED_BRICK * 3 / 2;
+        speed = FALL_SPEED_BRICK * 1;
         for (int i = 0; i < size; i++) {
             bricks[i] = new Brick(x + i * Entity.DEFAULT_BRICK_WIDTH, y);
         }
