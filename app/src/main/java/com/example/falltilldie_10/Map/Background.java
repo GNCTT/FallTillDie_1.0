@@ -19,9 +19,9 @@ public class Background {
     Bitmap background2;
 
     public Background(int screenX, int screenY, Resources res) {
-        background = BitmapFactory.decodeResource(res, R.drawable.background4);
+        background = BitmapFactory.decodeResource(res, R.drawable.background1);
         background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
-        background1 = BitmapFactory.decodeResource(res, R.drawable.background1);
+        background1 = BitmapFactory.decodeResource(res, R.drawable.background4);
         background1 = Bitmap.createScaledBitmap(background1, screenX, screenY, false);
         background2 = BitmapFactory.decodeResource(res, R.drawable.background3);
         background2 = Bitmap.createScaledBitmap(background2, screenX, screenY, false);

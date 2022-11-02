@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 public class Sprite {
     public final static Bitmap ImagePigDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.idll);
+    public final static Bitmap ImageVirtualDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidll);
     public final static Bitmap ImageRoughDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.run1);
+
 
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
     private final static int DEFAULT_WIDTH_FAN_SIZE = ImageFan.getWidth();
@@ -51,6 +53,32 @@ public class Sprite {
 
     public final static Bitmap ImagePigFallLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.falll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
     public final static Bitmap ImagePigFallRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.fallr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+
+    public final static Bitmap ImageVirtualIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidlr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+
+    public final static Bitmap ImageVirtualRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun1l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun2l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun3l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun4l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun5l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun6l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+
+    public final static ArrayList<Bitmap> VirtualRunLefts = createListImage(ImageVirtualRunLeft_1, ImageVirtualRunLeft_2, ImageVirtualRunLeft_3,
+            ImageVirtualRunLeft_4, ImageVirtualRunLeft_5, ImageVirtualRunLeft_6);
+
+    public final static Bitmap ImageVirtualRunRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun1r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun2r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun3r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun4r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun5r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualRunRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun6r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+
+    public final static ArrayList<Bitmap> VirtualRunRights = createListImage(ImageVirtualRunRight_1, ImageVirtualRunRight_2, ImageVirtualRunRight_3,
+            ImageVirtualRunRight_4, ImageVirtualRunRight_5, ImageVirtualRunRight_6);
+
+    public final static Bitmap ImageVirtualFallLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualfalllr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImageVirtualFallRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualfallr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
 
     public final static Bitmap ImageFanOn1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
     public final static Bitmap ImageFanOn2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller2), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);

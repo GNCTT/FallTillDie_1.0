@@ -29,7 +29,8 @@ public class Player extends Entity {
 
     public Player(int x, int y) {
         super(x, y);
-        ImageEntity = Sprite.ImagePigIdlLeft;
+        //ImageEntity = Sprite.ImagePigIdlLeft;
+        ImageEntity = Sprite.ImageVirtualIdlLeft;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
         center_x = x + width / 2;
@@ -139,23 +140,30 @@ public class Player extends Entity {
     private void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
-                ImageEntity = Sprite.ImagePigIdlRight;
+                //ImageEntity = Sprite.ImagePigIdlRight;
+                ImageEntity = Sprite.ImageVirtualIdlRight;
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
+
             }
         }
         else {
             if (delta_x == 0) {
-                ImageEntity = Sprite.ImagePigIdlLeft;
+//                ImageEntity = Sprite.ImagePigIdlLeft;
+                ImageEntity = Sprite.ImageVirtualIdlLeft;
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
             }
         }
         if (falling) {
             if (dir == 1) {
-                ImageEntity = Sprite.ImagePigFallRight;
+//                ImageEntity = Sprite.ImagePigFallRight;
+                ImageEntity = Sprite.ImageVirtualFallRight;
             } else {
-                ImageEntity = Sprite.ImagePigFallLeft;
+//                ImageEntity = Sprite.ImagePigFallLeft;
+                ImageEntity = Sprite.ImageVirtualFallLeft;
             }
         }
 
