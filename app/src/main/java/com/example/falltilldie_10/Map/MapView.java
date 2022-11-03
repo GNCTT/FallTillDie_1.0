@@ -23,11 +23,12 @@ public class MapView {
         blocks = new Block[NUM_BLOCK];
         //can tao ngau nhien bang ham.
         for (int i = 0; i < NUM_BLOCK; i++) {
-            blocks[i] = new Block(i * 100, i * -400, 1);
+            blocks[i] = new Block(i * 100, i * -300, 1);
         }
     }
 
     public void update() {
+        background.update();
         player.update();
         if (player.changeImageByScore()) {
             background.changeBackground(screenX, screenY, GameView.res, typeBackground);

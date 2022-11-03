@@ -36,7 +36,7 @@ public class Block extends Entity {
     public void update() {
         y -= speed;
         if (y < -GameView.getHeightScreen()) {
-            y = 1500;
+            y = GameView.getHeightScreen();
         }
         for (int i = 0; i < size; i++) {
             bricks[i].update();
