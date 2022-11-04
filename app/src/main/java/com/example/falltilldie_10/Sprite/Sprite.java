@@ -14,6 +14,7 @@ public class Sprite {
     public final static Bitmap ImagePigBomDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomidle1l);
     public final static Bitmap ImageVirtualDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidll);
     public final static Bitmap ImageRoughDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.run1);
+    public final static Bitmap ImageBombDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.bom);
 
 
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
@@ -25,6 +26,10 @@ public class Sprite {
 
     private final static int DEFAULT_WIDTH_SIZE_ROUGH = ImageRoughDefault.getWidth();
     private final static int DEFAULT_HEIGHT_SIZE_ROUGH = ImageRoughDefault.getHeight();
+
+    private final static int DEFAULT_WIDTH_SIZE_BOMB = ImageBombDefault.getWidth();
+    private final static int DEFAULT_HEIGHT_SIZE_BOMB = ImageBombDefault.getHeight();
+
 
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
@@ -131,6 +136,12 @@ public class Sprite {
     public final static Bitmap ImageFanOn2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller2), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
     public final static Bitmap ImageFanOn3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller3), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
     public final static Bitmap ImageFanOn4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller4), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
+
+    public final static Bitmap ImageBombLive1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive1), DEFAULT_WIDTH_SIZE_BOMB * 5/2, DEFAULT_HEIGHT_SIZE_BOMB * 2 );
+    public final static Bitmap ImageBombLive2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive2), DEFAULT_WIDTH_SIZE_BOMB * 5/2, DEFAULT_HEIGHT_SIZE_BOMB * 2 );
+    public final static Bitmap ImageBombLive3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive3), DEFAULT_WIDTH_SIZE_BOMB * 5/2, DEFAULT_HEIGHT_SIZE_BOMB * 2 );
+    public final static Bitmap ImageBombLive4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive4), DEFAULT_WIDTH_SIZE_BOMB * 5/2, DEFAULT_HEIGHT_SIZE_BOMB * 2 );
+
 
     public final static Bitmap ImageRoughWalkL1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk1l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
     public final static Bitmap ImageRoughWalkL2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk2l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
