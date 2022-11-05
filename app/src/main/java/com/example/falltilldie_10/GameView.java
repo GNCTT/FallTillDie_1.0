@@ -6,6 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -37,6 +41,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen) {
         super(context);
+
         screenRatioX = widthScreen / screenX;
         screenRatioY = heightScreen / screenY;
         this.screenX = screenX;
