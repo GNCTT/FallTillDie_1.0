@@ -1,16 +1,22 @@
 package com.example.falltilldie_10.Character;
 
+import android.util.Log;
+
 import com.example.falltilldie_10.GameView;
+import com.example.falltilldie_10.Map.MapView;
+import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 public class Monster extends Player{
 
     public static int speedFall = 1;
+    public static boolean throwing;
 
     public Monster(int x, int y) {
         super(x, y);
         ImageEntity = Sprite.ImagePigBomIdlLeft;
         animate = 0;
+        throwing = false;
     }
 
     @Override
@@ -25,8 +31,19 @@ public class Monster extends Player{
         delta_y = DEFAULT_FALL_SPEED * speedFall;
         falling = true;
         move(delta_x, delta_y);
+        if (falling == false && throwing == false) {
+            throwing = true;
+            throwBomb();
+            Log.i("helloBug", MapView.bombItems.length + "??");
+        }
         chooseSprite();
     }
+
+    public void throwBomb() {
+        BombItem bombItem = new BombItem(x, y);
+        MapView.bombItems = MapView.addObject(MapView.bombItems, bombItem);
+    }
+
 
     public void chooseSprite() {
         if (dir == 1) {

@@ -2,8 +2,10 @@ package com.example.falltilldie_10.Map;
 
 import com.example.falltilldie_10.Character.Monster;
 import com.example.falltilldie_10.Character.Player;
+import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Object.Block;
+import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 public class MapView {
@@ -13,7 +15,8 @@ public class MapView {
     private int screenY;
     private Player player;
     public static Block[] blocks;
-    public Monster[] monsters;
+    public static Monster[] monsters;
+    public static Entity[] bombItems;
     private final static int NUM_BLOCK = 6;
     private final static int NUM_MONSTER = 1;
     public MapView(int screenX, int screenY) {
@@ -25,12 +28,16 @@ public class MapView {
         player = new Player(400, -100);
         blocks = new Block[NUM_BLOCK];
         monsters = new Monster[NUM_BLOCK];
+        bombItems = new BombItem[1];
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsters[i] = new Monster(400, -100);
         }
         //can tao ngau nhien bang ham.
         for (int i = 0; i < NUM_BLOCK; i++) {
             blocks[i] = new Block(i * 100, i * -300, 1);
+        }
+        for (int i = 0; i < bombItems.length; i++) {
+            bombItems[i] = new BombItem(i * 100, 0);
         }
     }
 
@@ -50,6 +57,9 @@ public class MapView {
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsters[i].update();
         }
+        for (int i = 0; i < bombItems.length; i++) {
+            bombItems[i].update();
+        }
     }
 
     public void draw() {
@@ -61,6 +71,20 @@ public class MapView {
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsters[i].draw();
         }
+        for (int i = 0; i < bombItems.length; i++) {
+            bombItems[i].draw();
+        }
+    }
+
+    public static Entity[] addObject(Entity[] entities, Entity entity) {
+        Entity[] entities2 = new Entity[entities.length + 1];
+        if (entities.length != 0) {
+            for (int i = 0; i < entities.length; i++) {
+                entities2[i] = entities[i];
+            }
+        }
+        entities2[entities.length] = entity;
+        return entities2;
     }
 
 }
