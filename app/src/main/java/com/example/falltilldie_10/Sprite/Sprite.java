@@ -136,26 +136,6 @@ public class Sprite {
     public final static Bitmap ImageFanOn3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller3), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
     public final static Bitmap ImageFanOn4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller4), DEFAULT_WIDTH_FAN_SIZE * 2, DEFAULT_HEIGHT_FAN_SIZE * 3 / 2);
 
-    public final static Bitmap ImageRoughWalkL1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk1l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkL2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk2l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkL3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk3l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkL4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk4l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkL5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk5l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkL6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.walk6l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-
-    public final static ArrayList<Bitmap> RoughWalkLefts = createListImage(ImageRoughWalkL1, ImageRoughWalkL2, ImageRoughWalkL3,
-                                                                           ImageRoughWalkL4, ImageRoughWalkL5, ImageRoughWalkL6);
-
-    public final static Bitmap ImageRoughWalkR1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkR2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkR3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkR4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkR5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImageRoughWalkR6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6), DEFAULT_WIDTH_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y, DEFAULT_HEIGHT_SIZE_ROUGH * Default_Scale_X / Default_Scale_Y);
-
-    public final static ArrayList<Bitmap> RoughWalkRights = createListImage(ImageRoughWalkR1, ImageRoughWalkR2, ImageRoughWalkR3,
-            ImageRoughWalkR4, ImageRoughWalkR5, ImageRoughWalkR6);
-
     public final static ArrayList<Bitmap> ImageFanOn = createListImage(ImageFanOn1, ImageFanOn2, ImageFanOn3, ImageFanOn4, ImageFanOn1, ImageFanOn2);
 
     public final static Bitmap ImageParticleRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
@@ -177,6 +157,8 @@ public class Sprite {
 
     public final static ArrayList<Bitmap> ImageParticleLefts = createListImage(ImageParticleLeft_1, ImageParticleLeft_2, ImageParticleLeft_3,
             ImageParticleLeft_4, ImageParticleLeft_5, ImageParticleLeft_6);
+
+
 
     public Sprite() {
     }

@@ -20,14 +20,14 @@ import java.util.Map;
 
 public class Player extends Entity {
 
-    private int dir;
-    private boolean falling;
-    private int animate;
-    private int delta_x;
-    private int delta_y;
+    public int dir;
+    public boolean falling;
+    public int animate;
+    public int delta_x;
+    public int delta_y;
     public static final int DEFAULT_SPEED = 8;
     public static final int DEFAULT_FALL_SPEED = 8;
-    private int speedFall;
+    private int speedFall = 1;
     private Bitmap ImageParticle;
 
     public Player(int x, int y) {
@@ -42,7 +42,6 @@ public class Player extends Entity {
         dir = 1;
         falling = true;
         speed = DEFAULT_SPEED;
-        speedFall = 1;
         animate = 0;
         ImageParticle = Sprite.ImageParticleRight_1;
     }
@@ -79,7 +78,7 @@ public class Player extends Entity {
         return true;
     }
 
-    private void move(int delta_x, int delta_y) {
+    public void move(int delta_x, int delta_y) {
 
         // check bien co the them tin hieu gamover o day
         if (x + delta_x < 0 || x + delta_x + width > GameView.getWidthScreen()) {
@@ -128,7 +127,7 @@ public class Player extends Entity {
     }
 
 
-    private void changeAnimate() {
+    public void changeAnimate() {
         animate++;
         if (animate > 7500) {
             animate = 0;
@@ -139,7 +138,7 @@ public class Player extends Entity {
         return false;
     }
 
-    private void chooseSprite() {
+    public void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
                 //ImageEntity = Sprite.ImagePigIdlRight;
@@ -198,7 +197,7 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-       // canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         canvas.drawBitmap(ImageEntity, x, y, paint);
         if (delta_x != 0) {
             if (delta_x > 0 && !falling) {
