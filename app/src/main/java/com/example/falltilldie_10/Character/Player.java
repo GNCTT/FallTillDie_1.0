@@ -2,6 +2,8 @@ package com.example.falltilldie_10.Character;
 
 import static com.example.falltilldie_10.GameView.canvas;
 import static com.example.falltilldie_10.GameView.paint;
+import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleLefts;
+import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleRights;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -26,6 +28,7 @@ public class Player extends Entity {
     public static final int DEFAULT_SPEED = 8;
     public static final int DEFAULT_FALL_SPEED = 8;
     private int speedFall;
+    private Bitmap ImageParticle;
 
     public Player(int x, int y) {
         super(x, y);
@@ -41,6 +44,7 @@ public class Player extends Entity {
         speed = DEFAULT_SPEED;
         speedFall = 1;
         animate = 0;
+        ImageParticle = Sprite.ImageParticleRight_1;
     }
 
     @Override
@@ -132,9 +136,6 @@ public class Player extends Entity {
     }
 
     public boolean changeImageByScore() {
-        if (y == 500) {
-            return true;
-        }
         return false;
     }
 
@@ -199,5 +200,15 @@ public class Player extends Entity {
     public void draw() {
        // canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         canvas.drawBitmap(ImageEntity, x, y, paint);
+        if (delta_x != 0) {
+            if (delta_x > 0 && !falling) {
+                ImageParticle = Sprite.movingSprite(ImageParticleRights, animate, 15);
+                canvas.drawBitmap(ImageParticle, x - ImageParticle.getWidth(), y + height - ImageParticle.getHeight(), paint);
+            }
+            if (delta_x < 0 && !falling) {
+                ImageParticle = Sprite.movingSprite(ImageParticleLefts, animate, 15);
+                canvas.drawBitmap(ImageParticle, x + width, y + height - ImageParticle.getHeight(), paint);
+            }
+        }
     }
 }

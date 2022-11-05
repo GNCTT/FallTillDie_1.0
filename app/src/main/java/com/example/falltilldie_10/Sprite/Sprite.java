@@ -14,6 +14,7 @@ public class Sprite {
     public final static Bitmap ImagePigBomDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomidle1l);
     public final static Bitmap ImageVirtualDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidll);
     public final static Bitmap ImageRoughDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.run1);
+    public final static Bitmap ImageParticleDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1);
 
 
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
@@ -25,6 +26,9 @@ public class Sprite {
 
     private final static int DEFAULT_WIDTH_SIZE_ROUGH = ImageRoughDefault.getWidth();
     private final static int DEFAULT_HEIGHT_SIZE_ROUGH = ImageRoughDefault.getHeight();
+
+    private final static int DEFAULT_WIDTH_SIZE_PARTICLE = ImageParticleDefault.getWidth();
+    private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = ImageParticleDefault.getHeight();
 
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
@@ -153,6 +157,27 @@ public class Sprite {
             ImageRoughWalkR4, ImageRoughWalkR5, ImageRoughWalkR6);
 
     public final static ArrayList<Bitmap> ImageFanOn = createListImage(ImageFanOn1, ImageFanOn2, ImageFanOn3, ImageFanOn4, ImageFanOn1, ImageFanOn2);
+
+    public final static Bitmap ImageParticleRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle2), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle3), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle4), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle5), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle6), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+
+    public final static ArrayList<Bitmap> ImageParticleRights = createListImage(ImageParticleRight_1, ImageParticleRight_2, ImageParticleRight_3,
+            ImageParticleRight_4, ImageParticleRight_5, ImageParticleRight_6);
+
+    public final static Bitmap ImageParticleLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle2), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle3), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle4), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle5), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+    public final static Bitmap ImageParticleLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle6), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
+
+    public final static ArrayList<Bitmap> ImageParticleLefts = createListImage(ImageParticleLeft_1, ImageParticleLeft_2, ImageParticleLeft_3,
+            ImageParticleLeft_4, ImageParticleLeft_5, ImageParticleLeft_6);
+
     public Sprite() {
     }
 
