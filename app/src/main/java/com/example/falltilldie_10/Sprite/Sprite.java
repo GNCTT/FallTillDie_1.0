@@ -22,8 +22,8 @@ public class Sprite {
     private final static int DEFAULT_WIDTH_FAN_SIZE = ImageFan.getWidth();
     private final static int DEFAULT_HEIGHT_FAN_SIZE = ImageFan.getHeight();
 
-    private final static int Default_Width_Size = ImagePigDefault.getWidth();
-    private final static int Default_Height_Size = ImagePigDefault.getHeight();
+    private final static int Default_Width_Size = ImagePigDefault.getWidth() * GameView.screenRatioX_1 / GameView.screenRatioX_2;
+    private final static int Default_Height_Size = ImagePigDefault.getHeight() * GameView.screenRatioY_1 / GameView.screenRatioY_2;
 
     private final static int Default_Width_Size_Bomb = ImageBombLive.getWidth() * 3 / 2;
     private final static int Default_Height_Size_Bomb = ImageBombLive.getHeight() * 3 / 2;
@@ -34,8 +34,8 @@ public class Sprite {
     private final static int DEFAULT_WIDTH_SIZE_PARTICLE = ImageParticleDefault.getWidth();
     private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = ImageParticleDefault.getHeight();
 
-    private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = ImagePigBomDefault.getWidth();
-    private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = ImagePigBomDefault.getHeight();
+    private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = ImagePigBomDefault.getWidth() * GameView.screenRatioX_1 / GameView.screenRatioX_2;
+    private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = ImagePigBomDefault.getHeight() * GameView.screenRatioY_1 / GameView.screenRatioY_2;
 
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
