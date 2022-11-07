@@ -27,7 +27,7 @@ public class GameView extends SurfaceView implements Runnable{
     public static Paint paint;
     public static boolean isPlaying;
     public static int screenX;
-    private int screenY;
+    public static int screenY;
     private static int widthScreen;
     private static int heightScreen;
     public static float screenRatioX, screenRatioY;
@@ -128,7 +128,6 @@ public class GameView extends SurfaceView implements Runnable{
                 right = false;
                 break;
         }
-
         return true;
     }
 

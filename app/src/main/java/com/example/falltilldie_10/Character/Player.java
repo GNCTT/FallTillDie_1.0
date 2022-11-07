@@ -2,6 +2,8 @@ package com.example.falltilldie_10.Character;
 
 import static com.example.falltilldie_10.GameView.canvas;
 import static com.example.falltilldie_10.GameView.paint;
+import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleLefts;
+import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleRights;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -18,20 +20,21 @@ import java.util.Map;
 
 public class Player extends Entity {
 
-    private int dir;
-    private boolean falling;
-    private int animate;
-    private int delta_x;
-    private int delta_y;
+    public int dir;
+    public boolean falling;
+    public int animate;
+    public int delta_x;
+    public int delta_y;
     public static final int DEFAULT_SPEED = 8;
     public static final int DEFAULT_FALL_SPEED = 8;
-    private int speedFall;
+    private int speedFall = 1;
+    private Bitmap ImageParticle;
 
     public Player(int x, int y) {
         super(x, y);
         //ImageEntity = Sprite.ImagePigIdlLeft;
-//        ImageEntity = Sprite.ImageVirtualIdlLeft;
-        ImageEntity = Sprite.ImagePigBomIdlLeft;
+        ImageEntity = Sprite.ImageVirtualRunLeft_1;
+//        ImageEntity = Sprite.ImagePigBomIdlLeft;
 //        ImageEntity = Sprite.ImageBombDefault;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
@@ -40,8 +43,8 @@ public class Player extends Entity {
         dir = 1;
         falling = true;
         speed = DEFAULT_SPEED;
-        speedFall = 1;
         animate = 0;
+        ImageParticle = Sprite.ImageParticleRight_1;
     }
 
     @Override
@@ -51,6 +54,8 @@ public class Player extends Entity {
 
     @Override
     public void update() {
+        height = ImageEntity.getHeight();
+        width = ImageEntity.getWidth();
         //animate
         changeAnimate();
         //move
@@ -76,7 +81,7 @@ public class Player extends Entity {
         return true;
     }
 
-    private void move(int delta_x, int delta_y) {
+    public void move(int delta_x, int delta_y) {
 
         // check bien co the them tin hieu gamover o day
         if (x + delta_x < 0 || x + delta_x + width > GameView.getWidthScreen()) {
@@ -106,9 +111,9 @@ public class Player extends Entity {
             }
         }
 
-        //va cham x
         x += delta_x;
         collide_list = checkListCollision(this, listEntity);
+        //hello
         if (collide_list.size() > 0) {
             falling = false;
             Entity otherEntity = collide_list.get(0);
@@ -125,7 +130,7 @@ public class Player extends Entity {
     }
 
 
-    private void changeAnimate() {
+    public void changeAnimate() {
         animate++;
         if (animate > 7500) {
             animate = 0;
@@ -133,45 +138,42 @@ public class Player extends Entity {
     }
 
     public boolean changeImageByScore() {
-        if (y == 500) {
-            return true;
-        }
         return false;
     }
 
-    private void chooseSprite() {
+    public void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
                 //ImageEntity = Sprite.ImagePigIdlRight;
-//                ImageEntity = Sprite.ImagePigBomIdlLeft;
-                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
+                ImageEntity = Sprite.ImageVirtualRunRight_1;
+//                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
 
             } else {
 //                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
-                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunRights, animate, 15);
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunRights, animate, 15);
             }
         }
         else {
             if (delta_x == 0) {
 //                ImageEntity = Sprite.ImagePigIdlLeft;
-//                ImageEntity = Sprite.ImageVirtualIdlLeft;
-                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
+                ImageEntity = Sprite.ImageVirtualIdlLeft;
+//                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
             } else {
 //                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
-                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunLefts, animate, 15);
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunLefts, animate, 15);
             }
         }
         if (falling) {
             if (dir == 1) {
 //                ImageEntity = Sprite.ImagePigFallRight;
-//                ImageEntity = Sprite.ImageVirtualFallRight;
-                ImageEntity = Sprite.ImagePigBomFallRight;
+                ImageEntity = Sprite.ImageVirtualFallRight;
+//                ImageEntity = Sprite.ImagePigBomFallRight;
             } else {
 //                ImageEntity = Sprite.ImagePigFallLeft;
-//                ImageEntity = Sprite.ImageVirtualFallLeft;
-                ImageEntity = Sprite.ImagePigBomFallLeft;
+                ImageEntity = Sprite.ImageVirtualFallLeft;
+//                ImageEntity = Sprite.ImagePigBomFallLeft;
             }
         }
 
@@ -199,7 +201,19 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
-        canvas.drawBitmap(ImageEntity, x, y, paint);
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        if (!remove) {
+            canvas.drawBitmap(ImageEntity, x, y, paint);
+            if (delta_x != 0) {
+                if (delta_x > 0 && !falling) {
+                    ImageParticle = Sprite.movingSprite(ImageParticleRights, animate, 15);
+                    canvas.drawBitmap(ImageParticle, x - ImageParticle.getWidth(), y + height - ImageParticle.getHeight(), paint);
+                }
+                if (delta_x < 0 && !falling) {
+                    ImageParticle = Sprite.movingSprite(ImageParticleLefts, animate, 15);
+                    canvas.drawBitmap(ImageParticle, x + width, y + height - ImageParticle.getHeight(), paint);
+                }
+            }
+        }
     }
 }

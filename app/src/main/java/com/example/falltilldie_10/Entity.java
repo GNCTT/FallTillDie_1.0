@@ -10,6 +10,7 @@ public abstract class Entity {
     protected final static int DEFAULT_BRICK_WIDTH = Sprite.ImageFanOn1.getWidth();
     protected final static int DEFAULT_BRICK_HEIGHT = Sprite.ImageFanOn1.getHeight();
     protected final static int FALL_SPEED_BRICK = 7;
+    protected boolean flying;
 
     //rong dai
     protected int width;
@@ -17,6 +18,7 @@ public abstract class Entity {
     protected int center_x;
     protected int center_y;
     protected int speed;
+    protected int dir;
     protected Bitmap ImageEntity;
 
     protected boolean remove;
@@ -28,6 +30,7 @@ public abstract class Entity {
 
         remove = false;
         beDestroy = false;
+        flying = false;
     }
 
 
@@ -68,4 +71,26 @@ public abstract class Entity {
         return y + height;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setFlying(boolean flying) {
+        this.flying = flying;
+    }
+    public void setDir(int dir) {
+        this.dir = dir;
+    }
 }

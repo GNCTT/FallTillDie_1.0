@@ -21,7 +21,6 @@ public class Brick extends Entity {
         animate = 0;
     }
 
-
     @Override
     public boolean collide(Entity other) {
         return false;
@@ -32,7 +31,7 @@ public class Brick extends Entity {
         changeAnimate();
         y -= speed;
         if (y < -GameView.getHeightScreen()) {
-            y = 1500;
+            y = GameView.getHeightScreen();
         }
         chooseSprite();
     }
@@ -45,7 +44,7 @@ public class Brick extends Entity {
     }
 
     public void chooseSprite() {
-        ImageEntity = Sprite.movingSprite(Sprite.ImageFanOn, animate, 20);
+        ImageEntity = Sprite.movingSprite(Sprite.ImageFanOn, animate, 10);
     }
 
     public void changeSpeed(int newSpeed) {

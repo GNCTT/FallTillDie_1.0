@@ -36,7 +36,7 @@ public class Block extends Entity {
     public void update() {
         y -= speed;
         if (y < -GameView.getHeightScreen()) {
-            y = 1500;
+            y = GameView.getHeightScreen();
         }
         for (int i = 0; i < size; i++) {
             bricks[i].update();
@@ -45,7 +45,7 @@ public class Block extends Entity {
 
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         for (int i = 0; i < size; i++) {
             bricks[i].draw();
         }
