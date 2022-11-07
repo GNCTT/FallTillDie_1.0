@@ -33,7 +33,7 @@ public class Player extends Entity {
     public Player(int x, int y) {
         super(x, y);
         //ImageEntity = Sprite.ImagePigIdlLeft;
-        ImageEntity = Sprite.ImageVirtualIdlLeft;
+        ImageEntity = Sprite.ImageVirtualRunLeft_1;
 //        ImageEntity = Sprite.ImagePigBomIdlLeft;
 //        ImageEntity = Sprite.ImageBombDefault;
         width = ImageEntity.getWidth();
@@ -54,6 +54,8 @@ public class Player extends Entity {
 
     @Override
     public void update() {
+        height = ImageEntity.getHeight();
+        width = ImageEntity.getWidth();
         //animate
         changeAnimate();
         //move
@@ -199,7 +201,7 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         if (!remove) {
             canvas.drawBitmap(ImageEntity, x, y, paint);
             if (delta_x != 0) {

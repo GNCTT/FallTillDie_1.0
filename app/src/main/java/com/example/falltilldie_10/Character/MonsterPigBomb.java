@@ -23,6 +23,8 @@ public class MonsterPigBomb extends Player{
         animate = 0;
         throwing = false;
         countDown = 0;
+        width = ImageEntity.getWidth();
+        height = ImageEntity.getHeight();
     }
 
     @Override

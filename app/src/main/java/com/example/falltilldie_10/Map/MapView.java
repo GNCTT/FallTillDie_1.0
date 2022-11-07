@@ -45,7 +45,6 @@ public class MapView {
 
     public void update() {
         background.update();
-        player.update();
         if (player.changeImageByScore()) {
             background.changeBackground(screenX, screenY, GameView.res, typeBackground);
             typeBackground += 1;
@@ -59,6 +58,7 @@ public class MapView {
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsterPigBombs[i].update();
         }
+        player.update();
         for (int i = 0; i < NUM_BLOCK; i++) {
             bombItems[i].update();
         }
@@ -66,13 +66,13 @@ public class MapView {
 
     public void draw() {
         background.draw();
-        player.draw();
         for (int i = 0; i < NUM_BLOCK; i++) {
             blocks[i].draw();
         }
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsterPigBombs[i].draw();
         }
+        player.draw();
         for (int i = 0; i < NUM_BOMB; i++) {
             bombItems[i].draw();
         }
