@@ -109,9 +109,9 @@ public class Player extends Entity {
             }
         }
 
-        //va cham x
         x += delta_x;
         collide_list = checkListCollision(this, listEntity);
+        //hello
         if (collide_list.size() > 0) {
             falling = false;
             Entity otherEntity = collide_list.get(0);
