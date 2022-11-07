@@ -30,7 +30,8 @@ public class GameView extends SurfaceView implements Runnable{
     public static int screenY;
     private static int widthScreen;
     private static int heightScreen;
-    public static float screenRatioX, screenRatioY;
+    public static float screenRatioX_1, screenRatioY_1;
+    public static float screenRatioX_2, screenRatioY_2;
 
     public static Resources res;
 
@@ -42,8 +43,11 @@ public class GameView extends SurfaceView implements Runnable{
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen) {
         super(context);
 
-        screenRatioX = widthScreen / screenX;
-        screenRatioY = heightScreen / screenY;
+        screenRatioX_1 = (float) (widthScreen * 1.00 / (600));
+        screenRatioX_2 =  12 * 66;
+        screenRatioY_1 = (float) (heightScreen * 1.00/ (1200));
+        screenRatioY_2 = 22 * 66;
+        Log.i("taggg", widthScreen + " " + heightScreen);
         this.screenX = screenX;
         this.screenY = screenY;
         this.widthScreen = widthScreen;
