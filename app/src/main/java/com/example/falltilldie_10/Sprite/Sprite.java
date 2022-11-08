@@ -25,14 +25,14 @@ public class Sprite {
     private final static int Default_Width_Size = (int) (ImagePigDefault.getWidth() * GameView.screenRatioX_1);
     private final static int Default_Height_Size = (int) (ImagePigDefault.getHeight() * GameView.screenRatioY_1);
 
-    private final static int Default_Width_Size_Bomb = ImageBombLive.getWidth() * 3 / 2;
-    private final static int Default_Height_Size_Bomb = ImageBombLive.getHeight() * 3 / 2;
+    private final static int Default_Width_Size_Bomb = (int) (ImageBombLive.getWidth() * GameView.screenRatioX_1);
+    private final static int Default_Height_Size_Bomb = (int) (ImageBombLive.getHeight() * GameView.screenRatioY_1);
 
-    private final static int Default_Width_Size_Bomb_Explosive = ImageBombExplosive.getWidth() * 3 / 2;
-    private final static int Default_Height_Size_Bomb_Explosive = ImageBombExplosive.getHeight() * 3 / 2;
+    private final static int Default_Width_Size_Bomb_Explosive = (int) (ImageBombExplosive.getWidth() * GameView.screenRatioX_1);
+    private final static int Default_Height_Size_Bomb_Explosive = (int) (ImageBombExplosive.getHeight() * GameView.screenRatioY_1);
 
-    private final static int DEFAULT_WIDTH_SIZE_PARTICLE = ImageParticleDefault.getWidth();
-    private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = ImageParticleDefault.getHeight();
+    private final static int DEFAULT_WIDTH_SIZE_PARTICLE = (int) (ImageParticleDefault.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = (int) (ImageParticleDefault.getHeight() * GameView.screenRatioY_1);
 
     private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getWidth() * GameView.screenRatioX_1);
     private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getHeight() * GameView.screenRatioY_1);
@@ -40,25 +40,25 @@ public class Sprite {
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
 
-    public final static Bitmap ImagePigIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idlr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idll), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idlr), Default_Width_Size, Default_Height_Size);
 
-    public final static Bitmap ImagePigRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6l), Default_Width_Size, Default_Height_Size);
 
     public final static ArrayList<Bitmap> PigRunLefts = createListImage(ImagePigRunLeft_1, ImagePigRunLeft_2, ImagePigRunLeft_3,
                                                                         ImagePigRunLeft_4, ImagePigRunLeft_5, ImagePigRunLeft_6);
 
-    public final static Bitmap ImagePigRunRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigRunRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6r), Default_Width_Size, Default_Height_Size);
 
     public final static ArrayList<Bitmap> PigRunRights = createListImage(ImagePigRunRight_1, ImagePigRunRight_2, ImagePigRunRight_3,
             ImagePigRunRight_4, ImagePigRunRight_5, ImagePigRunRight_6);
