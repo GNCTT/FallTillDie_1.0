@@ -145,7 +145,7 @@ public class Player extends Entity {
         if (dir == 1) {
             if (delta_x == 0) {
                 //ImageEntity = Sprite.ImagePigIdlRight;
-                ImageEntity = Sprite.ImageVirtualRunRight_1;
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
 
             } else {
@@ -157,7 +157,7 @@ public class Player extends Entity {
         else {
             if (delta_x == 0) {
 //                ImageEntity = Sprite.ImagePigIdlLeft;
-                ImageEntity = Sprite.ImageVirtualIdlLeft;
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
             } else {
 //                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
@@ -168,11 +168,11 @@ public class Player extends Entity {
         if (falling) {
             if (dir == 1) {
 //                ImageEntity = Sprite.ImagePigFallRight;
-                ImageEntity = Sprite.ImageVirtualFallRight;
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleRights, animate, 15);
 //                ImageEntity = Sprite.ImagePigBomFallRight;
             } else {
 //                ImageEntity = Sprite.ImagePigFallLeft;
-                ImageEntity = Sprite.ImageVirtualFallLeft;
+                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleLefts, animate, 15);
 //                ImageEntity = Sprite.ImagePigBomFallLeft;
             }
         }
