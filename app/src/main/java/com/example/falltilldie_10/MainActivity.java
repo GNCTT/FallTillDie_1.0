@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     .build();
         } else
             soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        sound = soundPool.load(this, R.raw.shoot, 1);
+        sound = soundPool.load(this, R.raw.music1, 1);
     }
 
     public void clickPlay(View view) {
