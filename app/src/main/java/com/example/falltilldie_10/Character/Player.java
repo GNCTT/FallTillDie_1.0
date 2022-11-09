@@ -144,8 +144,8 @@ public class Player extends Entity {
     public void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
-//                ImageEntity = Sprite.ImagePigIdlRight;
-                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
+               ImageEntity = Sprite.movingSprite(Sprite.PigIdlRight, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
 
             } else {
@@ -156,8 +156,8 @@ public class Player extends Entity {
         }
         else {
             if (delta_x == 0) {
-//                ImageEntity = Sprite.ImagePigIdlLeft;
-                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
+                ImageEntity = Sprite.movingSprite(Sprite.PigIdlLefts, animate, 15);
+//                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
             } else {
 //                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
