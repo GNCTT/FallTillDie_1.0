@@ -44,7 +44,7 @@ public class Brick extends Entity {
     }
 
     public void chooseSprite() {
-        ImageEntity = Sprite.movingSprite(Sprite.ImageFanOn, animate, 10);
+        ImageEntity = Sprite.movingSprite(Sprite.ImageFanOn, animate, 30);
     }
 
     public void changeSpeed(int newSpeed) {

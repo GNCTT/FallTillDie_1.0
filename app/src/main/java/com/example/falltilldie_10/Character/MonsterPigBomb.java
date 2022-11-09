@@ -75,16 +75,7 @@ public class MonsterPigBomb extends Player{
     }
 
     public void throwBomb() {
-        MapView.bombItems[MapView.CURRENT_BOMB].setX(x);
-        MapView.bombItems[MapView.CURRENT_BOMB].setY(y);
-        MapView.bombItems[MapView.CURRENT_BOMB].setFlying(true);
-        if (dir == 1) {
-            MapView.bombItems[MapView.CURRENT_BOMB].setDir(1);
-        }
-        else {
-            MapView.bombItems[MapView.CURRENT_BOMB].setDir(-1);
-        }
-
+        MapView.bombItems[MapView.CURRENT_BOMB].SetAppear(x, y, dir);
     }
 
 

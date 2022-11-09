@@ -16,49 +16,49 @@ public class Sprite {
     public final static Bitmap ImageRoughDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.run1);
     public final static Bitmap ImageParticleDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1);
     public final static Bitmap ImageBombLive = BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive1);
-    public final static Bitmap ImageBombExplosive = BitmapFactory.decodeResource(GameView.res, R.drawable.bom1l);
+    public final static Bitmap ImageBombExplosive = BitmapFactory.decodeResource(GameView.res, R.drawable.bom4l);
 
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
-    private final static int DEFAULT_WIDTH_FAN_SIZE = ImageFan.getWidth();
-    private final static int DEFAULT_HEIGHT_FAN_SIZE = ImageFan.getHeight();
+    private final static int DEFAULT_WIDTH_FAN_SIZE = (int) (ImageFan.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_HEIGHT_FAN_SIZE = (int) (ImageFan.getHeight() * GameView.screenRatioY_1);
 
-    private final static int Default_Width_Size = ImagePigDefault.getWidth();
-    private final static int Default_Height_Size = ImagePigDefault.getHeight();
+    private final static int Default_Width_Size = (int) (ImagePigDefault.getWidth() * GameView.screenRatioX_1);
+    private final static int Default_Height_Size = (int) (ImagePigDefault.getHeight() * GameView.screenRatioY_1);
 
-    private final static int Default_Width_Size_Bomb = ImageBombLive.getWidth() * 3 / 2;
-    private final static int Default_Height_Size_Bomb = ImageBombLive.getHeight() * 3 / 2;
+    private final static int Default_Width_Size_Bomb = (int) (ImageBombLive.getWidth() * GameView.screenRatioX_1);
+    private final static int Default_Height_Size_Bomb = (int) (ImageBombLive.getHeight() * GameView.screenRatioY_1);
 
-    private final static int Default_Width_Size_Bomb_Explosive = ImageBombExplosive.getWidth() * 3 / 2;
-    private final static int Default_Height_Size_Bomb_Explosive = ImageBombExplosive.getHeight() * 3 / 2;
+    private final static int Default_Width_Size_Bomb_Explosive = (int) (ImageBombExplosive.getWidth() * GameView.screenRatioX_1 * 3 / 2) ;
+    private final static int Default_Height_Size_Bomb_Explosive = (int) (ImageBombExplosive.getHeight() * GameView.screenRatioY_1 * 3 / 2);
 
-    private final static int DEFAULT_WIDTH_SIZE_PARTICLE = ImageParticleDefault.getWidth();
-    private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = ImageParticleDefault.getHeight();
+    private final static int DEFAULT_WIDTH_SIZE_PARTICLE = (int) (ImageParticleDefault.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_HEIGHT_SIZE_PARTICLE = (int) (ImageParticleDefault.getHeight() * GameView.screenRatioY_1);
 
-    private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = ImagePigBomDefault.getWidth();
-    private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = ImagePigBomDefault.getHeight();
+    private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getHeight() * GameView.screenRatioY_1);
 
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
 
-    public final static Bitmap ImagePigIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idll), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idlr), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigIdlLeft = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idll), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigIdlRight = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.idlr), Default_Width_Size, Default_Height_Size);
 
-    public final static Bitmap ImagePigRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6l), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6l), Default_Width_Size, Default_Height_Size);
 
     public final static ArrayList<Bitmap> PigRunLefts = createListImage(ImagePigRunLeft_1, ImagePigRunLeft_2, ImagePigRunLeft_3,
                                                                         ImagePigRunLeft_4, ImagePigRunLeft_5, ImagePigRunLeft_6);
 
-    public final static Bitmap ImagePigRunRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
-    public final static Bitmap ImagePigRunRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6r), Default_Width_Size * Default_Scale_X / Default_Scale_Y, Default_Height_Size * Default_Scale_X / Default_Scale_Y);
+    public final static Bitmap ImagePigRunRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run1r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run2r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run3r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run4r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run5r), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImagePigRunRight_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.run6r), Default_Width_Size, Default_Height_Size);
 
     public final static ArrayList<Bitmap> PigRunRights = createListImage(ImagePigRunRight_1, ImagePigRunRight_2, ImagePigRunRight_3,
             ImagePigRunRight_4, ImagePigRunRight_5, ImagePigRunRight_6);
@@ -78,8 +78,8 @@ public class Sprite {
     public final static Bitmap ImageVirtualIdlLeft_10 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle10l), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualIdlLeft_11 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle11l), Default_Width_Size, Default_Height_Size);
 
-    public final static ArrayList<Bitmap> VirtualIdlLefts = createListImage(ImageVirtualIdlLeft_1, ImageVirtualIdlLeft_2, ImageVirtualIdlLeft_4,
-            ImageVirtualIdlLeft_6, ImageVirtualIdlLeft_7, ImageVirtualIdlLeft_10);
+    public final static ArrayList<Bitmap> VirtualIdlLefts = createListImage(ImageVirtualIdlLeft_1, ImageVirtualIdlLeft_2, ImageVirtualIdlLeft_3,
+            ImageVirtualIdlLeft_4, ImageVirtualIdlLeft_5, ImageVirtualIdlLeft_6, ImageVirtualIdlLeft_7, ImageVirtualIdlLeft_8, ImageVirtualIdlLeft_9, ImageVirtualIdlLeft_10, ImageVirtualIdlLeft_11);
 
     public final static Bitmap ImageVirtualIdlRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle1r), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualIdlRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle2r), Default_Width_Size, Default_Height_Size);
@@ -93,8 +93,8 @@ public class Sprite {
     public final static Bitmap ImageVirtualIdlRight_10 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle10r), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualIdlRight_11 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle11r), Default_Width_Size, Default_Height_Size);
 
-    public final static ArrayList<Bitmap> VirtualIdlRights = createListImage(ImageVirtualIdlRight_1, ImageVirtualIdlRight_2, ImageVirtualIdlRight_4, ImageVirtualIdlRight_6, ImageVirtualIdlRight_7,
-            ImageVirtualIdlRight_10);
+    public final static ArrayList<Bitmap> VirtualIdlRights = createListImage(ImageVirtualIdlRight_1, ImageVirtualIdlRight_2, ImageVirtualIdlRight_3, ImageVirtualIdlRight_4, ImageVirtualIdlRight_5,
+            ImageVirtualIdlRight_6, ImageVirtualIdlRight_7, ImageVirtualIdlRight_8, ImageVirtualIdlRight_9,ImageVirtualIdlRight_10, ImageVirtualIdlRight_11);
 
     public final static Bitmap ImageVirtualRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun1l), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualrun2l), Default_Width_Size, Default_Height_Size);
@@ -120,10 +120,10 @@ public class Sprite {
     public final static Bitmap ImageVirtualDoubleLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble3l), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualDoubleLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble5l), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImageVirtualDoubleLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidle1l), Default_Width_Size, Default_Height_Size);
-//    public final static Bitmap ImageVirtualDoubleLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble5l), Default_Width_Size, Default_Height_Size);
-//    public final static Bitmap ImageVirtualDoubleLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble6l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImageVirtualDoubleLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble5l), Default_Width_Size, Default_Height_Size);
+    public final static Bitmap ImageVirtualDoubleLeft_6 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble6l), Default_Width_Size, Default_Height_Size);
 
-    public final static ArrayList<Bitmap> VirtualDoubleLefts = createListImage(ImageVirtualDoubleLeft_1, ImageVirtualDoubleLeft_2, ImageVirtualDoubleLeft_3, ImageVirtualDoubleLeft_4, ImageVirtualDoubleLeft_1, ImageVirtualDoubleLeft_2);
+    public final static ArrayList<Bitmap> VirtualDoubleLefts = createListImage(ImageVirtualDoubleLeft_1, ImageVirtualDoubleLeft_2, ImageVirtualDoubleLeft_3, ImageVirtualDoubleLeft_4, ImageVirtualDoubleLeft_5, ImageVirtualDoubleLeft_6);
 
 
     public final static Bitmap ImageVirtualDoubleRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.virtualdouble1r), Default_Width_Size, Default_Height_Size);
@@ -207,7 +207,7 @@ public class Sprite {
     public final static Bitmap ImageFanOn3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller3), DEFAULT_WIDTH_FAN_SIZE, DEFAULT_HEIGHT_FAN_SIZE);
     public final static Bitmap ImageFanOn4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.propeller4), DEFAULT_WIDTH_FAN_SIZE, DEFAULT_HEIGHT_FAN_SIZE );
 
-    public final static ArrayList<Bitmap> ImageFanOn = createListImage(ImageFanOn1, ImageFanOn2, ImageFanOn3, ImageFanOn4, ImageFanOn1, ImageFanOn2);
+    public final static ArrayList<Bitmap> ImageFanOn = createListImage(ImageFanOn1, ImageFanOn2, ImageFanOn3, ImageFanOn4);
 
     public final static Bitmap ImageParticleRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
     public final static Bitmap ImageParticleRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle2), DEFAULT_WIDTH_SIZE_PARTICLE, DEFAULT_HEIGHT_SIZE_PARTICLE);
@@ -277,6 +277,16 @@ public class Sprite {
     }
 
     public static ArrayList<Bitmap> createListImage(Bitmap image1, Bitmap image2, Bitmap image3,
+                                                    Bitmap image4) {
+        ArrayList<Bitmap> arrImage = new ArrayList<>(6);
+        arrImage.add(image1);
+        arrImage.add(image2);
+        arrImage.add(image3);
+        arrImage.add(image4);
+        return arrImage;
+    }
+
+    public static ArrayList<Bitmap> createListImage(Bitmap image1, Bitmap image2, Bitmap image3,
                                              Bitmap image4, Bitmap image5, Bitmap image6) {
         ArrayList<Bitmap> arrImage = new ArrayList<>(6);
         arrImage.add(image1);
@@ -287,6 +297,26 @@ public class Sprite {
         arrImage.add(image6);
         return arrImage;
     }
+
+    public static ArrayList<Bitmap> createListImage(Bitmap image1, Bitmap image2, Bitmap image3,
+                                                    Bitmap image4, Bitmap image5, Bitmap image6,
+                                                    Bitmap image7, Bitmap image8, Bitmap image9,
+                                                    Bitmap image10, Bitmap image11) {
+        ArrayList<Bitmap> arrImage = new ArrayList<>(6);
+        arrImage.add(image1);
+        arrImage.add(image2);
+        arrImage.add(image3);
+        arrImage.add(image4);
+        arrImage.add(image5);
+        arrImage.add(image6);
+        arrImage.add(image7);
+        arrImage.add(image8);
+        arrImage.add(image9);
+        arrImage.add(image10);
+        arrImage.add(image11);
+        return arrImage;
+    }
+
 
     public static Bitmap movingSprite (ArrayList<Bitmap> ArrImage, int animate, int time) {
         int size = ArrImage.size();

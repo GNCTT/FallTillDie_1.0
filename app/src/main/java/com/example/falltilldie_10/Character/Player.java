@@ -32,7 +32,7 @@ public class Player extends Entity {
 
     public Player(int x, int y) {
         super(x, y);
-        //ImageEntity = Sprite.ImagePigIdlLeft;
+//        ImageEntity = Sprite.ImagePigIdlLeft;
         ImageEntity = Sprite.ImageVirtualRunLeft_1;
 //        ImageEntity = Sprite.ImagePigBomIdlLeft;
 //        ImageEntity = Sprite.ImageBombDefault;
@@ -144,7 +144,7 @@ public class Player extends Entity {
     public void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
-                //ImageEntity = Sprite.ImagePigIdlRight;
+//                ImageEntity = Sprite.ImagePigIdlRight;
                 ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
 
@@ -201,7 +201,8 @@ public class Player extends Entity {
 
     @Override
     public void draw() {
-        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        Log.i("taggg2", width + " " + height);
+//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         if (!remove) {
             canvas.drawBitmap(ImageEntity, x, y, paint);
             if (delta_x != 0) {
