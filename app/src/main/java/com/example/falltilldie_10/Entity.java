@@ -93,4 +93,10 @@ public abstract class Entity {
     public void setDir(int dir) {
         this.dir = dir;
     }
+
+    public void SetDisappear() {
+    }
+    public void SetAppear(int x, int y, int dir) {
+
+    }
 }
