@@ -11,7 +11,7 @@ public class MonsterPigBomb extends Player{
 
     public static int speedFall = 1;
     public static boolean throwing;
-    public static final int distance = 50;
+    public static final int distance = 100;
     public static final int countDownThrow = 50;
     public int countDown;
     public static final int TIME_DISAPPEAR = 20;
@@ -23,6 +23,7 @@ public class MonsterPigBomb extends Player{
         animate = 0;
         throwing = false;
         countDown = 0;
+        speed = (int)(10 * GameView.screenRatioX_1);
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
     }

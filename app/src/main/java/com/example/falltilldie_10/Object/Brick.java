@@ -29,10 +29,10 @@ public class Brick extends Entity {
     @Override
     public void update() {
         changeAnimate();
-        y -= speed;
-        if (y < -GameView.getHeightScreen()) {
-            y = GameView.getHeightScreen();
-        }
+//        y -= speed;
+//        if (y < -GameView.getHeightScreen()) {
+//            y = GameView.getHeightScreen();
+//        }
         chooseSprite();
     }
 
@@ -56,4 +56,5 @@ public class Brick extends Entity {
 //       canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
        canvas.drawBitmap(ImageEntity, x, y, paint);
     }
+
 }
