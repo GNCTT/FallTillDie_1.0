@@ -5,6 +5,7 @@ import com.example.falltilldie_10.Character.Player;
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Object.Block;
+import com.example.falltilldie_10.Object.IceEffect;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
@@ -15,11 +16,15 @@ public class MapView {
     private int typeBackground;
     private int screenX;
     private int screenY;
+
     public static Player player;
     public static Block[] blocks;
     public static MonsterPigBomb[] monsterPigBombs;
     public static Entity[] bombItems;
+    private static IceEffect[] iceEffects;
+
     public static Random rand;
+    private final static int NUM_ICE = 20;
     public final static int NUM_BLOCK = 10;
     private final static int NUM_BOMB = 20;
     private final static int NUM_MONSTER = 1;
@@ -37,6 +42,10 @@ public class MapView {
         monsterPigBombs = new MonsterPigBomb[NUM_BLOCK];
         bombItems = new BombItem[NUM_BOMB];
         rand = new Random();
+//        for (int i = 0; i < NUM_ICE; i++) {
+//            iceEffects[i] = new IceEffect(GameView.getWidthScreen() / 10 + i * Sprite.ImageIceParticle.getWidth(),
+//                    )
+//        }
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsterPigBombs[i] = new MonsterPigBomb(400, -100);
         }

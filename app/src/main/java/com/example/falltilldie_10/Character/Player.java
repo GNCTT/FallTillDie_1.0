@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Map.MapView;
+import com.example.falltilldie_10.Object.Block;
+import com.example.falltilldie_10.Object.Brick;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 import java.util.ArrayList;
@@ -90,10 +92,14 @@ public class Player extends Entity {
 
         ArrayList<Entity> listEntity = new ArrayList<>();
         // cos the them nhieu entity sau nay.
-        Entity [] listEntity2 = MapView.blocks;
+        Block[] listEntity2 = MapView.blocks;
         //
         for (int i = 0; i < listEntity2.length; i++) {
-            listEntity.add(listEntity2[i]);
+            for (int j = 0; j < listEntity2[i].getSizeBrick(); j++) {
+                if (!listEntity2[i].getListBrick(j).checkFalling()) {
+                    listEntity.add(listEntity2[i].getListBrick(j));
+                }
+            }
         }
         // va cham y.
         y += delta_y;
@@ -179,25 +185,6 @@ public class Player extends Entity {
 
     }
 
-    public boolean checkCollision(Entity e1, Entity e2) {
-        boolean check1 = e1.getRight() <= e2.getLeft() || e1.getLeft() >= e2.getRight();
-        boolean check2 = e1.getBottom() <= e2.getTop() || e1.getTop() >= e2.getBottom();
-        if (check1 || check2) {
-            return false;
-        }
-        return true;
-    }
-
-    public ArrayList<Entity> checkListCollision(Entity e1, ArrayList<Entity> listEntity) {
-        ArrayList<Entity> collideList = new ArrayList<>();
-        for (int i = 0; i < listEntity.size(); i++) {
-            Entity entity = listEntity.get(i);
-            if (checkCollision(e1, entity)) {
-                collideList.add(entity);
-            }
-        }
-        return collideList;
-    }
 
     @Override
     public void draw() {

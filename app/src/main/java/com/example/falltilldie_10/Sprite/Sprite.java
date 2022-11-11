@@ -13,10 +13,10 @@ public class Sprite {
     public final static Bitmap ImagePigDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.idll);
     public final static Bitmap ImagePigBomDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomidle1l);
     public final static Bitmap ImageVirtualDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.virtualidll);
-    public final static Bitmap ImageRoughDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.run1);
     public final static Bitmap ImageParticleDefault = BitmapFactory.decodeResource(GameView.res, R.drawable.runparticle1);
     public final static Bitmap ImageBombLive = BitmapFactory.decodeResource(GameView.res, R.drawable.bomlive1);
     public final static Bitmap ImageBombExplosive = BitmapFactory.decodeResource(GameView.res, R.drawable.bom4l);
+    public final static Bitmap ImageIceParticle = BitmapFactory.decodeResource(GameView.res, R.drawable.ice_particle);
 
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
     private final static int DEFAULT_WIDTH_FAN_SIZE = (int) (ImageFan.getWidth() * GameView.screenRatioX_1);
@@ -37,6 +37,9 @@ public class Sprite {
     private final static int DEFAULT_WIDTH_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getWidth() * GameView.screenRatioX_1);
     private final static int DEFAULT_HEIGHT_SIZE_PIG_BOMB = (int)(ImagePigBomDefault.getHeight() * GameView.screenRatioY_1);
 
+    private final static int DEFAULT_WIDTH_SIZE_ICE_PARTICLE = (int)(ImageIceParticle.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_HEIGHT_SIZE_ICE_PARTICLE = (int)(ImageIceParticle.getHeight() * GameView.screenRatioY_1);
+
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
 
@@ -55,6 +58,8 @@ public class Sprite {
 
     public final static ArrayList<Bitmap> PigIdlLefts = createListImage(ImagePigIdlLeft_1, ImagePigIdlLeft_2, ImagePigIdlLeft_3, ImagePigIdlLeft_4, ImagePigIdlLeft_5, ImagePigIdlLeft_6,
             ImagePigIdlLeft_7, ImagePigIdlLeft_8, ImagePigIdlLeft_9, ImagePigIdlLeft_10, ImagePigIdlLeft_11, ImagePigIdlLeft_12);
+
+    public final static Bitmap ImageIceParticle_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.ice_particle), DEFAULT_WIDTH_SIZE_ICE_PARTICLE, DEFAULT_HEIGHT_SIZE_ICE_PARTICLE);
 
     public final static Bitmap ImagePigIdlRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigidle1r), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImagePigIdlRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigidle2r), Default_Width_Size, Default_Height_Size);

@@ -75,15 +75,17 @@ public class Block extends Entity {
         }
         this.width = DEFAULT_BRICK_WIDTH * size;
         for (int i = 0; i < size; i++) {
-            bricks[i].setX(x + i * bricks[i].getWidth());
-            bricks[i].setY(y);
+            if (!bricks[i].checkFalling()) {
+                bricks[i].setX(x + i * bricks[i].getWidth());
+                bricks[i].setY(y);
+            }
             bricks[i].update();
         }
     }
 
     @Override
     public void draw() {
-        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         for (int i = 0; i < size; i++) {
             bricks[i].draw();
         }
@@ -92,5 +94,13 @@ public class Block extends Entity {
 
     public int getIndex() {
         return index;
+    }
+
+    public Brick getListBrick(int index) {
+        return bricks[index];
+    }
+
+    public int getSizeBrick() {
+        return bricks.length;
     }
 }

@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 import com.example.falltilldie_10.Sprite.Sprite;
 
+import java.util.ArrayList;
+
 public abstract class Entity {
     protected int x;
     protected int y;
@@ -35,6 +37,26 @@ public abstract class Entity {
 
 
     public abstract boolean collide(Entity other);
+
+    public boolean checkCollision(Entity e1, Entity e2) {
+        boolean check1 = e1.getRight() <= e2.getLeft() || e1.getLeft() >= e2.getRight();
+        boolean check2 = e1.getBottom() <= e2.getTop() || e1.getTop() >= e2.getBottom();
+        if (check1 || check2) {
+            return false;
+        }
+        return true;
+    }
+
+    public ArrayList<Entity> checkListCollision(Entity e1, ArrayList<Entity> listEntity) {
+        ArrayList<Entity> collideList = new ArrayList<>();
+        for (int i = 0; i < listEntity.size(); i++) {
+            Entity entity = listEntity.get(i);
+            if (checkCollision(e1, entity)) {
+                collideList.add(entity);
+            }
+        }
+        return collideList;
+    }
 
     public abstract void update();
     public abstract void draw();
