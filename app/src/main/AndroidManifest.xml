@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".HightCore.HightCore"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Setting.Setting"
             android:exported="false" />

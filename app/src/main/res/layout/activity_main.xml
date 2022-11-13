@@ -13,95 +13,113 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background4"
+        android:src="@drawable/backgorund11"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></ImageView>
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/play_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickPlay"
         android:text="PLAY(1P)"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickContinue"
         android:text="CONTINUE"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickHightCore"
         android:text="HIGHT CORE"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
 
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickPlay2P"
         android:text="PLAY(2P)"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/play_btn" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickSetting"
         android:text="SETTING"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
         android:onClick="clickExit"
         android:text="EXIT"
-        android:textColor="@color/black"
+        android:textColor="#e28743"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Fall Till Die"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Local"
+        android:id="@+id/local"
+        android:icon="@drawable/icon_person"/>
+    <item android:title="Global"
+        android:id="@+id/global"
+        android:icon="@drawable/home_icon1"/>
+</menu>
