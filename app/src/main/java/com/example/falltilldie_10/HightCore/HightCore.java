@@ -1,4 +1,5 @@
 package com.example.falltilldie_10.HightCore;
+import android.content.ClipData;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ public class HightCore extends AppCompatActivity {
 
     private RecyclerView rcv_user;
     private highCoreUserAdapter userAdapter;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
