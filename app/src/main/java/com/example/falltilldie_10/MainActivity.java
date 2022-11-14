@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickHightCore(View view) {
         Intent intent = new Intent(this, HightCore.class);
         startActivity(intent);
+        Log.d("clcik hightcore","click");
     }
 
     public void clickSetting(View view) {
