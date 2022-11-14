@@ -187,6 +187,24 @@ public class Sprite {
     public final static ArrayList<Bitmap> ImagePigBombIdlRights = createListImage(ImagePigBomIdlRight_1, ImagePigBomIdlRight_2, ImagePigBomIdlRight_3,
             ImagePigBomIdlRight_4, ImagePigBomIdlRight_5, ImagePigBomIdlRight_6);
 
+    public final static Bitmap ImagePigThrowBombRight_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb1r), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombRight_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb2r), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombRight_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb3r), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombRight_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb4r), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombRight_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb5r), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+
+    public final static ArrayList<Bitmap> ImagePigThrowBombRights = createListImage(ImagePigThrowBombRight_1, ImagePigThrowBombRight_2, ImagePigThrowBombRight_3,
+            ImagePigThrowBombRight_4, ImagePigThrowBombRight_5);
+
+    public final static Bitmap ImagePigThrowBombLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb1l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb2l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb3l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombLeft_4 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb4l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+    public final static Bitmap ImagePigThrowBombLeft_5 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigthowingbomb5l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
+
+    public final static ArrayList<Bitmap> ImagePigThrowBombLefts = createListImage(ImagePigThrowBombLeft_1, ImagePigThrowBombLeft_2, ImagePigThrowBombLeft_3,
+            ImagePigThrowBombLeft_4, ImagePigThrowBombLeft_5);
+
     public final static Bitmap ImagePigBomRunLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomrun1l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
     public final static Bitmap ImagePigBomRunLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomrun2l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
     public final static Bitmap ImagePigBomRunLeft_3 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigbomrun3l), DEFAULT_WIDTH_SIZE_PIG_BOMB, DEFAULT_HEIGHT_SIZE_PIG_BOMB);
@@ -307,6 +325,16 @@ public class Sprite {
     public static ArrayList<Bitmap> createListImage(Bitmap image1, Bitmap image2, Bitmap image3,
                                                     Bitmap image4) {
         ArrayList<Bitmap> arrImage = new ArrayList<>(4);
+        arrImage.add(image1);
+        arrImage.add(image2);
+        arrImage.add(image3);
+        arrImage.add(image4);
+        return arrImage;
+    }
+
+    public static ArrayList<Bitmap> createListImage(Bitmap image1, Bitmap image2, Bitmap image3,
+                                                    Bitmap image4, Bitmap image5) {
+        ArrayList<Bitmap> arrImage = new ArrayList<>(5);
         arrImage.add(image1);
         arrImage.add(image2);
         arrImage.add(image3);

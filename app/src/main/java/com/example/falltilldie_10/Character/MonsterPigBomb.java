@@ -11,9 +11,12 @@ public class MonsterPigBomb extends Player{
 
     public static int speedFall = 1;
     public static boolean throwing;
+    public static boolean afterThrow;
     public static final int distance = 50;
     public static final int countDownThrow = 50;
     public int countDown;
+    public static final int TIME_THROW = 20;
+    public int countTimeThrow;
     public static final int TIME_DISAPPEAR = 20;
     public int countDownDisAppear;
 
@@ -22,7 +25,9 @@ public class MonsterPigBomb extends Player{
         ImageEntity = Sprite.ImagePigBomIdlLeft;
         animate = 0;
         throwing = false;
+        afterThrow = false;
         countDown = 0;
+        countTimeThrow = 0;
         speed = (int)(5 * GameView.screenRatioX_1);
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
@@ -62,7 +67,6 @@ public class MonsterPigBomb extends Player{
             }
 
         if (falling == false && throwing == false) {
-            throwing = true;
             throwBomb();
         }
         if (throwing == true) {
@@ -76,7 +80,20 @@ public class MonsterPigBomb extends Player{
     }
 
     public void throwBomb() {
-        MapView.bombItems[MapView.CURRENT_BOMB].SetAppear(x, y, dir);
+        if (!afterThrow) {
+            animate = 0;
+            afterThrow = true;
+        }
+        if (afterThrow) {
+            countTimeThrow++;
+            if (countTimeThrow > TIME_THROW) {
+                countTimeThrow = 0;
+                MapView.bombItems[MapView.CURRENT_BOMB].SetAppear(x, y, dir);
+                throwing = true;
+                afterThrow = false;
+            }
+        }
+
     }
 
 
@@ -105,6 +122,13 @@ public class MonsterPigBomb extends Player{
                 ImageEntity = Sprite.ImagePigBomFallRight;
             } else {
                 ImageEntity = Sprite.ImagePigBomFallLeft;
+            }
+        }
+        if (throwing && !falling) {
+            if (dir == 1) {
+                ImageEntity = Sprite.movingSprite(Sprite.ImagePigThrowBombRights, animate, 30);
+            } else {
+                ImageEntity = Sprite.movingSprite(Sprite.ImagePigThrowBombLefts, animate, 30);
             }
         }
         //function can cho vao ham rieng
