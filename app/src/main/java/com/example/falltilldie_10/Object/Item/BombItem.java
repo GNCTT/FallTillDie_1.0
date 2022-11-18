@@ -7,12 +7,14 @@ import android.graphics.Rect;
 import android.util.Log;
 
 import com.example.falltilldie_10.Entity;
+import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.Sprite.Sprite;
+
+import java.util.Map;
 
 public class BombItem extends Entity {
     private int animate = 0;
     public static int TIME_EXPLOSIVE = 10;
-    private boolean explosive;
     private int countDownTime = 0;
     private int countDownTimeDone = 0;
     private int flyStrength;
@@ -30,6 +32,8 @@ public class BombItem extends Entity {
         speedFall = 1;
         explosive = false;
         startExplosive = false;
+        countDownTimeDone = 0;
+        countDownTime = 0;
     }
 
     @Override
@@ -55,7 +59,7 @@ public class BombItem extends Entity {
                 ImageEntity = Sprite.movingSprite(Sprite.ImageBombLiveLefts, animate, 15);
             }
             countDownTime ++;
-            if (countDownTime > 30) {
+            if (countDownTime > 40) {
                 explosive = true;
                 countDownTime = 0;
             }
@@ -66,7 +70,6 @@ public class BombItem extends Entity {
                 startExplosive = true;
                 x = x - Sprite.ImageBombExplosive_4.getWidth() / 2;
                 y = y - Sprite.ImageBombExplosive_4.getHeight() / 2;
-                Log.i("checkBomb", x + " " + Sprite.ImageBombExplosive_1.getWidth());
             }
             ImageEntity = Sprite.movingSprite(Sprite.ImageBombExplosives, animate, 15);
             countDownTimeDone ++;
@@ -124,5 +127,9 @@ public class BombItem extends Entity {
         flyStrength = 30;
         countDownTime = 0;
         countDownTimeDone = 0;
+    }
+
+    public void setExplosive() {
+        this.explosive = true;
     }
 }

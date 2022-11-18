@@ -14,13 +14,14 @@ public class MonsterPigBomb extends Player{
     public static boolean afterThrow;
     public static final int distance = 50;
     public static final int countDownThrow = 50;
-    public int countDown;
+    private int countDown;
     public static final int TIME_THROW = 20;
-    public int countTimeThrow;
+    private int countTimeThrow;
+    private int indexBomb;
     public static final int TIME_DISAPPEAR = 20;
     public int countDownDisAppear;
 
-    public MonsterPigBomb(int x, int y) {
+    public MonsterPigBomb(int x, int y, int index) {
         super(x, y);
         ImageEntity = Sprite.ImagePigBomIdlLeft;
         animate = 0;
@@ -31,6 +32,7 @@ public class MonsterPigBomb extends Player{
         speed = (int)(5 * GameView.screenRatioX_1);
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
+        indexBomb = index;
     }
 
     @Override
@@ -86,10 +88,12 @@ public class MonsterPigBomb extends Player{
         }
         if (afterThrow) {
             countTimeThrow++;
-            if (countTimeThrow > TIME_THROW) {
-                countTimeThrow = 0;
-                MapView.bombItems[MapView.CURRENT_BOMB].SetAppear(x, y, dir);
-                throwing = true;
+            if (this.countTimeThrow > TIME_THROW) {
+                if (MapView.bombItems[indexBomb].getX() == -1000) {
+                    countTimeThrow = 0;
+                    throwing = true;
+                    MapView.bombItems[indexBomb].SetAppear(x, y, dir);
+                }
                 afterThrow = false;
             }
         }

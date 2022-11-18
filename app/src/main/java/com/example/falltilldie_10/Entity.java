@@ -25,6 +25,7 @@ public abstract class Entity {
 
     protected boolean remove;
     protected boolean beDestroy;
+    protected boolean explosive;
 
     public Entity(int x, int y) {
         this.x = x;
@@ -119,6 +120,10 @@ public abstract class Entity {
     public void SetDisappear() {
     }
     public void SetAppear(int x, int y, int dir) {
+
+    }
+
+    public void setExplosive() {
 
     }
 }

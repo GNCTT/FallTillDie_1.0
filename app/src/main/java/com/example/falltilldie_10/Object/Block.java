@@ -46,6 +46,9 @@ public class Block extends Entity {
         y -= speed;
         if (y < -GameView.getHeightScreen()) {
             y = GameView.getHeightScreen();
+            for (int i = 0; i < size; i++) {
+                bricks[i].setFalling(false);
+            }
             this.size = 1 + rand.nextInt(NUM_MAX_FAN);
             int pre_block_index = 0;
             if (this.index == 0) {

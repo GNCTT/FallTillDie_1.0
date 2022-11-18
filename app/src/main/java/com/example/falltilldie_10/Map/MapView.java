@@ -1,5 +1,12 @@
 package com.example.falltilldie_10.Map;
 
+import static com.example.falltilldie_10.GameView.canvas;
+import static com.example.falltilldie_10.GameView.paint;
+
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
+
 import com.example.falltilldie_10.Character.MonsterPigBomb;
 import com.example.falltilldie_10.Character.Player;
 import com.example.falltilldie_10.Entity;
@@ -21,19 +28,21 @@ public class MapView {
     public static Block[] blocks;
     public static MonsterPigBomb[] monsterPigBombs;
     public static Entity[] bombItems;
-    private static IceEffect[] iceEffects;
 
     public static Random rand;
-    private final static int NUM_ICE = 20;
     public final static int NUM_BLOCK = 10;
     private final static int NUM_BOMB = 20;
-    private final static int NUM_MONSTER = 1;
+    public static int NUM_MONSTER = 1;
     public static int CURRENT_BOMB = 0;
     public final static int NUM_MAX_FAN = 3;
+    private int score;
+    private int count_score;
+    private final int MAX_COUNT_SCORE = 50;
 
     public MapView(int screenX, int screenY) {
         this.screenX = screenX;
         this.screenY = screenY;
+
         background = new Background(screenX, screenY, GameView.res);
         typeBackground = 0;
         //new player
@@ -47,7 +56,7 @@ public class MapView {
 //                    )
 //        }
         for (int i = 0; i < NUM_MONSTER; i++) {
-            monsterPigBombs[i] = new MonsterPigBomb(400, -100);
+            monsterPigBombs[i] = new MonsterPigBomb(20 + 200 * i, i, i);
         }
         //can tao ngau nhien bang ham.
         for (int i = 0; i < NUM_BLOCK; i++) {
@@ -55,12 +64,20 @@ public class MapView {
             blocks[i] = new Block(i * Sprite.ImageFanOn1.getWidth(), GameView.getHeightScreen() + i * - GameView.getHeightScreen() / 5, int_random, i);
         }
         for (int i = 0; i < NUM_BOMB; i++) {
-            bombItems[i] = new BombItem(i * 100, 10000);
+            bombItems[i] = new BombItem(-1000, 1000);
         }
+        score = 0;
+        count_score = 0;
     }
 
     public void update() {
+        count_score ++;
+        if (count_score > MAX_COUNT_SCORE) {
+            count_score = 0;
+            score ++;
+        }
         background.update();
+        Log.i("bomb_num", " " + CURRENT_BOMB);
         if (player.changeImageByScore()) {
             background.changeBackground(screenX, screenY, GameView.res, typeBackground);
             typeBackground += 1;
@@ -75,7 +92,7 @@ public class MapView {
             monsterPigBombs[i].update();
         }
         player.update();
-        for (int i = 0; i < NUM_BLOCK; i++) {
+        for (int i = 0; i < NUM_BOMB; i++) {
             bombItems[i].update();
         }
     }
@@ -92,18 +109,12 @@ public class MapView {
         for (int i = 0; i < NUM_BOMB; i++) {
             bombItems[i].draw();
         }
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(GameView.getWidthScreen() / 20);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText(String.valueOf(score), GameView.getWidthScreen() * 9 / 10, GameView.getHeightScreen() * 2 / 50, paint);
     }
 
-    public static Entity[] addObject(Entity[] entities, Entity entity) {
-        Entity[] entities2 = new Entity[entities.length + 1];
-        if (entities.length != 0) {
-            for (int i = 0; i < entities.length; i++) {
-                entities2[i] = entities[i];
-            }
-        }
-        entities2[entities.length] = entity;
-        return entities2;
-    }
 
 
 }

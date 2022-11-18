@@ -45,9 +45,6 @@ public class Brick extends Entity {
         checkCollideBomb();
         if (falling) {
             y += speed;
-            if (y > GameView.getHeightScreen() + 1000) {
-                falling = false;
-            }
         }
 //        } else {
 //            for (int i = 0; i < NUM_ICE; i++) {
@@ -89,6 +86,10 @@ public class Brick extends Entity {
         return falling;
     }
 
+    public void setFalling(boolean falling) {
+        this.falling = falling;
+    }
+
     public void checkCollideBomb() {
         ArrayList<Entity> listBomb = new ArrayList<>();
         Entity[] bombItems = MapView.bombItems;
@@ -97,8 +98,13 @@ public class Brick extends Entity {
         }
         ArrayList<Entity> collide_list = checkListCollision(this, listBomb);
         if (collide_list.size() > 0) {
+            for (int i = 0; i < collide_list.size(); i++) {
+                collide_list.get(i).setExplosive();
+            }
             falling = true;
         }
+
+
     }
 
 }

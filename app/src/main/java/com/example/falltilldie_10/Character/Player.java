@@ -6,6 +6,8 @@ import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleLefts;
 import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleRights;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 import android.widget.ImageView;
@@ -27,8 +29,11 @@ public class Player extends Entity {
     public int animate;
     public int delta_x;
     public int delta_y;
-    public static final int DEFAULT_SPEED = 8;
-    public static final int DEFAULT_FALL_SPEED = 8;
+    private int score;
+    private int countScore;
+    private static final int MAX_COUNT_SCORE = 100;
+    public static final int DEFAULT_SPEED =(int)(5 * GameView.screenRatioX_1);
+    public static final int DEFAULT_FALL_SPEED = (int)(8 * GameView.screenRatioY_1);
     private int speedFall = 1;
     private Bitmap ImageParticle;
 
@@ -47,6 +52,8 @@ public class Player extends Entity {
         speed = DEFAULT_SPEED;
         animate = 0;
         ImageParticle = Sprite.ImageParticleRight_1;
+        score = 0;
+        countScore = 0;
     }
 
     @Override
@@ -56,6 +63,11 @@ public class Player extends Entity {
 
     @Override
     public void update() {
+        countScore ++;
+        if (countScore > MAX_COUNT_SCORE) {
+            countScore = 0;
+            score += 1;
+        }
         height = ImageEntity.getHeight();
         width = ImageEntity.getWidth();
         //animate
@@ -202,5 +214,6 @@ public class Player extends Entity {
                 }
             }
         }
+
     }
 }
