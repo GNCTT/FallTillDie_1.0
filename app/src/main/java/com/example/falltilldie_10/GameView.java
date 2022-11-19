@@ -18,11 +18,16 @@ import android.view.SurfaceView;
 import com.example.falltilldie_10.Character.Player;
 import com.example.falltilldie_10.Map.Background;
 import com.example.falltilldie_10.Map.MapView;
+import com.example.falltilldie_10.OnlineGame.Client;
+import com.example.falltilldie_10.OnlineGame.Client2;
+import com.example.falltilldie_10.OnlineGame.Server;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 public class GameView extends SurfaceView implements Runnable{
 
     private Thread thread;
+    private final static String IP_SERVER = "127.0.0.1";
+    private int port;
     public static Canvas canvas;
     public static Paint paint;
     public static boolean isPlaying;
@@ -38,9 +43,11 @@ public class GameView extends SurfaceView implements Runnable{
     public static boolean left = false;
     public static boolean right = false;
 
+    public Client client;
+
     private MapView mapView;
 
-    public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen) {
+    public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen){
         super(context);
 
         screenRatioX_1 =(float) (widthScreen * 1.00 / (9 * 66));
@@ -55,12 +62,22 @@ public class GameView extends SurfaceView implements Runnable{
         canvas = new Canvas();
         paint = new Paint();
         res = getResources();
+        port = 8080;
+        try {
+            Log.i("hSv", "he");
+            client = new Client(IP_SERVER, port);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         mapView = new MapView(screenX, screenY);
+
     }
 
     @Override
     public void run() {
         while (isPlaying) {
+            client.read_data();
             update();
             draw();
             sleep();
