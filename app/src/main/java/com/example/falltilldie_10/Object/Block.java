@@ -72,6 +72,9 @@ public class Block extends Entity {
             }
 
             int bound = Max_rand_right - Max_rand_left;
+            if (bound < 0) {
+                bound = 10;
+            }
             int rand_location_x = rand.nextInt(bound);
             x = rand_location_x;
 

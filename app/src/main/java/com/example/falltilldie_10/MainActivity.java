@@ -29,26 +29,33 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .setUsage(AudioAttributes.USAGE_GAME)
-                    .build();
-            soundPool = new SoundPool.Builder()
-                    .setMaxStreams(2)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-        } else
-            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-        sound = soundPool.load(this, R.raw.music1, 1);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+//                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+//                    .setUsage(AudioAttributes.USAGE_GAME)
+//                    .build();
+//            soundPool = new SoundPool.Builder()
+//                    .setMaxStreams(2)
+//                    .setAudioAttributes(audioAttributes)
+//                    .build();
+//        } else
+//            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+//        sound = soundPool.load(this, R.raw.music1, 1);
     }
 
     public void clickPlay(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         soundPool.play(sound, 1,1,0,0,1);
+//        Intent intent = new Intent(this, BackgroundSoundService.class);
+//        startService(intent);
 
     }
+
+//    public void clickPlay2P(View view) {
+//        Intent intent = new Intent(this, BackgroundSoundService.class);
+//        startService(intent);
+//    }
 
     public void clickPlay2P(View view) {
         Log.d("click button","play 2P");
