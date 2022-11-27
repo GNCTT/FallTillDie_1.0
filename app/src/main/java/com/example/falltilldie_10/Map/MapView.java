@@ -12,7 +12,6 @@ import com.example.falltilldie_10.Character.Player;
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Object.Block;
-import com.example.falltilldie_10.Object.IceEffect;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
@@ -113,6 +112,10 @@ public class MapView {
         paint.setTextSize(GameView.getWidthScreen() / 20);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawText(String.valueOf(score), GameView.getWidthScreen() * 9 / 10, GameView.getHeightScreen() * 2 / 50, paint);
+    }
+
+    public boolean isOVer() {
+        return player.isDie();
     }
 
 

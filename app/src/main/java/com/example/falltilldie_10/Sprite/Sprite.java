@@ -18,6 +18,8 @@ public class Sprite {
     public final static Bitmap ImageBombExplosive = BitmapFactory.decodeResource(GameView.res, R.drawable.bom4l);
     public final static Bitmap ImageIceParticle = BitmapFactory.decodeResource(GameView.res, R.drawable.ice_particle);
 
+    public final static Bitmap background1 = BitmapFactory.decodeResource(GameView.res, R.drawable.background4);
+
     public final static Bitmap ImageFan = BitmapFactory.decodeResource(GameView.res, R.drawable.propeller1);
     private final static int DEFAULT_WIDTH_FAN_SIZE = (int) (ImageFan.getWidth() * GameView.screenRatioX_1);
     private final static int DEFAULT_HEIGHT_FAN_SIZE = (int) (ImageFan.getHeight() * GameView.screenRatioY_1);
@@ -42,6 +44,11 @@ public class Sprite {
 
     private final static int Default_Scale_X = 32;
     private final static int Default_Scale_Y = 21;
+
+    private final static int DEFAULT_BACKGROUND_WIDTH = (int)(background1.getWidth() * GameView.screenRatioX_1);
+    private final static int DEFAULT_BACKGROUND_HEIGHT = (int)(background1.getHeight() * GameView.screenRatioY_1);
+
+    public final static Bitmap ImageBackground_1 = createImage(background1, DEFAULT_BACKGROUND_WIDTH, DEFAULT_BACKGROUND_HEIGHT);
 
     public final static Bitmap ImagePigIdlLeft_1 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigidle1l), Default_Width_Size, Default_Height_Size);
     public final static Bitmap ImagePigIdlLeft_2 = createImage(BitmapFactory.decodeResource(GameView.res, R.drawable.pigidle2l), Default_Width_Size, Default_Height_Size);

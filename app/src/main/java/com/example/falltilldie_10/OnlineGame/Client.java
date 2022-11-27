@@ -57,34 +57,76 @@ public class Client {
     private static byte[] dataM = new byte[4];
     private static byte[] dataArrElement;
 
-    private Socket client_socket;
+    private Socket client_socket = null;
     private DataInputStream in;
     private DataOutputStream out;
     private String ip;
     private int port;
+    private boolean checkSend;
+    private int timeReceive;
+    private final static int MaxTimeReceive = 100;
 
     public Client(String ip, int port) {
         this.ip = ip;
         this.port = port;
+        checkSend = true;
+        timeReceive = 0;
+    }
+
+    public void initConnect() {
+        Log.i("before_Conenct", "hi " + ip + " " + port);
+
 
     }
 
     public void read_data() {
         try {
             Log.i("xnc", "i");
-            client_socket = new Socket("127.0.0.1", 8080);
+            timeReceive ++;
 
-            out = new DataOutputStream(client_socket.getOutputStream());
-            ByteBuffer before_send = ByteBuffer.allocate(12);
-            type_byte = intobyte(1);
-            len_byte = intobyte(1);
-            data_byte = intobyte(4);
-            before_send.put(type_byte);
-            before_send.put(len_byte);
-            before_send.put(data_byte);
+            if (checkSend) {
+                client_socket = new Socket(ip, port);
+                Log.i("after_Conenct", "hi");
+                out = new DataOutputStream(client_socket.getOutputStream());
+                in = new DataInputStream(client_socket.getInputStream());
+
+                ByteBuffer before_send = ByteBuffer.allocate(12);
+                type_byte = intobyte(0);
+                len_byte = intobyte(1);
+                data_byte = Stringtobyte("190");
+                before_send.put(type_byte);
+                before_send.put(len_byte);
+                before_send.put(data_byte);
 //            in.read(buffer);
-            out.write(before_send.array());
-            client_socket.close();
+                out.write(before_send.array());
+                checkSend = false;
+
+            }
+            if (timeReceive > MaxTimeReceive) {
+                byte[] buffer = new byte[5000];
+                in.read(buffer);
+                if (buffer != null) {
+                    type_byte = getBytebyIndex(buffer, 0, 4);
+                    int type = bytetoINT(type_byte);
+                    Log.i("getDatafromServer", "" + type);
+                    timeReceive = 0;
+                    ByteBuffer before_send = ByteBuffer.allocate(12);
+                    type_byte = intobyte(0);
+                    len_byte = intobyte(1);
+                    data_byte = Stringtobyte("190");
+                    before_send.put(type_byte);
+                    before_send.put(len_byte);
+                    before_send.put(data_byte);
+//            in.read(buffer);
+                    out.write(before_send.array());
+                }
+            }
+
+
+
+
+
+//            client_socket.close();
             Log.i("client_ok", "ok");
         } catch (IOException e) {
             e.printStackTrace();

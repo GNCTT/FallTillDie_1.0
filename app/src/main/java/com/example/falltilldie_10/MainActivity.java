@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private SoundPool soundPool;
+    public static boolean checkOnline = false;
     private int sound;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickPlay(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        checkOnline = false;
         startActivity(intent);
         soundPool.play(sound, 1,1,0,0,1);
 
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickPlay2P(View view) {
         Log.d("click button","play 2P");
+        checkOnline = true;
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
 
     }
 

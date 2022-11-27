@@ -36,6 +36,7 @@ public class Player extends Entity {
     public static final int DEFAULT_FALL_SPEED = (int)(8 * GameView.screenRatioY_1);
     private int speedFall = 1;
     private Bitmap ImageParticle;
+    private boolean die;
 
     public Player(int x, int y) {
         super(x, y);
@@ -54,6 +55,7 @@ public class Player extends Entity {
         ImageParticle = Sprite.ImageParticleRight_1;
         score = 0;
         countScore = 0;
+        die = false;
     }
 
     @Override
@@ -70,6 +72,7 @@ public class Player extends Entity {
         }
         height = ImageEntity.getHeight();
         width = ImageEntity.getWidth();
+        checkDie();
         //animate
         changeAnimate();
         //move
@@ -89,6 +92,16 @@ public class Player extends Entity {
         falling = true;
         move(delta_x, delta_y);
         chooseSprite();
+    }
+
+    public void checkDie() {
+        if (y < 0 || y + height > GameView.getHeightScreen()) {
+            die = true;
+        }
+    }
+
+    public boolean isDie() {
+        return die;
     }
 
     private boolean canMove(int delta_x, int delta_y) {
