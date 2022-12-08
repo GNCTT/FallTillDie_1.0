@@ -4,23 +4,12 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Player {
-    int id;
     String name;
     int point;
 
-
-    public Player(int id, String name, int point) {
-        this.id = id;
+    public Player(String name, int point) {
         this.name = name;
         this.point = point;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

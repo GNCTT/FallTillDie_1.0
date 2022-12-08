@@ -53,6 +53,46 @@ public class MainActivity extends AppCompatActivity {
         window.setAttributes(windowAtribute);
         dialog.setCancelable(false);
         dialog.show();
+
+        Button btn_exit = dialog.findViewById(R.id.btn_exit);
+        Button btn_continue = dialog.findViewById(R.id.btn_continue);
+        Button btn_replay = dialog.findViewById(R.id.btn_replay);
+        Button btn_saveScore = dialog.findViewById(R.id.btn_savePoint);
+
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Bấm cái này trở về màn hình chính
+                Log.d("click", "exit");
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Cho trở lại trạng thái của game
+                Log.d("click", "continue");
+            }
+        });
+
+
+        btn_replay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("clcik", "replay");
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_saveScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("click", "save score");
+            }
+        });
     }
 
     public void clickPlay(View view) {

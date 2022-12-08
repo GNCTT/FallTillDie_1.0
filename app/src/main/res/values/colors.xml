@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFEB3B</color>
+
+    <color name="red1">#F86134</color>
+    <color name="red2">#BB310A</color>
+    <color name="background">#00b5ff</color>
+    <color name="card"> #2ed3cc</color>
+    <color name="yellow1">#fdec3c</color>
+    <color name="yellow2">#ffa42d</color>
 </resources>
