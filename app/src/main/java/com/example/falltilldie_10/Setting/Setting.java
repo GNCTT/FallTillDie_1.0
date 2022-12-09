@@ -1,6 +1,7 @@
 package com.example.falltilldie_10.Setting;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.example.falltilldie_10.HightCore.HightCore;
+import com.example.falltilldie_10.MainActivity;
 import com.example.falltilldie_10.R;
 
 import java.util.ArrayList;
@@ -35,6 +38,16 @@ public class Setting extends AppCompatActivity {
         setContentView(R.layout.setting);
         img_character = findViewById(R.id.imageView_character);
         img_character.setImageResource(R.drawable.avatar2);
+
+        Button btn_back = findViewById(R.id.backMain2);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Setting.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Tach thanh ham rieng
         List<CharacterSetting> list = new ArrayList<>();
