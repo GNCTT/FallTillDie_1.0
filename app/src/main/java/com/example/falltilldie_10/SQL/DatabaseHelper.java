@@ -74,7 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int playerPoint = cursor.getInt(1);
                 Player newPlayer = new Player(playerName, playerPoint);
                 returnList.add(newPlayer);
-
             } while (cursor.moveToNext());
         } else {
             // do something
