@@ -29,6 +29,10 @@ public class Setting extends AppCompatActivity {
     ImageView img_character;
     Button aboutUS;
     SeekBar seekBarSpeed;
+    
+    boolean checkSwitchCompatSound = false;
+    boolean checkswitchCompatMusic = false;
+
     int currentIndex = 3;
 
     @SuppressLint("MissingInflatedId")
@@ -65,6 +69,7 @@ public class Setting extends AppCompatActivity {
                 } else {
                     Log.d("SwitchSound is", "off");
                 }
+                checkSwitchCompatSound = b;
             }
         });
 
@@ -77,6 +82,7 @@ public class Setting extends AppCompatActivity {
                 } else {
                     Log.d("SwitchMusic is", "off");
                 }
+                checkSwitchCompatSound = b;
             }
         });
 
@@ -110,32 +116,5 @@ public class Setting extends AppCompatActivity {
                 img_character.setImageResource(list.get(currentIndex).linkImg);
             }
         });
-
-//        aboutUS = (Button) findViewById(R.id.btnAboutUs);
-//        aboutUS.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("Click aboutUs button", "clicked");
-//            }
-//        });
-
-//        seekBarSpeed = (SeekBar) findViewById(R.id.seekBarSpeed);
-//        seekBarSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                //tra ve gia tri cua speed
-//                Log.d("seekBar ", "value" + i);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
     }
 }

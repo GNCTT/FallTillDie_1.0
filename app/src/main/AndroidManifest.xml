@@ -31,6 +31,10 @@
         <activity
             android:name=".Setting.Setting"
             android:exported="false" />
+
+        <activity
+            android:name=".test_dialog.test_dialog"
+            android:exported="false" />
     </application>
 
 </manifest>
