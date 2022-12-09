@@ -8,24 +8,29 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.R;
 
 public class Background {
 
     private int x = 0, y = 0;
+    private static final int speedBackground = 10;
     Bitmap backgroundImage;
     Bitmap background;
     Bitmap background1;
     Bitmap background2;
 
     public Background(int screenX, int screenY, Resources res) {
-        background = BitmapFactory.decodeResource(res, R.drawable.background4);
+        background = BitmapFactory.decodeResource(res, R.drawable.background6);
         background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
-        background1 = BitmapFactory.decodeResource(res, R.drawable.background1);
+        background1 = BitmapFactory.decodeResource(res, R.drawable.background4);
         background1 = Bitmap.createScaledBitmap(background1, screenX, screenY, false);
         background2 = BitmapFactory.decodeResource(res, R.drawable.background3);
         background2 = Bitmap.createScaledBitmap(background2, screenX, screenY, false);
         backgroundImage = background;
+    }
+
+    public void update() {
     }
 
     public void changeBackground(int screenX, int screenY, Resources res, int typeBackground) {

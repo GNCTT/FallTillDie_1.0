@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "837351691143",
+    "project_id": "graphical-petal-309117",
+    "storage_bucket": "graphical-petal-309117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837351691143:android:24c4688846d8eec27eb922",
+        "android_client_info": {
+          "package_name": "com.example.falltilldie_10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837351691143-e60pugj4ag1gurrjp4nkiehq37din3sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtaS6gUHGORRAdsqwBIr6KbXSrkRWMhG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837351691143-e60pugj4ag1gurrjp4nkiehq37din3sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
