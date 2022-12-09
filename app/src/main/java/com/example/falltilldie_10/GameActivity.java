@@ -20,11 +20,10 @@ public class GameActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int heightPixels = displayMetrics.heightPixels;
         int widthPixels = displayMetrics.widthPixels;
-        if (MainActivity.checkOnline) {
-            gameView = new GameView(this, point.x, point.y, heightPixels, widthPixels, true);
-        } else {
-            gameView = new GameView(this, point.x, point.y, heightPixels, widthPixels);
-        }
+
+
+        gameView = new GameView(this, point.x, point.y, heightPixels, widthPixels);
+
         setContentView(gameView);
     }
 
