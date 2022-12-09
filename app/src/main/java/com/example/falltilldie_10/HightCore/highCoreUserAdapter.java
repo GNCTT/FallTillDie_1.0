@@ -11,19 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.falltilldie_10.R;
+import com.example.falltilldie_10.SQL.PlayerHightCore;
 
 import java.util.List;
 
 public class highCoreUserAdapter extends RecyclerView.Adapter<highCoreUserAdapter.highCoreUserViewHolder> {
 
     private Context mContext;
-    private List<higthCoreUser> mlistUser;
+    private List<PlayerHightCore> mlistUser;
 
     public highCoreUserAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void setData(List<higthCoreUser> list) {
+    public void setData(List<PlayerHightCore> list) {
         this.mlistUser = list;
         notifyDataSetChanged();
     }
@@ -37,14 +38,12 @@ public class highCoreUserAdapter extends RecyclerView.Adapter<highCoreUserAdapte
 
     @Override
     public void onBindViewHolder(@NonNull highCoreUserViewHolder holder, int position) {
-        higthCoreUser user = mlistUser.get(position);
+        PlayerHightCore user = mlistUser.get(position);
         if(user == null) {
             return;
         }
-        holder.imgUser.setImageResource(user.getSrcID());
         holder.name.setText(user.getName());
-//        holder.point.setText(user.getPoint());
-//        holder.rank.setText(user.getRank());
+        holder.point.setText(Integer.toString(user.getPoint()));
 
         //Bo 2 point va rank thi duoc, nhung giu thi lai k? Why?
     }
@@ -55,15 +54,11 @@ public class highCoreUserAdapter extends RecyclerView.Adapter<highCoreUserAdapte
     }
 
     public class highCoreUserViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgUser;
         private TextView name;
-        private TextView rank;
         private TextView point;
         public highCoreUserViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgUser = (ImageView) itemView.findViewById(R.id.avatar);
             name = (TextView) itemView.findViewById(R.id.nameUser);
-            rank = (TextView) itemView.findViewById(R.id.rank);
             point = (TextView) itemView.findViewById(R.id.point);
         }
     }

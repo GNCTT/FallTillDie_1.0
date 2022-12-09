@@ -13,8 +13,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.falltilldie_10.HightCore.HightCore;
+import com.example.falltilldie_10.SQL.DatabaseHelper;
+import com.example.falltilldie_10.SQL.PlayerHightCore;
 import com.example.falltilldie_10.Setting.Setting;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn_continue = dialog.findViewById(R.id.btn_continue);
         Button btn_replay = dialog.findViewById(R.id.btn_replay);
         Button btn_saveScore = dialog.findViewById(R.id.btn_savePoint);
+        EditText etPlayerName = dialog.findViewById(R.id.etPlayerName);
 
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,10 +92,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Luu diem
         btn_saveScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("click", "save score");
+                String namePlayer = "";
+                String nameInput = String.valueOf(etPlayerName.getText());
+                if (nameInput.length() == 0) {
+                    Log.d("edit text","null");
+                    namePlayer = "Unknow";
+                } else {
+                    Log.d("edit text",nameInput);
+                    namePlayer = nameInput;
+                }
+                Log.d("name check" , namePlayer);
+
+                PlayerHightCore playerHightCore;
+                //Dat tat diem bang 1000
+                try {
+                    playerHightCore = new PlayerHightCore(namePlayer, 1000);
+                    Toast.makeText(MainActivity.this, playerHightCore.toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+                    playerHightCore = new PlayerHightCore("Unknow", 0);
+                }
+                DatabaseHelper dataBaseHelper = new DatabaseHelper(MainActivity.this);
+                boolean success = dataBaseHelper.addOne(playerHightCore);
+                Log.d("check", String.valueOf(success));
             }
         });
     }

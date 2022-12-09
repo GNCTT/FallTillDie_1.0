@@ -46,6 +46,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/etPlayerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập tên của bạn"></EditText>

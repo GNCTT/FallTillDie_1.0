@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.falltilldie_10.SQL.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PLAYER_NAME = "PLAYER_NAME";
     public static final String COLUMN_PLAYER_POINT = "PLAYER_POINT";
 
-    public boolean addOne(Player player) {
+    public boolean addOne(PlayerHightCore player) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cvs = new ContentValues();
         cvs.put(COLUMN_PLAYER_NAME, player.getName());
@@ -40,8 +38,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long insert = db.insert(PLAYER_TABLE, null, cvs);
         return insert != -1;
     };
-    public List<Player> getEveryOne () {
-        List<Player>  returnList = new ArrayList<>();
+    public List<PlayerHightCore> getEveryOne () {
+        List<PlayerHightCore>  returnList = new ArrayList<>();
         String queryString = "SELECT * FROM " + PLAYER_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
@@ -49,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 String playerName = cursor.getString(0);
                 int playerPoint = cursor.getInt(1);
-                Player newPlayer = new Player(playerName, playerPoint);
+                PlayerHightCore newPlayer = new PlayerHightCore(playerName, playerPoint);
                 returnList.add(newPlayer);
 
             } while (cursor.moveToNext());
@@ -61,8 +59,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     };
     //Lay 3 thang top diem cao nhat trong db
-    public List<Player> getTop3 () {
-        List<Player>  returnList = new ArrayList<>();
+    public List<PlayerHightCore> getTop3 () {
+        List<PlayerHightCore>  returnList = new ArrayList<>();
         String queryString = "SELECT " + COLUMN_PLAYER_NAME + ", " + COLUMN_PLAYER_POINT + " from " + PLAYER_TABLE
                 + " where " + COLUMN_PLAYER_POINT + " in(select top" +"3 " + COLUMN_PLAYER_POINT + " from " + PLAYER_TABLE
                 + " order by " + COLUMN_PLAYER_POINT + ");";
@@ -72,7 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 String playerName = cursor.getString(0);
                 int playerPoint = cursor.getInt(1);
-                Player newPlayer = new Player(playerName, playerPoint);
+                PlayerHightCore newPlayer = new PlayerHightCore(playerName, playerPoint);
                 returnList.add(newPlayer);
             } while (cursor.moveToNext());
         } else {

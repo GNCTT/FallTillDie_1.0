@@ -1,13 +1,10 @@
 package com.example.falltilldie_10.SQL;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
-
-public class Player {
+public class PlayerHightCore {
     String name;
     int point;
 
-    public Player(String name, int point) {
+    public PlayerHightCore(String name, int point) {
         this.name = name;
         this.point = point;
     }
