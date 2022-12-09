@@ -112,14 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 //Dat tat diem bang 1000
                 try {
                     playerHightCore = new PlayerHightCore(namePlayer, 1000);
-                    Toast.makeText(MainActivity.this, playerHightCore.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
                     playerHightCore = new PlayerHightCore("Unknow", 0);
                 }
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(MainActivity.this);
                 boolean success = dataBaseHelper.addOne(playerHightCore);
                 Log.d("check", String.valueOf(success));
+                dialog.cancel();
             }
         });
     }

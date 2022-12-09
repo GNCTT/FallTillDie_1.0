@@ -24,6 +24,7 @@
         android:padding="16dp">
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:weightSum="2"
@@ -32,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ĐIÊM SỐ">
+                android:text="POINT">
             </TextView>
 
             <!--        CHõ này để hiển thị điểm vừa chơi-->
@@ -41,51 +42,45 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hiển thị số điểm">
+                android:text="SHOW POINT HERE">
             </TextView>
         </LinearLayout>
 
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/etPlayerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập tên của bạn"></EditText>
+            android:hint="INPUT YOUR NAME"></EditText>
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/btn_replay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chơi lại"/>
+                android:text="REPLAY"/>
 
             <Button
                 android:id="@+id/btn_continue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiếp tục"/>
+                android:text="CONTINUE"/>
 
             <Button
                 android:id="@+id/btn_exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thoát"/>
+                android:text="EXIT"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lưu"
+                android:text="SAVE"
                 android:id="@+id/btn_savePoint"/>
 
         </LinearLayout>
-
-<!--        Hiển thị top 5 người chơi điểm cao nhất-->
-        <ListView
-            android:id="@+id/lv_topScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
-
 </LinearLayout>
