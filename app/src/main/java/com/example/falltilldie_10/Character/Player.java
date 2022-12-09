@@ -17,6 +17,7 @@ import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.Object.Block;
 import com.example.falltilldie_10.Object.Brick;
+import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class Player extends Entity {
     public static final int DEFAULT_FALL_SPEED = (int)(8 * GameView.screenRatioY_1);
     private int speedFall = 1;
     private Bitmap ImageParticle;
-    private boolean die;
+    protected boolean die;
 
     public Player(int x, int y) {
         super(x, y);
@@ -118,6 +119,7 @@ public class Player extends Entity {
         ArrayList<Entity> listEntity = new ArrayList<>();
         // cos the them nhieu entity sau nay.
         Block[] listEntity2 = MapView.blocks;
+        BombItem[] listBomb = (BombItem[]) MapView.bombItems;
         //
         for (int i = 0; i < listEntity2.length; i++) {
             for (int j = 0; j < listEntity2[i].getSizeBrick(); j++) {
@@ -126,18 +128,32 @@ public class Player extends Entity {
                 }
             }
         }
+        for (int i = 0; i < listBomb.length; i++) {
+            if (listBomb[i].isCan_be_collide() && listBomb[i].isBeThrow()) {
+                listEntity.add(listBomb[i]);
+            }
+        }
         // va cham y.
         y += delta_y;
         ArrayList<Entity>  collide_list = checkListCollision(this, listEntity);
 
         if (collide_list.size() > 0) {
-            falling = false;
-            Entity otherEntity = collide_list.get(0);
-            if (delta_y > 0) {
-                y = otherEntity.getTop() - height;
-            } else {
-                if (delta_y < 0) {
-                    y = otherEntity.getBottom();
+            for (int index = 0; index < collide_list.size(); index++) {
+                Log.i(String.valueOf(collide_list.get(index) instanceof BombItem), "hellox");
+                if (collide_list.get(index) instanceof BombItem) {
+                    collide_list.get(index).setExplosive();
+                    die = true;
+                }
+            }
+            if (!die) {
+                falling = false;
+                Entity otherEntity = collide_list.get(0);
+                if (delta_y > 0) {
+                    y = otherEntity.getTop() - height;
+                } else {
+                    if (delta_y < 0) {
+                        y = otherEntity.getBottom();
+                    }
                 }
             }
         }
@@ -146,13 +162,22 @@ public class Player extends Entity {
         collide_list = checkListCollision(this, listEntity);
         //hello
         if (collide_list.size() > 0) {
-            falling = false;
-            Entity otherEntity = collide_list.get(0);
-            if (delta_x > 0) {
-                x = otherEntity.getLeft() - width;
-            } else {
-                if (delta_x < 0) {
-                    x = otherEntity.getRight();
+            for (int index = 0; index < collide_list.size(); index++) {
+                Log.i(String.valueOf(collide_list.get(index) instanceof BombItem), "hellox");
+                if (collide_list.get(index) instanceof BombItem) {
+                    collide_list.get(index).setExplosive();
+                    die = true;
+                }
+            }
+            if (!die) {
+                falling = false;
+                Entity otherEntity = collide_list.get(0);
+                if (delta_x > 0) {
+                    x = otherEntity.getLeft() - width;
+                } else {
+                    if (delta_x < 0) {
+                        x = otherEntity.getRight();
+                    }
                 }
             }
         }
@@ -228,5 +253,21 @@ public class Player extends Entity {
             }
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "dir=" + dir +
+                ", falling=" + falling +
+                ", animate=" + animate +
+                ", delta_x=" + delta_x +
+                ", delta_y=" + delta_y +
+                ", score=" + score +
+                ", countScore=" + countScore +
+                ", speedFall=" + speedFall +
+                ", ImageParticle=" + ImageParticle +
+                ", die=" + die +
+                '}';
     }
 }

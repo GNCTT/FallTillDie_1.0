@@ -11,11 +11,13 @@ import android.view.SurfaceView;
 import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.OnlineGame.Client;
 
+import java.io.IOException;
+
 public class GameView extends SurfaceView implements Runnable{
 
     private Thread thread;
-    private final static String IP_SERVER = "6.tcp.ngrok.io";
-    private final static int port = 15544;
+    private final static String IP_SERVER = "2.tcp.ngrok.io";
+    private final static int port = 12511;
     public static Canvas canvas;
     public static Paint paint;
     public static boolean isPlaying;
@@ -72,19 +74,39 @@ public class GameView extends SurfaceView implements Runnable{
         res = getResources();
         mapView = new MapView(screenX, screenY);
         this.online = online;
+        if (online) {
+            client = new Client(IP_SERVER, port);
+            new Thread(client).start();
+        }
+    }
+
+    public class ClientGame implements Runnable {
+
+        @Override
+        public void run() {
+            client.read_data();
+        }
     }
 
     @Override
     public void run() {
         while (isPlaying) {
-//            client.read_data();
             if (online) {
-                updateOnline();
+                client.read_data();
+                if (client.waitingOther) {
+                    draw_waiting();
+                } else {
+//                    client.read_data();
+                    updateOnline();
+                    update();
+                    draw();
+                    sleep();
+                }
             } else {
                 update();
+                draw();
+                sleep();
             }
-            draw();
-            sleep();
 //            if (mapView.isOVer()) {
 //                Intent intent = new Intent(this.getContext(), GameOverActivity.class);
 //                pause();
@@ -104,13 +126,39 @@ public class GameView extends SurfaceView implements Runnable{
 
     private void draw() {
         //draw
-        if (getHolder().getSurface().isValid()) {
+        if (!mapView.isOVer()) {
+            if (getHolder().getSurface().isValid()) {
 
+                canvas = getHolder().lockCanvas();
+                mapView.draw();
+                getHolder().unlockCanvasAndPost(canvas);
+
+            }
+        } else {
+            drawOver();
+        }
+    }
+
+    public void draw_waiting() {
+        if (getHolder().getSurface().isValid()) {
             canvas = getHolder().lockCanvas();
-            mapView.draw();
+            mapView.draw_waiting();
             getHolder().unlockCanvasAndPost(canvas);
 
         }
+    }
+
+    public void drawOver() {
+        if (getHolder().getSurface().isValid()) {
+            canvas = getHolder().lockCanvas();
+            mapView.drawOver();
+            getHolder().unlockCanvasAndPost(canvas);
+
+        }
+    }
+
+    public void drawPause() {
+
     }
 
     private void sleep() {

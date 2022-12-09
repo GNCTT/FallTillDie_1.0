@@ -41,6 +41,7 @@ public class MonsterPigBomb extends Player{
         changeAnimate();
         if (y > GameView.getHeightScreen() || y < -200) {
             y = -200;
+            die = false;
         }
         //move
 
@@ -89,10 +90,12 @@ public class MonsterPigBomb extends Player{
         if (afterThrow) {
             countTimeThrow++;
             if (this.countTimeThrow > TIME_THROW) {
-                if (MapView.bombItems[indexBomb].getX() == -1000) {
+                BombItem bombItem = (BombItem) MapView.bombItems[indexBomb];
+                if (bombItem.getX() == -1000) {
                     countTimeThrow = 0;
                     throwing = true;
-                    MapView.bombItems[indexBomb].SetAppear(x, y, dir);
+                    bombItem.SetAppear(x, y, dir);
+                    bombItem.setBeThrow(true);
                 }
                 afterThrow = false;
             }

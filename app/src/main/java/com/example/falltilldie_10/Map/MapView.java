@@ -26,7 +26,7 @@ public class MapView {
     public static Player player;
     public static Block[] blocks;
     public static MonsterPigBomb[] monsterPigBombs;
-    public static Entity[] bombItems;
+    public static BombItem[] bombItems;
 
     public static Random rand;
     public final static int NUM_BLOCK = 10;
@@ -114,8 +114,29 @@ public class MapView {
         canvas.drawText(String.valueOf(score), GameView.getWidthScreen() * 9 / 10, GameView.getHeightScreen() * 2 / 50, paint);
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void drawOver() {
+        background = new Background(screenX, screenY, GameView.res);
+        background.draw();
+        paint.setTextSize(GameView.getWidthScreen() / 10);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText("Your Score: " + String.valueOf(score), GameView.getWidthScreen() / 4, GameView.getHeightScreen() / 2, paint);
+    }
+
     public boolean isOVer() {
         return player.isDie();
+    }
+
+    public void draw_waiting() {
+        background = new Background(screenX, screenY, GameView.res);
+        background.draw();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(GameView.getWidthScreen() / 20);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText("Waiting other player", GameView.getWidthScreen() / 4, GameView.getHeightScreen() / 2, paint);
     }
 
 

@@ -13,13 +13,18 @@ import com.example.falltilldie_10.Sprite.Sprite;
 import java.util.Map;
 
 public class BombItem extends Entity {
+
+    private int time_not_collide;
+    private boolean can_be_collide;
     private int animate = 0;
     public static int TIME_EXPLOSIVE = 10;
+    public static final int TIME_NOT_COLLIDE = 20;
     private int countDownTime = 0;
     private int countDownTimeDone = 0;
     private int flyStrength;
     private int speedFall;
     private boolean startExplosive;
+    private boolean beThrow;
         //no instance
     public BombItem(int x, int y) {
         super(x, y);
@@ -34,6 +39,9 @@ public class BombItem extends Entity {
         startExplosive = false;
         countDownTimeDone = 0;
         countDownTime = 0;
+        time_not_collide = 0;
+        can_be_collide = false;
+        beThrow = false;
     }
 
     @Override
@@ -43,8 +51,16 @@ public class BombItem extends Entity {
 
     @Override
     public void update() {
+        Log.i("" + time_not_collide + " " + can_be_collide + " " + beThrow, "hello2");
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
+        if (beThrow) {
+            time_not_collide++;
+        }
+        if (time_not_collide > TIME_NOT_COLLIDE) {
+            time_not_collide = 0;
+            can_be_collide = true;
+        }
         changeAnimate();
 
         if (!explosive && flying) {
@@ -86,9 +102,13 @@ public class BombItem extends Entity {
         }
     }
 
+    public boolean isCan_be_collide() {
+        return can_be_collide;
+    }
+
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
+        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         if (remove == false) {
             if (explosive) {
                 if (dir == 1) {
@@ -127,6 +147,17 @@ public class BombItem extends Entity {
         flyStrength = 30;
         countDownTime = 0;
         countDownTimeDone = 0;
+        time_not_collide = 0;
+        can_be_collide = false;
+        beThrow = false;
+    }
+
+    public void setBeThrow(boolean beThrow) {
+        this.beThrow = beThrow;
+    }
+
+    public boolean isBeThrow() {
+        return beThrow;
     }
 
     public void setExplosive() {

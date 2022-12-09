@@ -28,7 +28,6 @@ public class GameActivity extends AppCompatActivity {
         setContentView(gameView);
     }
 
-
     @Override
     protected void onPause() {
         super.onPause();
