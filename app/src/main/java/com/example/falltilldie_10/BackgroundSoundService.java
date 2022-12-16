@@ -16,48 +16,45 @@ public class BackgroundSoundService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
         player = MediaPlayer.create(this, R.raw.music1);
-        player.setLooping(true); // Set looping
-        player.setVolume(100,100);
-
-    }
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
-
+        player.setLooping(true);
         player.start();
 
-        return Service.START_STICKY;
     }
-
-    public void onStart(Intent intent, int startId) {
-        // TODO
-
-
-
-    }
-    public IBinder onUnBind(Intent arg0) {
-        // TODO Auto-generated method stub
-
-        return null;
-    }
-
-    public void onStop() {
-
-    }
-    public void onPause() {
-
-    }
-    @Override
-    public void onDestroy() {
-
-        player.stop();
-        player.release();
-    }
-
-    @Override
-    public void onLowMemory() {
-
-    }
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//
+//
+//        player.start();
+//
+//        return Service.START_STICKY;
+//    }
+//
+//    public void onStart(Intent intent, int startId) {
+//        // TODO
+//
+//
+//    }
+//    public IBinder onUnBind(Intent arg0) {
+//        // TODO Auto-generated method stub
+//
+//        return null;
+//    }
+//
+//    public void onStop() {
+//
+//    }
+//    public void onPause() {
+//
+//    }
+//    @Override
+//    public void onDestroy() {
+//
+//        player.stop();
+//        player.release();
+//    }
+//
+//    @Override
+//    public void onLowMemory() {
+//
+//    }
 }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,38 +23,6 @@ import com.example.falltilldie_10.Setting.Setting;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private SoundPool soundPool;
-    private int sound;
-    private boolean mIsBound = false;
-    private MusicService mServ;
-    private ServiceConnection Scon =new ServiceConnection(){
-
-        public void onServiceConnected(ComponentName name, IBinder
-                binder) {
-            mServ = ((MusicService.ServiceBinder)binder).getService();
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            mServ = null;
-        }
-    };
-
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon, Context.BIND_AUTO_CREATE);
-        mIsBound = true;
-    }
-
-    void doUnbindService()
-    {
-        if(mIsBound)
-        {
-            unbindService(Scon);
-            mIsBound = false;
-        }
-    }
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -61,19 +30,6 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-//                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                    .setUsage(AudioAttributes.USAGE_GAME)
-//                    .build();
-//            soundPool = new SoundPool.Builder()
-//                    .setMaxStreams(2)
-//                    .setAudioAttributes(audioAttributes)
-//                    .build();
-//        } else
-//            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
-//        sound = soundPool.load(this, R.raw.music1, 1);
     }
 
     public void clickPlay(View view) {
