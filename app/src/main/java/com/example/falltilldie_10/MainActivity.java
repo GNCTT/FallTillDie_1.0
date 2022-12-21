@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickPlay(View view) {
-        Intent svc=new Intent(this, BackgroundSoundService.class);
+        Intent svc=new Intent(this, MusicService.class);
         startService(svc);
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);

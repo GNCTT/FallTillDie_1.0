@@ -31,7 +31,7 @@
         <activity
             android:name=".Setting.Setting"
             android:exported="false" />
-        <service android:name=".BackgroundSoundService"/>
+        <service android:name=".MusicService"/>
     </application>
 
 </manifest>
