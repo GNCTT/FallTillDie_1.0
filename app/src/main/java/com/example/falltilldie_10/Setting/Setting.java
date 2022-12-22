@@ -57,7 +57,7 @@ public class Setting extends AppCompatActivity {
                 intent.putExtra("turnOnSound", checkSwitchCompatSound);
                 intent.putExtra("turnOnMusic", checkswitchCompatMusic);
                 intent.putExtra("character", currentIndex + 1);
-                intent.putExtra("backgound", indexBackground + 1);
+                intent.putExtra("background", indexBackground + 1);
                 startActivity(intent);
             }
         });

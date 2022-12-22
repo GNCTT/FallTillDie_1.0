@@ -2,6 +2,7 @@ package com.example.falltilldie_10;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import com.example.falltilldie_10.Setting.Setting;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn = findViewById(R.id.test_btn);
+        Intent intent = getIntent();
+        boolean settingSound = intent.getBooleanExtra("turnOnSound", false);
+        boolean settingMusic = intent.getBooleanExtra("turnOnMusic", false);
+
+        // XÁC ĐỊNH ẢNH ĐƯỢC CHỌN BẰNG CÚ PHÁP:
+        // cHỌN NHân vật: charater + ....
+        // chọn background: background + ...
+
+        int character = intent.getIntExtra("character",1);
+        int background = intent.getIntExtra("background",1);
+
+        Log.d("settingSound in MainActivity", String.valueOf(settingSound));
+        Log.d("settingMusic in MainActivity", String.valueOf(settingMusic));
+        Log.d("character in MainActivity", String.valueOf(character));
+        Log.d("background in MainActivity", String.valueOf(background));
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
