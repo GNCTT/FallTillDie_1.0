@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.example.falltilldie_10.HightCore.HightCore;
+import com.example.falltilldie_10.MusicService;
 import com.example.falltilldie_10.R;
 
 import java.util.ArrayList;
@@ -27,14 +29,14 @@ public class Setting extends AppCompatActivity {
     ImageView img_character;
     Button aboutUS;
     SeekBar seekBarSpeed;
-
+    private Intent musicBG;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
-
+        musicBG = new Intent(this, MusicService.class);
 
         //Tach thanh ham rieng
         List<Integer> list = new ArrayList<>();
@@ -47,6 +49,7 @@ public class Setting extends AppCompatActivity {
         switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
         switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
+
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b == true) {
                     Log.d("SwitchSound is", "on");
@@ -54,7 +57,10 @@ public class Setting extends AppCompatActivity {
                     Log.d("SwitchSound is", "off");
                 }
             }
+
         });
+
+
 
         switchCompatMusic = (SwitchCompat) findViewById(R.id.switchCompatMusic);
         switchCompatMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,8 +68,10 @@ public class Setting extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b == true) {
                     Log.d("SwitchMusic is", "on");
+                    startService(musicBG);
                 } else {
                     Log.d("SwitchMusic is", "off");
+                    stopService(musicBG);
                 }
             }
         });

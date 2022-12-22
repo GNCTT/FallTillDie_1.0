@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickPlay(View view) {
-        Intent svc=new Intent(this, MusicService.class);
-        startService(svc);
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
 
@@ -54,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickExit(View view) {
         finish();
+        Intent musicBg=new Intent(this, MusicService.class);
+        stopService(musicBg);
+
         System.exit(0);
     }
 

@@ -1,6 +1,7 @@
 package com.example.falltilldie_10;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,9 +41,13 @@ public class GameView extends SurfaceView implements Runnable{
 
     private MapView mapView;
 
+    public Context gameActivity;
+    public Intent soundBoom;
+
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen) {
         super(context);
-
+        this.gameActivity = context;
+        soundBoom = new Intent(context, MusicService.class);
         screenRatioX_1 =(float) (widthScreen * 1.00 / (9 * 66));
         screenRatioX_2 =  9 * 66;
         screenRatioY_1 = (float) (heightScreen * 1.00 / (18 * 66));
@@ -55,7 +60,7 @@ public class GameView extends SurfaceView implements Runnable{
         canvas = new Canvas();
         paint = new Paint();
         res = getResources();
-        mapView = new MapView(screenX, screenY);
+        mapView = new MapView(screenX, screenY, context);
     }
 
     @Override
@@ -69,6 +74,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     private void update() {
         mapView.update();
+
     }
 
     private void draw() {
@@ -104,6 +110,10 @@ public class GameView extends SurfaceView implements Runnable{
         thread.start();
     }
 
+    public void setSoundBoom() {
+        this.gameActivity.startService(soundBoom);
+    }
+
     public static int getWidthScreen() {
         return widthScreen;
     }
@@ -120,10 +130,12 @@ public class GameView extends SurfaceView implements Runnable{
                 if (event.getX() < screenX / 2) {
                     left = true;
                     right = false;
+
                 }
                 if (event.getX() > screenX / 2) {
                     right = true;
                     left = false;
+
                 }
 
                 break;
