@@ -106,7 +106,7 @@ public class BombItem extends Entity {
             countDownTimeDone ++;
             if (countDownTimeDone > TIME_EXPLOSIVE) {
                 SetDisappear();
-                //gameActivity.stopService(soundBoom);
+                gameActivity.stopService(soundBoom);
             }
         }
     }
