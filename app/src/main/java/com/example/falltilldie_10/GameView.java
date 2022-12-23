@@ -140,7 +140,7 @@ public class GameView extends SurfaceView implements Runnable{
                     }
                 } else {
                     myRef.setValue(mapView.makeJSonObject().toString());
-                    addEventListenOther(otherRef);
+                    addEventListenOther(EnemyRef);
                     if (DataIn != null) {
                         Log.i("jsonObject", " " + DataIn);
                     }
