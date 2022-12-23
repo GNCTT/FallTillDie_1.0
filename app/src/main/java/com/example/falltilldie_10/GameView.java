@@ -95,6 +95,7 @@ public class GameView extends SurfaceView implements Runnable{
         res = getResources();
         mapView = new MapView(screenX, screenY);
         database = FirebaseDatabase.getInstance();
+        host = false;
 
         roomRef = database.getReference("Rooms");
         //need change.
@@ -297,11 +298,9 @@ public class GameView extends SurfaceView implements Runnable{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
                 Log.d(TAG, "Value is: " + value);
-                if (value == null || value.equals("")) {
+                if (value == null || value.equals("") || value.equals(message)) {
                     roomRef.setValue(message);
                     host = true;
-                } else {
-                    host = false;
                 }
                 if (value != null && !value.equals(message) && !value.equals("")) {
                     waiting = false;
