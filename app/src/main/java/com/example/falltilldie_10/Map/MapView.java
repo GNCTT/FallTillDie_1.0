@@ -3,6 +3,7 @@ package com.example.falltilldie_10.Map;
 import static com.example.falltilldie_10.GameView.canvas;
 import static com.example.falltilldie_10.GameView.paint;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -41,10 +42,12 @@ public class MapView {
     private int score;
     private int count_score;
     private final int MAX_COUNT_SCORE = 50;
+    public Context context;
 
-    public MapView(int screenX, int screenY) {
+    public MapView(int screenX, int screenY, Context context) {
         this.screenX = screenX;
         this.screenY = screenY;
+        this.context = context;
 
         background = new Background(screenX, screenY, GameView.res);
         typeBackground = 0;
@@ -64,7 +67,7 @@ public class MapView {
             blocks[i] = new Block(i * Sprite.ImageFanOn1.getWidth(), GameView.getHeightScreen() + i * - GameView.getHeightScreen() / 5, int_random, i);
         }
         for (int i = 0; i < NUM_BOMB; i++) {
-            bombItems[i] = new BombItem(-1000, 1000);
+            bombItems[i] = new BombItem(-1000, 1000, context);
         }
         score = 0;
         count_score = 0;

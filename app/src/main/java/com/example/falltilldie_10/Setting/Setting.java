@@ -2,8 +2,8 @@ package com.example.falltilldie_10.Setting;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.falltilldie_10.HightCore.HightCore;
-import com.example.falltilldie_10.MainActivity;
+import com.example.falltilldie_10.MusicService;
 import com.example.falltilldie_10.R;
 
 import java.util.ArrayList;
@@ -29,36 +29,27 @@ public class Setting extends AppCompatActivity {
     ImageView img_character;
     Button aboutUS;
     SeekBar seekBarSpeed;
-    int currentIndex = 3;
+    private Intent musicBG;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
-        img_character = findViewById(R.id.imageView_character);
-        img_character.setImageResource(R.drawable.avatar2);
-
-        Button btn_back = findViewById(R.id.backMain2);
-
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Setting.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        musicBG = new Intent(this, MusicService.class);
 
         //Tach thanh ham rieng
-        List<CharacterSetting> list = new ArrayList<>();
-        list.add(new CharacterSetting("ninja1", R.drawable.avatar));
-        list.add(new CharacterSetting("ninja2", R.drawable.avatar2));
-        list.add(new CharacterSetting("ninja3", R.drawable.run1));
-        list.add(new CharacterSetting("ninja4", R.drawable.run2l));
+        List<Integer> list = new ArrayList<>();
+        //truyen vao list gia tri xac dinh cho moi character
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
         switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
         switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
+
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b == true) {
                     Log.d("SwitchSound is", "on");
@@ -66,7 +57,10 @@ public class Setting extends AppCompatActivity {
                     Log.d("SwitchSound is", "off");
                 }
             }
+
         });
+
+
 
         switchCompatMusic = (SwitchCompat) findViewById(R.id.switchCompatMusic);
         switchCompatMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -74,68 +68,92 @@ public class Setting extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b == true) {
                     Log.d("SwitchMusic is", "on");
+                    startService(musicBG);
                 } else {
                     Log.d("SwitchMusic is", "off");
+                    stopService(musicBG);
                 }
             }
         });
 
-        prevCharacter = findViewById(R.id.prevCharacter);
+        int currentIndex = 0;
+
+        prevCharacter = (Button) findViewById(R.id.prevCharacter);
         prevCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("click", "prev_btn");
-                if(currentIndex == 0) {
-                    currentIndex = list.size()-1;
-                    Log.d("CurrentIndex", "0");
-                } else {
-                    currentIndex -= 1;
-                }
-                img_character.setImageResource(list.get(currentIndex).linkImg);
+//                if(currentIndex == 0) {
+//                    currentIndex = list.size();
+//                    Log.d("CurrentIndex", "0");
+//                } else {
+//                    currentIndex -= 1;
+//                }
+//                String msg = currentIndex.toString;
+//                Log.d("currentCharacter is: ", msg);
             }
         });
 
-        nextCharacter = findViewById(R.id.nextCharacter);
+        nextCharacter = (Button) findViewById(R.id.nextCharacter);
 
         nextCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("click", "next_btn");
-                if(currentIndex == list.size() - 1) {
-                    currentIndex = 0;
-                    Log.d("CurrentIndex", "0");
-                } else {
-                    currentIndex += 1;
-                }
-                img_character.setImageResource(list.get(currentIndex).linkImg);
+//                if(currentIndex == list.size()) {
+//                    currentIndex = 0;
+//                    Log.d("CurrentIndex", "0");
+//                } else {
+//                    currentIndex += 1;
+//                }
+//                String msg = currentIndex.toString;
+//                Log.d("currentCharacter is: ", msg);
             }
         });
 
-//        aboutUS = (Button) findViewById(R.id.btnAboutUs);
-//        aboutUS.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("Click aboutUs button", "clicked");
-//            }
-//        });
+        aboutUS = (Button) findViewById(R.id.btnAboutUs);
+        aboutUS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Click aboutUs button", "clicked");
+            }
+        });
 
-//        seekBarSpeed = (SeekBar) findViewById(R.id.seekBarSpeed);
-//        seekBarSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                //tra ve gia tri cua speed
-//                Log.d("seekBar ", "value" + i);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
+        seekBarSpeed = (SeekBar) findViewById(R.id.seekBarSpeed);
+        seekBarSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                //tra ve gia tri cua speed
+                Log.d("seekBar ", "value" + i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+
+    //ham tao danh sach cac character co the duoc chon
+//    private List<Integer> getList() {
+//        List<Integer> list = new ArrayList<>();
+//        //truyen vao list gia tri xac dinh cho moi character
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(4);
+//        return list;
+//    }
+
+    //Dat gia tri cua imageView tuong ung
+    //Se lam them hieu ung dong cho cac imageview
+    public void setCharacter(int a) {
+        img_character = (ImageView) findViewById(R.id.imageView_character);
+        img_character.setImageResource(a);
     }
 }
