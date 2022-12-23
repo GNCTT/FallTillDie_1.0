@@ -40,6 +40,8 @@
         <activity
             android:name=".Setting.Setting"
             android:exported="false" />
+        <service android:name=".MusicService"/>
+        <service android:name=".SoundService"/>
     </application>
 
 </manifest>

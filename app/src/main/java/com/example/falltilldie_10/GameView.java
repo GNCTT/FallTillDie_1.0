@@ -3,6 +3,7 @@ package com.example.falltilldie_10;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -56,8 +57,13 @@ public class GameView extends SurfaceView implements Runnable{
     private JSONObject jsonObjectRead;
     private String DataIn;
 
+    public Context gameActivity;
+    public Intent soundBoom;
+
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen){
         super(context);
+        this.gameActivity = context;
+        soundBoom = new Intent(context, MusicService.class);
         screenRatioX_1 =(float) (widthScreen * 1.00 / (9 * 66));
         screenRatioX_2 =  9 * 66;
         screenRatioY_1 = (float) (heightScreen * 1.00 / (18 * 66));
@@ -74,7 +80,7 @@ public class GameView extends SurfaceView implements Runnable{
         Log.i("gameView", " " );
         roomRef = database.getReference("Rooms");
         roomRef.setValue(message);
-        mapView = new MapView(screenX, screenY);
+        mapView = new MapView(screenX, screenY, context);
         online = false;
     }
 
@@ -93,7 +99,7 @@ public class GameView extends SurfaceView implements Runnable{
         canvas = new Canvas();
         paint = new Paint();
         res = getResources();
-        mapView = new MapView(screenX, screenY);
+        mapView = new MapView(screenX, screenY, context);
         database = FirebaseDatabase.getInstance();
         host = false;
 

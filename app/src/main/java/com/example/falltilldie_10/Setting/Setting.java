@@ -17,6 +17,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.falltilldie_10.HightCore.HightCore;
 import com.example.falltilldie_10.MainActivity;
+import com.example.falltilldie_10.MusicService;
 import com.example.falltilldie_10.R;
 
 import java.util.ArrayList;
@@ -30,12 +31,14 @@ public class Setting extends AppCompatActivity {
     Button aboutUS;
     SeekBar seekBarSpeed;
     int currentIndex = 3;
+    private Intent musicBG;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
+        musicBG = new Intent(this, MusicService.class);
         img_character = findViewById(R.id.imageView_character);
         img_character.setImageResource(R.drawable.avatar2);
 
@@ -74,8 +77,10 @@ public class Setting extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b == true) {
                     Log.d("SwitchMusic is", "on");
+                    startService(musicBG);
                 } else {
                     Log.d("SwitchMusic is", "off");
+                    stopService(musicBG);
                 }
             }
         });

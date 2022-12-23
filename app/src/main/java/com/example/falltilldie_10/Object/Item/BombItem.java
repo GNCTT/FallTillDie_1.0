@@ -3,11 +3,16 @@ package com.example.falltilldie_10.Object.Item;
 import static com.example.falltilldie_10.GameView.canvas;
 import static com.example.falltilldie_10.GameView.paint;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.util.Log;
 
 import com.example.falltilldie_10.Entity;
+import com.example.falltilldie_10.GameActivity;
 import com.example.falltilldie_10.Map.MapView;
+import com.example.falltilldie_10.MusicService;
+import com.example.falltilldie_10.SoundService;
 import com.example.falltilldie_10.Sprite.Sprite;
 
 import java.util.Map;
@@ -25,9 +30,33 @@ public class BombItem extends Entity {
     private int speedFall;
     private boolean startExplosive;
     private boolean beThrow;
+
+    public Context gameActivity;
+    public Intent soundBoom;
         //no instance
     public BombItem(int x, int y) {
         super(x, y);
+        ImageEntity = Sprite.ImageBombLive_1;
+        width = ImageEntity.getWidth();
+        height = ImageEntity.getHeight();
+        flying = false;
+        flyStrength = 30;
+        speed = 5;
+        speedFall = 1;
+        explosive = false;
+        startExplosive = false;
+        countDownTimeDone = 0;
+        countDownTime = 0;
+        time_not_collide = 0;
+        can_be_collide = false;
+        beThrow = false;
+    }
+
+    public BombItem(int x, int y, Context context) {
+        super(x, y);
+        this.gameActivity = context;
+        soundBoom = new Intent(gameActivity, SoundService.class);
+
         ImageEntity = Sprite.ImageBombLive_1;
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
@@ -87,10 +116,12 @@ public class BombItem extends Entity {
                 x = x - Sprite.ImageBombExplosive_4.getWidth() / 2;
                 y = y - Sprite.ImageBombExplosive_4.getHeight() / 2;
             }
+            gameActivity.startService(soundBoom);
             ImageEntity = Sprite.movingSprite(Sprite.ImageBombExplosives, animate, 15);
             countDownTimeDone ++;
             if (countDownTimeDone > TIME_EXPLOSIVE) {
                 SetDisappear();
+                gameActivity.stopService(soundBoom);
             }
         }
     }
