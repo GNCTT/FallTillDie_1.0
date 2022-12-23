@@ -6,11 +6,6 @@ import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleLefts;
 import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleRights;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
@@ -19,6 +14,9 @@ import com.example.falltilldie_10.Object.Block;
 import com.example.falltilldie_10.Object.Brick;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -139,7 +137,6 @@ public class Player extends Entity {
 
         if (collide_list.size() > 0) {
             for (int index = 0; index < collide_list.size(); index++) {
-                Log.i(String.valueOf(collide_list.get(index) instanceof BombItem), "hellox");
                 if (collide_list.get(index) instanceof BombItem) {
                     collide_list.get(index).setExplosive();
                     die = true;
@@ -163,7 +160,6 @@ public class Player extends Entity {
         //hello
         if (collide_list.size() > 0) {
             for (int index = 0; index < collide_list.size(); index++) {
-                Log.i(String.valueOf(collide_list.get(index) instanceof BombItem), "hellox");
                 if (collide_list.get(index) instanceof BombItem) {
                     collide_list.get(index).setExplosive();
                     die = true;
@@ -213,12 +209,8 @@ public class Player extends Entity {
         else {
             if (delta_x == 0) {
                 ImageEntity = Sprite.movingSprite(Sprite.PigIdlLefts, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
             } else {
                 ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
-//                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunLefts, animate, 15);
             }
         }
         if (falling) {
@@ -260,14 +252,47 @@ public class Player extends Entity {
         return "Player{" +
                 "dir=" + dir +
                 ", falling=" + falling +
-                ", animate=" + animate +
                 ", delta_x=" + delta_x +
                 ", delta_y=" + delta_y +
-                ", score=" + score +
-                ", countScore=" + countScore +
-                ", speedFall=" + speedFall +
-                ", ImageParticle=" + ImageParticle +
                 ", die=" + die +
                 '}';
     }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("x", x);
+            jsonObject.put("y", y);
+            jsonObject.put("dir", dir);
+            jsonObject.put("falling", falling);
+            jsonObject.put("delta_x", delta_x);
+            jsonObject.put("delta_y", delta_y);
+            jsonObject.put("die", die);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return jsonObject;
+
+    }
+
+    public void update2(int x, int y, int dir, boolean falling, int delta_x, int delta_y, boolean die) {
+        this.x = x;
+        this.y = y;
+        this.dir = dir;
+        this.falling = falling;
+        this.delta_x = delta_x;
+        this.delta_y = delta_y;
+        this.die = die;
+        height = ImageEntity.getHeight();
+        width = ImageEntity.getWidth();
+        checkDie();
+        //animate
+        changeAnimate();
+        delta_y = DEFAULT_FALL_SPEED * speedFall;
+        move(delta_x, delta_y);
+        chooseSprite();
+    }
+
 }

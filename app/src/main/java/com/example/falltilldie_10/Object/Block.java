@@ -7,10 +7,13 @@ import static com.example.falltilldie_10.Map.MapView.rand;
 
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Map.MapView;
+
+import java.util.Arrays;
 
 public class Block extends Entity {
     private Brick[] bricks;
@@ -72,7 +75,11 @@ public class Block extends Entity {
             }
 
             int bound = Max_rand_right - Max_rand_left;
+            if (bound < 0) {
+                bound = -bound;
+            }
             int rand_location_x = rand.nextInt(bound);
+            Log.i("rand: ", " " + rand_location_x);
             x = rand_location_x;
 
         }
@@ -84,11 +91,15 @@ public class Block extends Entity {
             }
             bricks[i].update();
         }
+        Log.i("blockToString", " " + toString());
+    }
+
+    public void updateByData(String data) {
+
     }
 
     @Override
     public void draw() {
-//        canvas.drawRect(new Rect(x, y, x + width, y + height), paint);
         for (int i = 0; i < size; i++) {
             bricks[i].draw();
         }
@@ -105,5 +116,20 @@ public class Block extends Entity {
 
     public int getSizeBrick() {
         return bricks.length;
+    }
+
+    @Override
+    public String toString() {
+        String resBricks = "";
+        for (int i = 0; i < size; i++) {
+            resBricks += bricks[i].toString() + " ";
+        }
+        return "Block{" +
+                "x=" + x +
+                ", y=" + y +
+                ", size=" + size +
+                ", bricks= " + resBricks +
+                ", index=" + index +
+                '}';
     }
 }

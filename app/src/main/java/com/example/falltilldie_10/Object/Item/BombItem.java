@@ -163,4 +163,6 @@ public class BombItem extends Entity {
     public void setExplosive() {
         this.explosive = true;
     }
+
+
 }

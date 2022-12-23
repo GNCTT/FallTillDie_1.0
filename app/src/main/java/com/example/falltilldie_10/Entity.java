@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public abstract class Entity {
     protected int x;
     protected int y;
-    protected final static int DEFAULT_BRICK_WIDTH = Sprite.ImageFanOn1.getWidth();
-    protected final static int DEFAULT_BRICK_HEIGHT = Sprite.ImageFanOn1.getHeight();
+    protected final static int DEFAULT_BRICK_WIDTH = (int) (Sprite.ImageFanOn1.getWidth() * GameView.screenRatioX_1);
+    protected final static int DEFAULT_BRICK_HEIGHT = (int) (Sprite.ImageFanOn1.getHeight() * GameView.screenRatioY_1);
     protected final static int FALL_SPEED_BRICK = 7;
     protected boolean flying;
 

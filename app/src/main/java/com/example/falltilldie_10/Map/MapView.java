@@ -15,6 +15,9 @@ import com.example.falltilldie_10.Object.Block;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Random;
 
 public class MapView {
@@ -24,6 +27,7 @@ public class MapView {
     private int screenY;
 
     public static Player player;
+    public static Player player2;
     public static Block[] blocks;
     public static MonsterPigBomb[] monsterPigBombs;
     public static BombItem[] bombItems;
@@ -46,14 +50,11 @@ public class MapView {
         typeBackground = 0;
         //new player
         player = new Player(200, 100);
+        player2 = new Player(200, 200);
         blocks = new Block[NUM_BLOCK];
         monsterPigBombs = new MonsterPigBomb[NUM_BLOCK];
         bombItems = new BombItem[NUM_BOMB];
         rand = new Random();
-//        for (int i = 0; i < NUM_ICE; i++) {
-//            iceEffects[i] = new IceEffect(GameView.getWidthScreen() / 10 + i * Sprite.ImageIceParticle.getWidth(),
-//                    )
-//        }
         for (int i = 0; i < NUM_MONSTER; i++) {
             monsterPigBombs[i] = new MonsterPigBomb(20 + 200 * i, i, i);
         }
@@ -76,7 +77,6 @@ public class MapView {
             score ++;
         }
         background.update();
-        Log.i("bomb_num", " " + CURRENT_BOMB);
         if (player.changeImageByScore()) {
             background.changeBackground(screenX, screenY, GameView.res, typeBackground);
             typeBackground += 1;
@@ -94,6 +94,47 @@ public class MapView {
         for (int i = 0; i < NUM_BOMB; i++) {
             bombItems[i].update();
         }
+    }
+
+    public void updateOnline(JSONObject playerObject) {
+        try {
+            int x = playerObject.getInt("x");
+            int y = playerObject.getInt("y");
+            int dir = playerObject.getInt("dir");
+            boolean falling = playerObject.getBoolean("falling");
+            int delta_x = playerObject.getInt("delta_x");
+            int delta_y = playerObject.getInt("delta_y");
+            boolean die = playerObject.getBoolean("die");
+            player2.update2(x, y, dir, falling, delta_x, delta_y, die);
+            player.update();
+            count_score ++;
+            if (count_score > MAX_COUNT_SCORE) {
+                count_score = 0;
+                score ++;
+            }
+            background.update();
+            if (player.changeImageByScore()) {
+                background.changeBackground(screenX, screenY, GameView.res, typeBackground);
+                typeBackground += 1;
+                if (typeBackground >= 2) {
+                    typeBackground = 0;
+                }
+            }
+            for (int i = 0; i < NUM_BLOCK; i++) {
+                blocks[i].update();
+            }
+            for (int i = 0; i < NUM_MONSTER; i++) {
+                monsterPigBombs[i].update();
+            }
+            player.update();
+            for (int i = 0; i < NUM_BOMB; i++) {
+                bombItems[i].update();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void draw() {
@@ -139,6 +180,75 @@ public class MapView {
         canvas.drawText("Waiting other player", GameView.getWidthScreen() / 4, GameView.getHeightScreen() / 2, paint);
     }
 
+    public void drawOnline() {
 
+        background.draw();
+        for (int i = 0; i < NUM_BLOCK; i++) {
+            blocks[i].draw();
+        }
+        for (int i = 0; i < NUM_MONSTER; i++) {
+            monsterPigBombs[i].draw();
+        }
+        player2.draw();
+        player.draw();
 
+        for (int i = 0; i < NUM_BOMB; i++) {
+            bombItems[i].draw();
+        }
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(GameView.getWidthScreen() / 20);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText(String.valueOf(score), GameView.getWidthScreen() * 9 / 10, GameView.getHeightScreen() * 2 / 50, paint);
+    }
+
+    public void draw_not_connect() {
+        background = new Background(screenX, screenY, GameView.res);
+        background.draw();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(GameView.getWidthScreen() / 20);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText("Please check your network", GameView.getWidthScreen() / 4, GameView.getHeightScreen() / 2, paint);
+    }
+
+    @Override
+    public String toString() {
+        String blockString = "";
+        String monterString = "";
+        String bomItemString = "";
+        for (int i = 0; i < NUM_BLOCK; i++) {
+            blockString += blocks[i].toString();
+        }
+        for (int i = 0; i < NUM_MONSTER; i++) {
+            monterString += monsterPigBombs[i].toString();
+        }
+        for (int i = 0; i < NUM_BOMB; i++) {
+            bomItemString += bombItems[i].toString();
+        }
+
+        return "MapView{ " +
+                blockString + " " +
+                player.toString() + " " +
+                monterString + " " +
+                '}';
+    }
+
+    public JSONObject makeJSonObject() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("Player", player.toJson());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
+    public JSONObject makeJSonObjectPlayer() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("Player", player.toJson());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
 }

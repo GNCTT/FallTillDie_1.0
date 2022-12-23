@@ -27,10 +27,6 @@ public class Brick extends Entity {
         width = ImageEntity.getWidth();
         height = ImageEntity.getHeight();
         animate = 0;
-//        listIces = new IceEffect[NUM_ICE];
-//        for (int i = 0; i < NUM_ICE; i++) {
-//            listIces[i] = new IceEffect(x + width / 5 + i * Sprite.ImageIceParticle.getWidth(), y);
-//        }
         falling = false;
     }
 
@@ -46,14 +42,6 @@ public class Brick extends Entity {
         if (falling) {
             y += speed;
         }
-//        } else {
-//            for (int i = 0; i < NUM_ICE; i++) {
-//                if (listIces[i].getY() > y + height + 150) {
-//                    listIces[i].setY(y + height);
-//                }
-//                listIces[i].update();
-//            }
-//        }
         chooseSprite();
     }
 
@@ -107,4 +95,14 @@ public class Brick extends Entity {
 
     }
 
+    @Override
+    public String toString() {
+        return "Brick{" +
+                "x=" + x +
+                ", y=" + y +
+                ", flying=" + flying +
+                ", animate=" + animate +
+                ", falling=" + falling +
+                '}';
+    }
 }

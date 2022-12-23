@@ -155,4 +155,14 @@ public class MonsterPigBomb extends Player{
 
     }
 
+//    @Override
+//    public String toString() {
+//        return "MonsterPigBomb{" +
+//                "dir=" + dir +
+//                ", falling=" + falling +
+//                ", delta_x=" + delta_x +
+//                ", delta_y=" + delta_y +
+//                ", die=" + die +
+//                '}';
+//    }
 }

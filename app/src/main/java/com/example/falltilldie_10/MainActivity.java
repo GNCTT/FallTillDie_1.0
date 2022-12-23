@@ -20,11 +20,16 @@ import com.example.falltilldie_10.HightCore.HightCore;
 import com.example.falltilldie_10.SQL.DatabaseHelper;
 import com.example.falltilldie_10.SQL.PlayerHightCore;
 import com.example.falltilldie_10.Setting.Setting;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean online;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Write a message to the database
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -126,11 +131,14 @@ public class MainActivity extends AppCompatActivity {
     public void clickPlay(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+        online = false;
     }
 
     public void clickPlay2P(View view) {
         Log.d("click button","play 2P");
-
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+        online = true;
     }
 
     public void clickExit(View view) {
