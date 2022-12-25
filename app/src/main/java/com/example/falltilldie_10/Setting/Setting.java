@@ -54,17 +54,17 @@ public class Setting extends AppCompatActivity {
         //Tach thanh ham rieng
 
 
-        switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
-        switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true) {
-                    Log.d("SwitchSound is", "on");
-                } else {
-                    Log.d("SwitchSound is", "off");
-                }
-            }
-        });
+//        switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
+//        switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b == true) {
+//                    Log.d("SwitchSound is", "on");
+//                } else {
+//                    Log.d("SwitchSound is", "off");
+//                }
+//            }
+//        });
 
         switchCompatMusic = (SwitchCompat) findViewById(R.id.switchCompatMusic);
         switchCompatMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
