@@ -311,6 +311,7 @@ public class GameView extends SurfaceView implements Runnable{
                     host = true;
                     waiting = true;
                 } else {
+
                     host = false;
                     readyRef.setValue("1");
                     waiting = false;
