@@ -126,11 +126,11 @@ public class Player extends Entity {
                 }
             }
         }
-        for (int i = 0; i < listBomb.length; i++) {
-            if (listBomb[i].isCan_be_collide() && listBomb[i].isBeThrow()) {
-                listEntity.add(listBomb[i]);
-            }
-        }
+//        for (int i = 0; i < listBomb.length; i++) {
+//            if (listBomb[i].isCan_be_collide() && listBomb[i].isBeThrow()) {
+//                listEntity.add(listBomb[i]);
+//            }
+//        }
         // va cham y.
         y += delta_y;
         ArrayList<Entity>  collide_list = checkListCollision(this, listEntity);

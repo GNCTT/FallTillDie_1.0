@@ -23,6 +23,8 @@ import com.example.falltilldie_10.Setting.Setting;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean online;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -35,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public void clickPlay(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
-
-
-
     }
 
 //    public void clickPlay2P(View view) {
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickPlay2P(View view) {
         Log.d("click button","play 2P");
+        online = true;
 
     }
 

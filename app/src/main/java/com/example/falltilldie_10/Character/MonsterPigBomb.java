@@ -95,7 +95,7 @@ public class MonsterPigBomb extends Player{
                     countTimeThrow = 0;
                     throwing = true;
                     bombItem.SetAppear(x, y, dir);
-                    bombItem.setBeThrow(true);
+//                    bombItem.setBeThrow(true);
                 }
                 afterThrow = false;
             }
