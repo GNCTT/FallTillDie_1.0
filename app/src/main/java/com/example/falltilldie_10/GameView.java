@@ -187,13 +187,13 @@ public class GameView extends SurfaceView implements Runnable{
     private void drawOnline() {
         if (!mapView.isOVer()) {
             if (getHolder().getSurface().isValid()) {
-
                 canvas = getHolder().lockCanvas();
                 mapView.drawOnline();
                 getHolder().unlockCanvasAndPost(canvas);
             }
         } else {
-            drawOver();
+            Intent intent = new Intent(gameActivity, GameOverActivity.class);
+            gameActivity.startActivity(intent);
         }
     }
 
@@ -207,7 +207,8 @@ public class GameView extends SurfaceView implements Runnable{
                 getHolder().unlockCanvasAndPost(canvas);
             }
         } else {
-            drawOver();
+            Intent intent = new Intent(gameActivity, GameOverActivity.class);
+            gameActivity.startActivity(intent);
         }
     }
 
