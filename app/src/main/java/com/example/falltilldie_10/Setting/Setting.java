@@ -1,8 +1,10 @@
 package com.example.falltilldie_10.Setting;
 
+import static com.example.falltilldie_10.MainActivity.currentIndexImage;
+import static com.example.falltilldie_10.MainActivity.list;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,13 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
-import com.example.falltilldie_10.HightCore.HightCore;
 import com.example.falltilldie_10.MainActivity;
 import com.example.falltilldie_10.MusicService;
 import com.example.falltilldie_10.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Setting extends AppCompatActivity {
     SwitchCompat switchCompatSound;
@@ -30,7 +28,6 @@ public class Setting extends AppCompatActivity {
     ImageView img_character;
     Button aboutUS;
     SeekBar seekBarSpeed;
-    int currentIndex = 3;
     private Intent musicBG;
 
     @SuppressLint("MissingInflatedId")
@@ -39,8 +36,10 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
         musicBG = new Intent(this, MusicService.class);
+
         img_character = findViewById(R.id.imageView_character);
-        img_character.setImageResource(R.drawable.avatar2);
+        currentIndexImage = 1;
+        img_character.setImageResource(R.drawable.pigidle1l);
 
         Button btn_back = findViewById(R.id.backMain2);
 
@@ -48,16 +47,12 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Setting.this, MainActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
 
         //Tach thanh ham rieng
-        List<CharacterSetting> list = new ArrayList<>();
-        list.add(new CharacterSetting("ninja1", R.drawable.avatar));
-        list.add(new CharacterSetting("ninja2", R.drawable.avatar2));
-        list.add(new CharacterSetting("ninja3", R.drawable.run1));
-        list.add(new CharacterSetting("ninja4", R.drawable.run2l));
+
 
         switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
         switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -90,13 +85,13 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("click", "prev_btn");
-                if(currentIndex == 0) {
-                    currentIndex = list.size()-1;
+                if(MainActivity.currentIndexImage == 0) {
+                    MainActivity.currentIndexImage = list.size()-1;
                     Log.d("CurrentIndex", "0");
                 } else {
-                    currentIndex -= 1;
+                    MainActivity.currentIndexImage -= 1;
                 }
-                img_character.setImageResource(list.get(currentIndex).linkImg);
+                img_character.setImageResource(list.get(currentIndexImage).linkImg);
             }
         });
 
@@ -106,13 +101,13 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("click", "next_btn");
-                if(currentIndex == list.size() - 1) {
-                    currentIndex = 0;
+                if(MainActivity.currentIndexImage == list.size() - 1) {
+                    MainActivity.currentIndexImage = 0;
                     Log.d("CurrentIndex", "0");
                 } else {
-                    currentIndex += 1;
+                    MainActivity.currentIndexImage += 1;
                 }
-                img_character.setImageResource(list.get(currentIndex).linkImg);
+                img_character.setImageResource(list.get(currentIndexImage).linkImg);
             }
         });
 

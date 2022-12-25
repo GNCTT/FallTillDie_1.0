@@ -19,15 +19,22 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.falltilldie_10.HightCore.HightCore;
+import com.example.falltilldie_10.Setting.CharacterSetting;
 import com.example.falltilldie_10.Setting.Setting;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public static boolean online;
-
+    public static List<CharacterSetting> list = new ArrayList<>();
+    public static int currentIndexImage = 1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        list.add(new CharacterSetting("ninja2", R.drawable.pignormalidle1l));
+        list.add(new CharacterSetting("ninja3", R.drawable.pigidle1l));
+        list.add(new CharacterSetting("ninja4", R.drawable.virtualidle1l));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

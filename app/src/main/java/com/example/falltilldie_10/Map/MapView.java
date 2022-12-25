@@ -12,6 +12,7 @@ import com.example.falltilldie_10.Character.MonsterPigBomb;
 import com.example.falltilldie_10.Character.Player;
 import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
+import com.example.falltilldie_10.MainActivity;
 import com.example.falltilldie_10.Object.Block;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
@@ -52,7 +53,8 @@ public class MapView {
         background = new Background(screenX, screenY, GameView.res);
         typeBackground = 0;
         //new player
-        player = new Player(200, 100);
+        Log.i("currentIndexImage", " " + MainActivity.currentIndexImage);
+        player = new Player(200, 100, MainActivity.currentIndexImage);
         player2 = new Player(200, 200);
         blocks = new Block[NUM_BLOCK];
         monsterPigBombs = new MonsterPigBomb[NUM_BLOCK];

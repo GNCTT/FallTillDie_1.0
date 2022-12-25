@@ -37,10 +37,45 @@ public class Player extends Entity {
     private Bitmap ImageParticle;
     protected boolean die;
 
+    private final int IMAGE_PIG_NORMAL = 0;
+    private final int IMAGE_PIG_KING = 1;
+    private final int IMAGE_VIR = 2;
+    private int indexImage;
+
     public Player(int x, int y) {
         super(x, y);
 //        ImageEntity = Sprite.ImagePigIdlLeft;
         ImageEntity = Sprite.ImagePigIdlRight_1;
+//        ImageEntity = Sprite.ImagePigBomIdlLeft;
+//        ImageEntity = Sprite.ImageBombDefault;
+        width = ImageEntity.getWidth();
+        height = ImageEntity.getHeight();
+        center_x = x + width / 2;
+        center_y = y - height / 2;
+        dir = 1;
+        falling = true;
+        speed = DEFAULT_SPEED;
+        animate = 0;
+        ImageParticle = Sprite.ImageParticleRight_1;
+        score = 0;
+        countScore = 0;
+        die = false;
+    }
+
+    public Player(int x, int y, int indexImage) {
+        super(x, y);
+        this.indexImage = indexImage;
+//        ImageEntity = Sprite.ImagePigIdlLeft;
+        if (indexImage == IMAGE_PIG_NORMAL) {
+            ImageEntity = Sprite.ImagePigBomDoneRight_1;
+        }
+        if (indexImage == IMAGE_PIG_KING) {
+            ImageEntity = Sprite.ImagePigIdlRight_1;
+        }
+        if (indexImage == IMAGE_VIR) {
+            ImageEntity = Sprite.ImageVirtualIdlRight_1;
+        }
+//        ImageEntity = Sprite.ImagePigIdlRight_1;
 //        ImageEntity = Sprite.ImagePigBomIdlLeft;
 //        ImageEntity = Sprite.ImageBombDefault;
         width = ImageEntity.getWidth();
@@ -126,11 +161,11 @@ public class Player extends Entity {
                 }
             }
         }
-//        for (int i = 0; i < listBomb.length; i++) {
-//            if (listBomb[i].isCan_be_collide() && listBomb[i].isBeThrow()) {
-//                listEntity.add(listBomb[i]);
-//            }
-//        }
+        for (int i = 0; i < listBomb.length; i++) {
+            if (listBomb[i].isCan_be_collide() && listBomb[i].isBeThrow()) {
+                listEntity.add(listBomb[i]);
+            }
+        }
         // va cham y.
         y += delta_y;
         ArrayList<Entity>  collide_list = checkListCollision(this, listEntity);
@@ -196,30 +231,82 @@ public class Player extends Entity {
     public void chooseSprite() {
         if (dir == 1) {
             if (delta_x == 0) {
-               ImageEntity = Sprite.movingSprite(Sprite.PigIdlRight, animate, 15);
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigIdlRight, animate, 15);
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
+                }
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
 
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigBomRunRights, animate, 15);
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
+                }
+
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
 //                ImageEntity = Sprite.movingSprite(Sprite.PigBomRunRights, animate, 15);
             }
         }
         else {
             if (delta_x == 0) {
-                ImageEntity = Sprite.movingSprite(Sprite.PigIdlLefts, animate, 15);
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigIdlLefts, animate, 15);
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
+                }
+
             } else {
-                ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.movingSprite(Sprite.PigBomRunLefts, animate, 15);
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
+                }
             }
         }
         if (falling) {
             if (dir == 1) {
-                ImageEntity = Sprite.ImagePigFallRight;
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.ImagePigFallRight;
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.ImagePigBomFallRight;
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleRights, animate, 15);
+                }
+
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleRights, animate, 15);
 //                ImageEntity = Sprite.ImagePigBomFallRight;
             } else {
-                ImageEntity = Sprite.ImagePigFallLeft;
+
+                if (indexImage == IMAGE_PIG_KING) {
+                    ImageEntity = Sprite.ImagePigFallLeft;
+                }
+                if (indexImage == IMAGE_PIG_NORMAL) {
+                    ImageEntity = Sprite.ImagePigBomFallLeft;
+                }
+                if (indexImage == IMAGE_VIR) {
+                    ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleLefts, animate, 15);
+                }
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleLefts, animate, 15);
 //                ImageEntity = Sprite.ImagePigBomFallLeft;
             }
