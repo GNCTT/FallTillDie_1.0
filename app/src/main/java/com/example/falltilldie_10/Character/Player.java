@@ -291,7 +291,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.ImagePigBomFallRight;
                 }
                 if (indexImage == IMAGE_VIR) {
-                    ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleRights, animate, 15);
+                    ImageEntity = Sprite.ImageVirtualFallRight;
                 }
 
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleRights, animate, 15);
@@ -305,7 +305,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.ImagePigBomFallLeft;
                 }
                 if (indexImage == IMAGE_VIR) {
-                    ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleLefts, animate, 15);
+                    ImageEntity = Sprite.ImageVirtualFallLeft;
                 }
 //                ImageEntity = Sprite.movingSprite(Sprite.VirtualDoubleLefts, animate, 15);
 //                ImageEntity = Sprite.ImagePigBomFallLeft;
