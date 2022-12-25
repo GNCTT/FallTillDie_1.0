@@ -1,6 +1,7 @@
 package com.example.falltilldie_10.Object;
 
 import static com.example.falltilldie_10.GameView.canvas;
+import static com.example.falltilldie_10.GameView.getHeightScreen;
 import static com.example.falltilldie_10.GameView.paint;
 
 import android.graphics.Rect;
@@ -10,6 +11,9 @@ import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.Sprite.Sprite;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -42,6 +46,16 @@ public class Brick extends Entity {
         if (falling) {
             y += speed;
         }
+        chooseSprite();
+    }
+
+    public void update2(int x, int y, boolean flying, boolean falling) {
+        this.x = x;
+        this.y = y;
+        this.falling = flying;
+        this.falling = falling;
+        changeAnimate();
+        checkCollideBomb();
         chooseSprite();
     }
 
@@ -104,5 +118,19 @@ public class Brick extends Entity {
                 ", animate=" + animate +
                 ", falling=" + falling +
                 '}';
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("x", x);
+            jsonObject.put("y", y);
+            jsonObject.put("flying", flying);
+            jsonObject.put("falling", falling);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+
     }
 }

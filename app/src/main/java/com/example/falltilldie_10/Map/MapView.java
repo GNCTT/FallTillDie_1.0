@@ -111,7 +111,6 @@ public class MapView {
             int delta_y = playerObject.getInt("delta_y");
             boolean die = playerObject.getBoolean("die");
             player2.update2(x, y, dir, falling, delta_x, delta_y, die);
-            player.update();
             count_score ++;
             if (count_score > MAX_COUNT_SCORE) {
                 count_score = 0;
@@ -139,6 +138,32 @@ public class MapView {
             e.printStackTrace();
         }
 
+
+    }
+
+    public void updateOnline2(JSONObject mapViewJson) {
+        try {
+            JSONObject playerObject = mapViewJson.getJSONObject("Player");
+            int x = playerObject.getInt("x");
+            int y = playerObject.getInt("y");
+            int dir = playerObject.getInt("dir");
+            boolean falling = playerObject.getBoolean("falling");
+            int delta_x = playerObject.getInt("delta_x");
+            int delta_y = playerObject.getInt("delta_y");
+            boolean die = playerObject.getBoolean("die");
+            player2.update2(x, y, dir, falling, delta_x, delta_y, die);
+            int sizeBlock = mapViewJson.getInt("sizeBlock");
+            for (int i = 0; i < sizeBlock; i++) {
+                JSONObject blockObject = mapViewJson.getJSONObject("block" + i);
+                blocks[i].update2(blockObject);
+            }
+            JSONObject monsterObject = mapViewJson.getJSONObject("Monster");
+            monsterPigBombs[0].update2(monsterObject);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -196,6 +221,12 @@ public class MapView {
         }
         player2.draw();
         player.draw();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(20);
+        canvas.drawText("P1", player.getX() + player.getWidth() / 3, player.getY() - player.getHeight() / 2, paint);
+        paint.setColor(Color.BLUE);
+        paint.setTextSize(20);
+        canvas.drawText("P2", player2.getX() + player2.getWidth() / 3, player2.getY() - player2.getHeight() / 2, paint);
 
         for (int i = 0; i < NUM_BOMB; i++) {
             bombItems[i].draw();
@@ -218,13 +249,13 @@ public class MapView {
     @Override
     public String toString() {
         String blockString = "";
-        String monterString = "";
+        String monsterString = "";
         String bomItemString = "";
         for (int i = 0; i < NUM_BLOCK; i++) {
             blockString += blocks[i].toString();
         }
         for (int i = 0; i < NUM_MONSTER; i++) {
-            monterString += monsterPigBombs[i].toString();
+            monsterString += monsterPigBombs[i].toString();
         }
         for (int i = 0; i < NUM_BOMB; i++) {
             bomItemString += bombItems[i].toString();
@@ -233,7 +264,7 @@ public class MapView {
         return "MapView{ " +
                 blockString + " " +
                 player.toString() + " " +
-                monterString + " " +
+                monsterString + " " +
                 '}';
     }
 
@@ -241,6 +272,11 @@ public class MapView {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("Player", player.toJson());
+            jsonObject.put("sizeBlock", NUM_BLOCK);
+            for (int i = 0; i < NUM_BLOCK; i++) {
+                jsonObject.put("block" + String.valueOf(i), blocks[i].toJson());
+            }
+            jsonObject.put("Monster", monsterPigBombs[0].toJson());
         } catch (JSONException e) {
             e.printStackTrace();
         }

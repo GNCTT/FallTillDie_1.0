@@ -46,14 +46,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void clickPlay2P(View view) {
-//        Intent intent = new Intent(this, BackgroundSoundService.class);
-//        startService(intent);
-//    }
 
     public void clickPlay2P(View view) {
         Log.d("click button","play 2P");
         online = true;
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+
 
     }
 
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
         Intent musicBg=new Intent(this, MusicService.class);
         stopService(musicBg);
-
         System.exit(0);
     }
 

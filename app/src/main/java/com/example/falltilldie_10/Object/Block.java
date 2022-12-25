@@ -13,6 +13,9 @@ import com.example.falltilldie_10.Entity;
 import com.example.falltilldie_10.GameView;
 import com.example.falltilldie_10.Map.MapView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Arrays;
 
 public class Block extends Entity {
@@ -94,6 +97,23 @@ public class Block extends Entity {
         Log.i("blockToString", " " + toString());
     }
 
+    public void update2(JSONObject jsonObject) {
+        try {
+            this.size = jsonObject.getInt("sizeBrick");
+            for (int i = 0; i < size; i++) {
+                JSONObject brickObject = jsonObject.getJSONObject("brick" + i);
+                int x = brickObject.getInt("x");
+                int y = brickObject.getInt("y");
+                boolean flying = brickObject.getBoolean("flying");
+                boolean falling = brickObject.getBoolean("falling");
+                bricks[i].update2(x, y, flying, falling);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void updateByData(String data) {
 
     }
@@ -131,5 +151,22 @@ public class Block extends Entity {
                 ", bricks= " + resBricks +
                 ", index=" + index +
                 '}';
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("sizeBrick", size);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < size; i++) {
+            try {
+                jsonObject.put("brick" + String.valueOf(i), bricks[i].toJson());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonObject;
     }
 }

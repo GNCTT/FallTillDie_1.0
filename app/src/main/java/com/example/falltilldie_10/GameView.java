@@ -48,9 +48,11 @@ public class GameView extends SurfaceView implements Runnable{
     DatabaseReference otherRef;
     DatabaseReference myRef;
     DatabaseReference EnemyRef;
+    DatabaseReference readyRef;
     private String message;
     private int id;
     private boolean host;
+    public boolean checkOver;
 
 
     private MapView mapView;
@@ -76,12 +78,15 @@ public class GameView extends SurfaceView implements Runnable{
         canvas = new Canvas();
         paint = new Paint();
         res = getResources();
-        database = FirebaseDatabase.getInstance();
-        Log.i("gameView", " " );
-        roomRef = database.getReference("Rooms");
-        roomRef.setValue(message);
+//        database = FirebaseDatabase.getInstance();
+//        Log.i("gameView", " " );
+//        roomRef = database.getReference("Rooms");
+//        roomRef.setValue(message);
+//        readyRef = database.getReference("ready");
+//        readyRef.setValue("0");
         mapView = new MapView(screenX, screenY, context);
         online = false;
+        checkOver = false;
     }
 
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen, boolean online){
@@ -102,12 +107,15 @@ public class GameView extends SurfaceView implements Runnable{
         mapView = new MapView(screenX, screenY, context);
         database = FirebaseDatabase.getInstance();
         host = false;
+        checkOver = false;
 
         roomRef = database.getReference("Rooms");
         //need change.
 //        myRef.setValue(message);
         this.online = online;
         waiting = true;
+        readyRef = database.getReference("ready");
+        readyRef.setValue("0");
         playerRef = database.getReference("Player");
         otherRef = database.getReference("OtherPlayer");
     }
@@ -125,28 +133,18 @@ public class GameView extends SurfaceView implements Runnable{
                         EnemyRef = otherRef;
                         myRef.setValue(mapView.makeJSonObject().toString());
                         addEventListenOther(myRef);
-//                        if (DataIn != null) {
-//                            Log.i("jsonObject", " " + DataIn);
-//                        }
-//                        addEventListenOther(otherRef);
-//                        if (DataIn != null) {
-//                            Log.i("jsonObject", " " + DataIn);
-//                        }
                     } else {
                         myRef = otherRef;
                         EnemyRef = playerRef;
                         myRef.setValue(mapView.makeJSonObjectPlayer().toString());
                         addEventListenOther(myRef);
-//                        if (DataIn != null) {
-//                            Log.i("jsonObject", " " + DataIn);
-//                        }
-//                        addEventListenOther(otherRef);
-//                        if (DataIn != null) {
-//                            Log.i("jsonObject", " " + DataIn);
-//                        }
                     }
                 } else {
-                    myRef.setValue(mapView.makeJSonObject().toString());
+                    if (host) {
+                        myRef.setValue(mapView.makeJSonObject().toString());
+                    } else {
+                        myRef.setValue(mapView.makeJSonObjectPlayer().toString());
+                    }
                     addEventListenOther(EnemyRef);
                     if (DataIn != null) {
                         Log.i("jsonObject", " " + DataIn);
@@ -154,14 +152,10 @@ public class GameView extends SurfaceView implements Runnable{
                     try {
                         JSONObject jsonObject = new JSONObject(DataIn);
                         jsonObjectRead = jsonObject.getJSONObject("Player");
-//                        int dir = playerObject.getInt("dir");
-//                        boolean falling = playerObject.getBoolean("falling");
-//                        int delta_x = playerObject.getInt("delta_x");
-//                        int delta_y = playerObject.getInt("delta_y");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    updateOnline();
+                    updateOnline(jsonObjectRead);
                     drawOnline();
                     sleep();
                 }
@@ -170,9 +164,6 @@ public class GameView extends SurfaceView implements Runnable{
                 draw();
                 sleep();
             }
-            if (mapView.isOVer()) {
-
-            }
             }
         }
 
@@ -180,8 +171,12 @@ public class GameView extends SurfaceView implements Runnable{
         mapView.update();
     }
 
-    private void updateOnline() {
-        mapView.updateOnline(jsonObjectRead);
+    private void updateOnline(JSONObject jsonObjectRead) {
+        if (host) {
+            mapView.updateOnline(jsonObjectRead);
+        } else  {
+            mapView.updateOnline2(jsonObjectRead);
+        }
     }
 
     private void drawOnline() {
@@ -192,8 +187,11 @@ public class GameView extends SurfaceView implements Runnable{
                 getHolder().unlockCanvasAndPost(canvas);
             }
         } else {
-            Intent intent = new Intent(gameActivity, GameOverActivity.class);
-            gameActivity.startActivity(intent);
+            if (checkOver == false) {
+                Intent intent = new Intent(gameActivity, GameOverActivity.class);
+                gameActivity.startActivity(intent);
+                checkOver = true;
+            }
         }
     }
 
@@ -207,8 +205,11 @@ public class GameView extends SurfaceView implements Runnable{
                 getHolder().unlockCanvasAndPost(canvas);
             }
         } else {
-            Intent intent = new Intent(gameActivity, GameOverActivity.class);
-            gameActivity.startActivity(intent);
+            if (checkOver == false) {
+                checkOver = true;
+                Intent intent = new Intent(gameActivity, GameOverActivity.class);
+                gameActivity.startActivity(intent);
+            }
         }
     }
 
@@ -305,13 +306,35 @@ public class GameView extends SurfaceView implements Runnable{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
                 Log.d(TAG, "Value is: " + value);
-                if (value == null || value.equals("") || value.equals(message)) {
+                if (value.equals("") || value.equals(message)) {
                     roomRef.setValue(message);
                     host = true;
-                }
-                if (value != null && !value.equals(message) && !value.equals("")) {
+                    waiting = true;
+                } else {
+                    host = false;
+                    readyRef.setValue("1");
                     waiting = false;
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        readyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+                if (value.equals("0")) {
+                    waiting = true;
+                } else {
+                    waiting = false;
+                }
+
             }
 
             @Override

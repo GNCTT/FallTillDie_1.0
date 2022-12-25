@@ -15,6 +15,8 @@ import com.example.falltilldie_10.MusicService;
 import com.example.falltilldie_10.SoundService;
 import com.example.falltilldie_10.Sprite.Sprite;
 
+import org.json.JSONObject;
+
 import java.util.Map;
 
 public class BombItem extends Entity {
@@ -194,6 +196,25 @@ public class BombItem extends Entity {
     public void setExplosive() {
         this.explosive = true;
     }
+
+    @Override
+    public String toString() {
+        return "BombItem{" +
+                "time_not_collide=" + time_not_collide +
+                ", can_be_collide=" + can_be_collide +
+                ", countDownTime=" + countDownTime +
+                ", countDownTimeDone=" + countDownTimeDone +
+                ", flyStrength=" + flyStrength +
+                ", speedFall=" + speedFall +
+                ", startExplosive=" + startExplosive +
+                ", beThrow=" + beThrow +
+                '}';
+    }
+
+//    public JSONObject toJson() {
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put()
+//    }
 
 
 }

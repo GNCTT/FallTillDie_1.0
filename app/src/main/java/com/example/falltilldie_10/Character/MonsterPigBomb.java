@@ -7,11 +7,14 @@ import com.example.falltilldie_10.Map.MapView;
 import com.example.falltilldie_10.Object.Item.BombItem;
 import com.example.falltilldie_10.Sprite.Sprite;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MonsterPigBomb extends Player{
 
     public static int speedFall = 1;
-    public static boolean throwing;
-    public static boolean afterThrow;
+    public boolean throwing;
+    public boolean afterThrow;
     public static final int distance = 50;
     public static final int countDownThrow = 50;
     private int countDown;
@@ -103,6 +106,20 @@ public class MonsterPigBomb extends Player{
 
     }
 
+    public void update2(JSONObject jsonObject) {
+        try {
+            x = jsonObject.getInt("x");
+            y = jsonObject.getInt("y");
+            dir = jsonObject.getInt("dir");
+            throwing = jsonObject.getBoolean("throwing");
+            afterThrow = jsonObject.getBoolean("afterThrowing");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        update();
+    }
+
 
     public void chooseSprite() {
         if (dir == 1) {
@@ -165,4 +182,35 @@ public class MonsterPigBomb extends Player{
 //                ", die=" + die +
 //                '}';
 //    }
+
+
+    @Override
+    public String toString() {
+        return "MonsterPigBomb{" +
+                "throwing=" + throwing +
+                ", afterThrow=" + afterThrow +
+                ", countDown=" + countDown +
+                ", countTimeThrow=" + countTimeThrow +
+                ", indexBomb=" + indexBomb +
+                ", countDownDisAppear=" + countDownDisAppear +
+                ", dir=" + dir +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("x", x);
+            jsonObject.put("y", y);
+            jsonObject.put("dir", dir);
+            jsonObject.put("throwing", throwing);
+            jsonObject.put("afterThrow", afterThrow);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
 }
