@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
@@ -59,6 +60,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     public Context gameActivity;
     public Intent soundBoom;
+    private Query readyRef;
 
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen){
         super(context);
