@@ -86,7 +86,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen, boolean online){
         super(context);
-        id = 123;
+        id = 124;
         message = "player" + id;
         screenRatioX_1 =(float) (widthScreen * 1.00 / (9 * 66));
         screenRatioX_2 =  9 * 66;
@@ -119,6 +119,25 @@ public class GameView extends SurfaceView implements Runnable{
             if (online) {
                 if (waiting) {
                     draw_waiting();
+                    readyRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String value = dataSnapshot.getValue(String.class);
+                            Log.d(TAG, "Value is: " + value);
+                            if (value.equals("0")) {
+                                waiting = true;
+                            } else {
+                                waiting = false;
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            Log.w(TAG, "Failed to read value.", error.toException());
+                        }
+                    });
                     addEventListenerOnline();
                     if (host) {
                         myRef = playerRef;
