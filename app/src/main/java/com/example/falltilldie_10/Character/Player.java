@@ -1,6 +1,8 @@
 package com.example.falltilldie_10.Character;
 
 import static com.example.falltilldie_10.GameView.canvas;
+import static com.example.falltilldie_10.GameView.getHeightScreen;
+import static com.example.falltilldie_10.GameView.getWidthScreen;
 import static com.example.falltilldie_10.GameView.paint;
 import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleLefts;
 import static com.example.falltilldie_10.Sprite.Sprite.ImageParticleRights;
@@ -348,8 +350,8 @@ public class Player extends Entity {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("x", x);
-            jsonObject.put("y", y);
+            jsonObject.put("x", (double) x / getWidthScreen());
+            jsonObject.put("y", (double) y / getHeightScreen());
             jsonObject.put("dir", dir);
             jsonObject.put("falling", falling);
             jsonObject.put("delta_x", delta_x);
@@ -358,15 +360,13 @@ public class Player extends Entity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
         return jsonObject;
 
     }
 
     public void update2(int x, int y, int dir, boolean falling, int delta_x, int delta_y, boolean die) {
-        this.x = x;
-        this.y = y;
+//        this.x = x;
+//        this.y = y;
         this.dir = dir;
         this.falling = falling;
         this.delta_x = delta_x;

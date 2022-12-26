@@ -81,6 +81,9 @@ public class Block extends Entity {
             if (bound < 0) {
                 bound = -bound;
             }
+            if (bound == 0) {
+                bound += 10;
+            }
             int rand_location_x = rand.nextInt(bound);
             Log.i("rand: ", " " + rand_location_x);
             x = rand_location_x;

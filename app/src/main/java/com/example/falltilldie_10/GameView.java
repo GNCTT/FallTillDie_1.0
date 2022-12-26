@@ -91,7 +91,7 @@ public class GameView extends SurfaceView implements Runnable{
 
     public GameView(Context context, int screenX, int screenY, int heightScreen, int widthScreen, boolean online){
         super(context);
-        id = 123;
+        id = 124;
         message = "player" + id;
         screenRatioX_1 =(float) (widthScreen * 1.00 / (9 * 66));
         screenRatioX_2 =  9 * 66;
@@ -132,6 +132,8 @@ public class GameView extends SurfaceView implements Runnable{
                         myRef = playerRef;
                         EnemyRef = otherRef;
                         myRef.setValue(mapView.makeJSonObject().toString());
+                        //
+                        EnemyRef.setValue(mapView.makeJSonObject().toString());
                         addEventListenOther(myRef);
                     } else {
                         myRef = otherRef;
@@ -151,7 +153,7 @@ public class GameView extends SurfaceView implements Runnable{
                     }
                     try {
                         JSONObject jsonObject = new JSONObject(DataIn);
-                        jsonObjectRead = jsonObject.getJSONObject("Player");
+                        jsonObjectRead = jsonObject;
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -188,8 +190,8 @@ public class GameView extends SurfaceView implements Runnable{
             }
         } else {
             if (checkOver == false) {
-                Intent intent = new Intent(gameActivity, GameOverActivity.class);
-                gameActivity.startActivity(intent);
+//                Intent intent = new Intent(gameActivity, GameOverActivity.class);
+//                gameActivity.startActivity(intent);
                 checkOver = true;
             }
         }

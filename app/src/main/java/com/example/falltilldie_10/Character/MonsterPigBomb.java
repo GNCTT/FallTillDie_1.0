@@ -108,8 +108,8 @@ public class MonsterPigBomb extends Player{
 
     public void update2(JSONObject jsonObject) {
         try {
-            x = jsonObject.getInt("x");
-            y = jsonObject.getInt("y");
+//            x = jsonObject.getInt("x");
+//            y = jsonObject.getInt("y");
             dir = jsonObject.getInt("dir");
             throwing = jsonObject.getBoolean("throwing");
             afterThrow = jsonObject.getBoolean("afterThrowing");

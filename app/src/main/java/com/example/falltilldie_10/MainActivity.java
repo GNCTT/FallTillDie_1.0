@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickPlay(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+        online = false;
     }
 
 

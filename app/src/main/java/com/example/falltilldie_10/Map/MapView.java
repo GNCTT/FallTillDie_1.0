@@ -1,6 +1,8 @@
 package com.example.falltilldie_10.Map;
 
 import static com.example.falltilldie_10.GameView.canvas;
+import static com.example.falltilldie_10.GameView.getHeightScreen;
+import static com.example.falltilldie_10.GameView.getWidthScreen;
 import static com.example.falltilldie_10.GameView.paint;
 
 import android.content.Context;
@@ -54,7 +56,7 @@ public class MapView {
         typeBackground = 0;
         //new player
         Log.i("currentIndexImage", " " + MainActivity.currentIndexImage);
-        player = new Player(200, 100, MainActivity.currentIndexImage);
+        player = new Player(200, 500, MainActivity.currentIndexImage);
         player2 = new Player(200, 200);
         blocks = new Block[NUM_BLOCK];
         monsterPigBombs = new MonsterPigBomb[NUM_BLOCK];
@@ -101,10 +103,13 @@ public class MapView {
         }
     }
 
-    public void updateOnline(JSONObject playerObject) {
+    public void updateOnline(JSONObject jsonread) {
         try {
-            int x = playerObject.getInt("x");
-            int y = playerObject.getInt("y");
+            JSONObject playerObject = jsonread.getJSONObject("Player");
+            double x_ratio = playerObject.getInt("x");
+            double y_ratio = playerObject.getInt("y");
+            int x = (int)(GameView.getWidthScreen() * x_ratio);
+            int y = (int)(GameView.getHeightScreen() * y_ratio);
             int dir = playerObject.getInt("dir");
             boolean falling = playerObject.getBoolean("falling");
             int delta_x = playerObject.getInt("delta_x");
@@ -144,13 +149,17 @@ public class MapView {
     public void updateOnline2(JSONObject mapViewJson) {
         try {
             JSONObject playerObject = mapViewJson.getJSONObject("Player");
-            int x = playerObject.getInt("x");
-            int y = playerObject.getInt("y");
+            double x_ratio = playerObject.getInt("x");
+            double y_ratio = playerObject.getInt("y");
+            int x = (int) (getWidthScreen() * x_ratio);
+            int y = (int) (getHeightScreen() * y_ratio);
+            Log.i("locationx", " " + x + " " + y);
             int dir = playerObject.getInt("dir");
             boolean falling = playerObject.getBoolean("falling");
             int delta_x = playerObject.getInt("delta_x");
             int delta_y = playerObject.getInt("delta_y");
             boolean die = playerObject.getBoolean("die");
+            player.update();
             player2.update2(x, y, dir, falling, delta_x, delta_y, die);
             int sizeBlock = mapViewJson.getInt("sizeBlock");
             for (int i = 0; i < sizeBlock; i++) {
@@ -159,6 +168,9 @@ public class MapView {
             }
             JSONObject monsterObject = mapViewJson.getJSONObject("Monster");
             monsterPigBombs[0].update2(monsterObject);
+            for (int i = 0; i < NUM_BOMB; i++) {
+                bombItems[i].update();
+            }
 
 
         } catch (JSONException e) {
