@@ -24,8 +24,9 @@ import com.example.falltilldie_10.R;
 public class Setting extends AppCompatActivity {
     SwitchCompat switchCompatSound;
     SwitchCompat switchCompatMusic;
-    Button nextCharacter, prevCharacter;
+    Button nextCharacter, prevCharacter, nextBackground, prevBackground;
     ImageView img_character;
+    ImageView img_background;
     Button aboutUS;
     SeekBar seekBarSpeed;
     private Intent musicBG;
@@ -41,6 +42,12 @@ public class Setting extends AppCompatActivity {
         currentIndexImage = 1;
         img_character.setImageResource(R.drawable.pigidle1l);
 
+        // chọn nền game
+        img_background = findViewById(R.id.imageView_background);
+        currentIndexImage = 1;
+        img_background.setImageResource(R.drawable.background6);
+
+
         Button btn_back = findViewById(R.id.backMain2);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -54,17 +61,17 @@ public class Setting extends AppCompatActivity {
         //Tach thanh ham rieng
 
 
-        switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
-        switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true) {
-                    Log.d("SwitchSound is", "on");
-                } else {
-                    Log.d("SwitchSound is", "off");
-                }
-            }
-        });
+//        switchCompatSound = (SwitchCompat) findViewById(R.id.switchCompatSound);
+//        switchCompatSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b == true) {
+//                    Log.d("SwitchSound is", "on");
+//                } else {
+//                    Log.d("SwitchSound is", "off");
+//                }
+//            }
+//        });
 
         switchCompatMusic = (SwitchCompat) findViewById(R.id.switchCompatMusic);
         switchCompatMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -108,6 +115,38 @@ public class Setting extends AppCompatActivity {
                     MainActivity.currentIndexImage += 1;
                 }
                 img_character.setImageResource(list.get(currentIndexImage).linkImg);
+            }
+        });
+
+        // Chọn nền game mới có
+        prevBackground = findViewById(R.id.prevBackground);
+        prevBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("click", "prev_btn");
+                if(MainActivity.currentIndexImage == 0) {
+                    MainActivity.currentIndexImage = list.size()-1;
+                    Log.d("CurrentIndex", "0");
+                } else {
+                    MainActivity.currentIndexImage -= 1;
+                }
+                img_background.setImageResource(list.get(currentIndexImage).linkImg);
+            }
+        });
+
+        nextBackground = findViewById(R.id.nextBackground);
+
+        nextBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("click", "next_btn");
+                if(MainActivity.currentIndexImage == list.size() - 1) {
+                    MainActivity.currentIndexImage = 0;
+                    Log.d("CurrentIndex", "0");
+                } else {
+                    MainActivity.currentIndexImage += 1;
+                }
+                img_background.setImageResource(list.get(currentIndexImage).linkImg);
             }
         });
 
