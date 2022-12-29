@@ -31,7 +31,7 @@ public class GameOverActivity extends AppCompatActivity {
         Button btn_back = findViewById(R.id.backMain);
         yourScore = findViewById(R.id.yourScore);
         yourScoreInt = 90;
-        yourScore.setText(String.valueOf(yourScoreInt));
+        yourScore.setText("Your Score: " + String.valueOf(yourScoreInt));
         yourScore.setGravity(Gravity.CENTER);
         rcv_user = (RecyclerView) findViewById(R.id.rcv_user);
         userAdapter = new highCoreUserAdapter(this);

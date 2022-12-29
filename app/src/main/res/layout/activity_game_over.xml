@@ -12,11 +12,11 @@
         android:background="@color/background" />
 
     <LinearLayout
-        android:layout_width="347dp"
-        android:layout_height="438dp"
+        android:layout_width="350dp"
+        android:layout_height="480dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="253dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:background="@color/card"
@@ -28,7 +28,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_user"
             android:layout_width="match_parent"
-            android:layout_height="377dp"
+            android:layout_height="450dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1" />
 
@@ -36,21 +36,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="7"
             android:gravity="center">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="65dp"
-                android:background="@drawable/bg_red_conner2" />
 
             <Button
                 android:id="@+id/backMain"
                 android:layout_width="100dp"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_red_conner"
                 android:text="Home"
                 android:textColor="@color/white"
@@ -64,7 +59,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="10dp">
 
-    app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
@@ -88,33 +83,18 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/yourScoreText"
-        android:layout_width="187dp"
-        android:layout_height="137dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="493dp"
+        android:id="@+id/yourScore"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/bg_red_conner"
+        android:orientation="vertical"
         android:text="  Your Score"
         android:textColor="@color/white"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/yourScore"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="538dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="40sp" /><![CDATA[
-
-    />
-]]>
 </RelativeLayout>
