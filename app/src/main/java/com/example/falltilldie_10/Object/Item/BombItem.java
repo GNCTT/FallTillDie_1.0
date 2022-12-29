@@ -126,6 +126,7 @@ public class BombItem extends Entity {
                 gameActivity.stopService(soundBoom);
             }
         }
+
     }
 
     private void changeAnimate() {
