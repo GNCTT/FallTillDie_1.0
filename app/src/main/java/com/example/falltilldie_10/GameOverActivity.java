@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.falltilldie_10.Endgame.Dialog_Endgame;
 import com.example.falltilldie_10.HightCore.highCoreUserAdapter;
@@ -19,11 +21,18 @@ import java.util.List;
 public class GameOverActivity extends AppCompatActivity {
     private RecyclerView rcv_user;
     private highCoreUserAdapter userAdapter;
+    private TextView yourScore;
+    private int yourScoreInt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game_over);
         Button btn_back = findViewById(R.id.backMain);
+        yourScore = findViewById(R.id.yourScore);
+        yourScoreInt = 90;
+        yourScore.setText(String.valueOf(yourScoreInt));
+        yourScore.setGravity(Gravity.CENTER);
         rcv_user = (RecyclerView) findViewById(R.id.rcv_user);
         userAdapter = new highCoreUserAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
