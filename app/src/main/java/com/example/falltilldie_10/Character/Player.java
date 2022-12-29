@@ -69,7 +69,7 @@ public class Player extends Entity {
         this.indexImage = indexImage;
 //        ImageEntity = Sprite.ImagePigIdlLeft;
         if (indexImage == IMAGE_PIG_NORMAL) {
-            ImageEntity = Sprite.ImagePigBomDoneRight_1;
+            ImageEntity = Sprite.ImagePigNormalIdlRight_1;
         }
         if (indexImage == IMAGE_PIG_KING) {
             ImageEntity = Sprite.ImagePigIdlRight_1;
@@ -237,7 +237,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.movingSprite(Sprite.PigIdlRight, animate, 15);
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlRights, animate, 15);
+                    ImageEntity = Sprite.movingSprite(Sprite.PigNormalIdlRights, animate, 15);
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlRights, animate, 15);
@@ -250,7 +250,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.movingSprite(Sprite.PigRunRights, animate, 15);
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.movingSprite(Sprite.PigBomRunRights, animate, 15);
+                    ImageEntity = Sprite.movingSprite(Sprite.PigNormalRunRights, animate, 15);
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.movingSprite(Sprite.VirtualRunRights, animate, 15);
@@ -266,7 +266,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.movingSprite(Sprite.PigIdlLefts, animate, 15);
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.movingSprite(Sprite.ImagePigBombIdlLefts, animate, 15);
+                    ImageEntity = Sprite.movingSprite(Sprite.PigNormalRunLefts, animate, 15);
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.movingSprite(Sprite.VirtualIdlLefts, animate, 15);
@@ -277,7 +277,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.movingSprite(Sprite.PigRunLefts, animate, 15);
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.movingSprite(Sprite.PigBomRunLefts, animate, 15);
+                    ImageEntity = Sprite.movingSprite(Sprite.PigNormalRunLefts, animate, 15);
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.movingSprite(Sprite.VirtualRunLefts, animate, 15);
@@ -290,7 +290,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.ImagePigFallRight;
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.ImagePigBomFallRight;
+                    ImageEntity = Sprite.ImagePigNormalFallRight;
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.ImageVirtualFallRight;
@@ -304,7 +304,7 @@ public class Player extends Entity {
                     ImageEntity = Sprite.ImagePigFallLeft;
                 }
                 if (indexImage == IMAGE_PIG_NORMAL) {
-                    ImageEntity = Sprite.ImagePigBomFallLeft;
+                    ImageEntity = Sprite.ImagePigNormalFallLeft;
                 }
                 if (indexImage == IMAGE_VIR) {
                     ImageEntity = Sprite.ImageVirtualFallLeft;
