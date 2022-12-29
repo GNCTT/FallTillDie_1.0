@@ -58,10 +58,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickExit(View view) {
-        finish();
         Intent musicBg=new Intent(this, MusicService.class);
         stopService(musicBg);
-
+        finish();
         System.exit(0);
     }
 

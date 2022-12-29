@@ -5,6 +5,7 @@ import static com.example.falltilldie_10.MainActivity.list;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class Setting extends AppCompatActivity {
     Button aboutUS;
     SeekBar seekBarSpeed;
     private Intent musicBG;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -74,14 +76,29 @@ public class Setting extends AppCompatActivity {
 //        });
 
         switchCompatMusic = (SwitchCompat) findViewById(R.id.switchCompatMusic);
-        switchCompatMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        SharedPreferences sharedPreferences=getSharedPreferences("save",MODE_PRIVATE);
+        switchCompatMusic.setChecked(sharedPreferences.getBoolean("value",false));
+
+        switchCompatMusic.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true) {
-                    Log.d("SwitchMusic is", "on");
+            public void onClick(View view) {
+                if (switchCompatMusic.isChecked())
+                {
+                    // When switch checked
+                    SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",true);
+                    editor.apply();
+                    switchCompatMusic.setChecked(true);
                     startService(musicBG);
-                } else {
-                    Log.d("SwitchMusic is", "off");
+                }
+                else
+                {
+                    // When switch unchecked
+                    SharedPreferences.Editor editor=getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",false);
+                    editor.apply();
+                    switchCompatMusic.setChecked(false);
                     stopService(musicBG);
                 }
             }
@@ -177,4 +194,6 @@ public class Setting extends AppCompatActivity {
 //            }
 //        });
     }
+
+
 }
