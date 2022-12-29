@@ -52,7 +52,7 @@ public class MapView {
         this.screenY = screenY;
         this.context = context;
 
-        background = new Background(screenX, screenY, GameView.res);
+        background = new Background(screenX, screenY, GameView.res, MainActivity.currentIndexBackground);
         typeBackground = 0;
         //new player
         Log.i("currentIndexImage", " " + MainActivity.currentIndexImage);

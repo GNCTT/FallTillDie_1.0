@@ -1,7 +1,9 @@
 package com.example.falltilldie_10.Setting;
 
+import static com.example.falltilldie_10.MainActivity.currentIndexBackground;
 import static com.example.falltilldie_10.MainActivity.currentIndexImage;
 import static com.example.falltilldie_10.MainActivity.list;
+import static com.example.falltilldie_10.MainActivity.list2;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -124,13 +126,13 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("click", "prev_btn");
-                if(MainActivity.currentIndexImage == 0) {
-                    MainActivity.currentIndexImage = list.size()-1;
+                if(MainActivity.currentIndexBackground == 0) {
+                    MainActivity.currentIndexBackground = list.size()-1;
                     Log.d("CurrentIndex", "0");
                 } else {
-                    MainActivity.currentIndexImage -= 1;
+                    MainActivity.currentIndexBackground -= 1;
                 }
-                img_background.setImageResource(list.get(currentIndexImage).linkImg);
+                img_background.setImageResource(list2.get(currentIndexBackground).linkImg);
             }
         });
 
@@ -140,13 +142,13 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("click", "next_btn");
-                if(MainActivity.currentIndexImage == list.size() - 1) {
-                    MainActivity.currentIndexImage = 0;
+                if(MainActivity.currentIndexBackground == list.size() - 1) {
+                    MainActivity.currentIndexBackground = 0;
                     Log.d("CurrentIndex", "0");
                 } else {
-                    MainActivity.currentIndexImage += 1;
+                    MainActivity.currentIndexBackground += 1;
                 }
-                img_background.setImageResource(list.get(currentIndexImage).linkImg);
+                img_background.setImageResource(list2.get(currentIndexBackground).linkImg);
             }
         });
 

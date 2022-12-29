@@ -210,8 +210,8 @@ public class GameView extends SurfaceView implements Runnable{
             }
         } else {
             if (checkOver == false) {
-//                Intent intent = new Intent(gameActivity, GameOverActivity.class);
-//                gameActivity.startActivity(intent);
+                Intent intent = new Intent(gameActivity, GameOverActivity.class);
+                gameActivity.startActivity(intent);
                 checkOver = true;
             }
         }

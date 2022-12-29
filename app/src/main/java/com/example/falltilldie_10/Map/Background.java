@@ -30,6 +30,24 @@ public class Background {
         backgroundImage = background;
     }
 
+    public Background(int screenX, int screenY, Resources res, int indexbackground) {
+        background = BitmapFactory.decodeResource(res, R.drawable.background6);
+        background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
+        background1 = BitmapFactory.decodeResource(res, R.drawable.background1);
+        background1 = Bitmap.createScaledBitmap(background1, screenX, screenY, false);
+        background2 = BitmapFactory.decodeResource(res, R.drawable.background4);
+        background2 = Bitmap.createScaledBitmap(background2, screenX, screenY, false);
+        if (indexbackground == 0) {
+            backgroundImage = background1;
+        }
+        if (indexbackground == 1) {
+            backgroundImage = background;
+        }
+        if (indexbackground == 2) {
+            backgroundImage = background2;
+        }
+    }
+
     public void update() {
     }
 
